@@ -1,0 +1,30 @@
+
+> my-project@0.1.0 dev /vercel/share/v0-project
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://100.64.18.181:3000
+- Environments: .env.development.local
+✓ Ready in 925ms
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.next/dev/types/**/*.ts'
+
+- Experiments (use with caution):
+  · serverActions
+  ✓ transitionIndicator
+
+ GET / 200 in 3.2s (next.js: 3.0s, application-code: 192ms)
+ GET /icon-light-32x32.png 404 in 844ms (next.js: 795ms, application-code: 48ms)
+ GET /icon-dark-32x32.png 404 in 36ms (next.js: 3ms, application-code: 33ms)
+ GET /icon.svg 404 in 42ms (next.js: 4ms, application-code: 38ms)
+ GET / 200 in 53ms (next.js: 7ms, application-code: 46ms)
+ GET /icon-light-32x32.png 404 in 34ms (next.js: 3ms, application-code: 31ms)

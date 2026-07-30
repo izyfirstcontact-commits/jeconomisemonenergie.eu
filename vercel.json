@@ -1,0 +1,59 @@
+{
+  "buildCommand": "next build",
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@next_public_supabase_url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@next_public_supabase_anon_key"
+  },
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "izyfirstcontact.fr" }],
+      "destination": "https://jeconomisemonenergie.eu/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.izyfirstcontact.fr" }],
+      "destination": "https://jeconomisemonenergie.eu/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.jeconomisemonenergie.eu" }],
+      "destination": "https://jeconomisemonenergie.eu/$1",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://connect.facebook.net https://analytics.tiktok.com; script-src-elem 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://connect.facebook.net https://analytics.tiktok.com; connect-src 'self' https://formspree.io https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://ad.doubleclick.net https://stats.g.doubleclick.net https://region1.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.facebook.com https://connect.facebook.net https://analytics.tiktok.com https://*.tiktok.com https://partner.mega.be; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com https://www.google.com https://www.google.be https://www.google.fr https://ad.doubleclick.net https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.facebook.com https://analytics.tiktok.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.google.com https://www.googletagmanager.com https://tagmanager.google.com https://*.googletagmanager.com; font-src 'self' https://fonts.gstatic.com data:; frame-src 'self' https://www.google.com https://www.googletagmanager.com https://td.doubleclick.net; form-action 'self' https://formspree.io; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "app/api/leads/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/upload/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/cron/update-tarifs/route.ts": {
+      "maxDuration": 300
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/update-tarifs",
+      "schedule": "0 3 * * *"
+    }
+  ]
+}
