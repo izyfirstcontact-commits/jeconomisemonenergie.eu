@@ -6,12 +6,20 @@ export async function updateSession(request: NextRequest) {
     request,
   })
 
-  // With Fluid compute, don't put this client in a global environment
-  // variable. Always create a new one on each request.
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+  // Check if Supabase environment variables are configured
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    // If Supabase is not configured, just return the response without auth checks
+    console.warn('[v0] Supabase environment variables not configured in middleware')
+    return supabaseResponse
+  }
+
+  try {
+    // With Fluid compute, don't put this client in a global environment
+    // variable. Always create a new one on each request.
+    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
       cookies: {
         getAll() {
           return request.cookies.getAll()
@@ -28,28 +36,31 @@ export async function updateSession(request: NextRequest) {
           )
         },
       },
-    },
-  )
+    })
 
-  // Do not run code between createServerClient and
-  // supabase.auth.getUser(). A simple mistake could make it very hard to debug
-  // issues with users being randomly logged out.
+    // Do not run code between createServerClient and
+    // supabase.auth.getUser(). A simple mistake could make it very hard to debug
+    // issues with users being randomly logged out.
 
-  // IMPORTANT: If you remove getUser() and you use server-side rendering
-  // with the Supabase client, your users may be randomly logged out.
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+    // IMPORTANT: If you remove getUser() and you use server-side rendering
+    // with the Supabase client, your users may be randomly logged out.
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
 
-  if (
-    // if the user is not logged in and the app path, in this case, /protected, is accessed, redirect to the login page
-    request.nextUrl.pathname.startsWith('/protected') &&
-    !user
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone()
-    url.pathname = '/auth/login'
-    return NextResponse.redirect(url)
+    if (
+      // if the user is not logged in and the app path, in this case, /protected, is accessed, redirect to the login page
+      request.nextUrl.pathname.startsWith('/protected') &&
+      !user
+    ) {
+      // no user, potentially respond by redirecting the user to the login page
+      const url = request.nextUrl.clone()
+      url.pathname = '/auth/login'
+      return NextResponse.redirect(url)
+    }
+  } catch (error) {
+    console.warn('[v0] Middleware Supabase error:', error instanceof Error ? error.message : 'Unknown error')
+    // Continue without auth if there's an error
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.
