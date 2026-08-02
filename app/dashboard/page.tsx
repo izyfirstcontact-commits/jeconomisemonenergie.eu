@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { LogoutButton } from '@/components/auth/logout-button'
 import { SupabaseDashboard } from '@/components/dashboard/supabase-dashboard'
+import { AnalyticsDashboard } from '@/components/dashboard/analytics-dashboard'
 
 // Prevent prerendering - fetch user data at request time
 export const dynamic = 'force-dynamic'
@@ -33,7 +34,26 @@ export default async function DashboardPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <SupabaseDashboard />
+        {/* Tabs Navigation */}
+        <div className="mb-8 border-b border-border">
+          <div className="flex gap-6">
+            <button className="pb-3 px-1 text-sm font-medium text-foreground border-b-2 border-primary">
+              Analytics
+            </button>
+            <button className="pb-3 px-1 text-sm font-medium text-muted-foreground hover:text-foreground transition">
+              Historique
+            </button>
+          </div>
+        </div>
+
+        {/* Analytics Section */}
+        <AnalyticsDashboard />
+
+        {/* Original Dashboard (Hidden but kept for reference) */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold text-foreground mb-8">Mes Données</h2>
+          <SupabaseDashboard />
+        </div>
 
         {/* Account Info */}
         <div className="mt-8 rounded-lg border border-border bg-card p-6">
