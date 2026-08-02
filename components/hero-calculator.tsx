@@ -55,6 +55,12 @@ export function HeroCalculator() {
     setGateOpen(false)
   }
 
+  function handleNewEstimation() {
+    setBill(150)
+    setUnlocked(false)
+    setReferralCode("")
+  }
+
   return (
     <section className="mx-auto w-full max-w-xl">
       <div className="rounded-3xl border border-border bg-card p-6 premium-shadow md:p-8">
@@ -140,6 +146,15 @@ export function HeroCalculator() {
         referralCode={referralCode}
         onUnlock={handleUnlock}
       />
+
+      {unlocked && (
+        <button
+          onClick={handleNewEstimation}
+          className="mt-4 w-full rounded-lg border border-border bg-secondary/50 px-4 py-2 text-sm font-medium text-foreground transition hover:bg-secondary"
+        >
+          Faire une nouvelle estimation
+        </button>
+      )}
     </section>
   )
 }
