@@ -356,9 +356,9 @@ export function GateResultModal({ open, onOpenChange, estimate, referralCode, on
               </p>
             </div>
 
-            <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-              <p className="text-center text-sm leading-relaxed text-foreground font-medium">
-                Bravo, un conseiller vous contactera sous peu pour vous aider à réaliser cette économie avec le meilleur tarif
+            <div className="rounded-lg border-2 border-green-500 bg-green-50 p-6">
+              <p className="text-center text-base leading-relaxed text-green-900 font-bold">
+                ✓ Bravo, un conseiller vous contactera sous peu pour vous aider à réaliser cette économie avec le meilleur tarif
               </p>
             </div>
 
