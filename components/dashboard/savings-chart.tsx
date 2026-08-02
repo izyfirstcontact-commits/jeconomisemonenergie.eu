@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Loader2, AlertCircle } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Loader2 as Loader2Icon, AlertCircle as AlertCircleIcon } from 'lucide-react'
 
 interface DailySaving {
@@ -19,35 +18,18 @@ export function SavingsChart() {
     const fetchSavingsData = async () => {
       try {
         setLoading(true)
-        const supabase = createClient()
+        const response = await fetch('/api/dashboard/savings')
 
-        const {
-          data: { user },
-          error: authError,
-        } = await supabase.auth.getUser()
-
-        if (authError || !user) {
-          setError('Authentification requise')
+        if (!response.ok) {
+          if (response.status === 401) {
+            setError('Authentification requise')
+          } else {
+            setError('Erreur lors du chargement des données')
+          }
           return
         }
 
-        // Fetch last 30 days of savings
-        const thirtyDaysAgo = new Date()
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
-
-        const { data: savingsData, error: queryError } = await supabase
-          .from('user_daily_savings')
-          .select('recorded_date, savings_amount')
-          .eq('user_id', user.id)
-          .gte('recorded_date', thirtyDaysAgo.toISOString().split('T')[0])
-          .order('recorded_date', { ascending: true })
-
-        if (queryError && queryError.code !== 'PGRST116') {
-          console.error('Query error:', queryError)
-          setError('Erreur lors du chargement des données')
-          return
-        }
-
+        const savingsData = await response.json()
         setData(savingsData || [])
       } catch (err) {
         console.error('Fetch error:', err)

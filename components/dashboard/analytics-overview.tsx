@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { TrendingUp, Zap, Target, Calendar, Loader2, AlertCircle } from 'lucide-react'
 
 interface AnalyticsData {
@@ -21,30 +20,18 @@ export function AnalyticsOverview() {
     const fetchAnalytics = async () => {
       try {
         setLoading(true)
-        const supabase = createClient()
+        const response = await fetch('/api/dashboard/analytics')
 
-        const {
-          data: { user },
-          error: authError,
-        } = await supabase.auth.getUser()
-
-        if (authError || !user) {
-          setError('Authentification requise')
+        if (!response.ok) {
+          if (response.status === 401) {
+            setError('Authentification requise')
+          } else {
+            setError('Erreur lors du chargement des analytics')
+          }
           return
         }
 
-        const { data: analyticsData, error: queryError } = await supabase
-          .from('user_analytics')
-          .select('*')
-          .eq('user_id', user.id)
-          .single()
-
-        if (queryError && queryError.code !== 'PGRST116') {
-          console.error('Analytics error:', queryError)
-          setError('Erreur lors du chargement des analytics')
-          return
-        }
-
+        const analyticsData = await response.json()
         setData(analyticsData || {
           total_savings: 0,
           monthly_savings: 0,

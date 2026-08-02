@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Loader2, AlertCircle } from 'lucide-react'
 
@@ -19,44 +18,19 @@ export function TopSuppliers() {
     const fetchSuppliers = async () => {
       try {
         setLoading(true)
-        const supabase = createClient()
+        const response = await fetch('/api/dashboard/suppliers')
 
-        const {
-          data: { user },
-          error: authError,
-        } = await supabase.auth.getUser()
-
-        if (authError || !user) {
-          setError('Authentification requise')
-          return
-        }
-
-        // Fetch from view or raw query
-        const { data: suppliersData, error: queryError } = await supabase
-          .from('user_supplier_interactions')
-          .select('supplier_name')
-          .eq('user_id', user.id)
-
-        if (queryError && queryError.code !== 'PGRST116') {
-          console.error('Query error:', queryError)
-          setError('Erreur lors du chargement')
-          return
-        }
-
-        // Group and count interactions
-        const grouped = (suppliersData || []).reduce((acc, item) => {
-          const existing = acc.find(s => s.supplier_name === item.supplier_name)
-          if (existing) {
-            existing.interaction_count++
+        if (!response.ok) {
+          if (response.status === 401) {
+            setError('Authentification requise')
           } else {
-            acc.push({ supplier_name: item.supplier_name, interaction_count: 1 })
+            setError('Erreur lors du chargement')
           }
-          return acc
-        }, [] as SupplierData[])
+          return
+        }
 
-        // Sort by count and take top 5
-        const sorted = grouped.sort((a, b) => b.interaction_count - a.interaction_count).slice(0, 5)
-        setData(sorted)
+        const suppliersData = await response.json()
+        setData(suppliersData || [])
       } catch (err) {
         console.error('Fetch error:', err)
         setError('Erreur lors du chargement')
