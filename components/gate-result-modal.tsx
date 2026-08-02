@@ -358,8 +358,7 @@ export function GateResultModal({ open, onOpenChange, estimate, referralCode, on
 
             <div className="rounded-lg border border-green-200 bg-green-50 p-4">
               <p className="text-center text-sm leading-relaxed text-foreground font-medium">
-                ✓ Un conseiller en énergie de Jeconomisemonenergie va vous contacter sous 24h pour vous aider à réaliser ces
-                économies dès ce mois-ci.
+                Bravo, un conseiller vous contactera sous peu pour vous aider à réaliser cette économie avec le meilleur tarif
               </p>
             </div>
 
