@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft, Globe, Mail, Phone, Scale } from "lucide-react"
+import { ArrowLeft, Globe, Mail, Scale } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { NavbarWithAuth } from "@/components/navbar-with-auth"
 
@@ -57,13 +57,6 @@ export default function MentionsLegalesPage() {
                   <Mail className="size-4 text-muted-foreground" />
                   contactenergie@izyfirstcontact.fr
                 </a>
-                <a 
-                  href="tel:+3271942408" 
-                  className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
-                >
-                  <Phone className="size-4 text-muted-foreground" />
-                  +32 71 94 24 08
-                </a>
               </div>
             </section>
 
@@ -100,7 +93,7 @@ export default function MentionsLegalesPage() {
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Le site jeconomisemonenergie.eu propose un simulateur gratuit d&apos;économies d&apos;énergie. 
-                  GvmEnergy agit en tant qu&apos;intermédiaire indépendant et n&apos;est pas fournisseur d&apos;énergie. 
+                  Jeconomisemonenergie.eu agit en tant qu&apos;intermédiaire indépendant et n&apos;est pas fournisseur d&apos;énergie. 
                   Aucun engagement contractuel ne découle de l&apos;utilisation du simulateur.
                 </p>
               </div>
