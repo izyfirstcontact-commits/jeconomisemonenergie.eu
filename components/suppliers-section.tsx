@@ -1,15 +1,16 @@
 import { Badge } from "@/components/ui/badge"
 import { Check } from "lucide-react"
+import Image from "next/image"
 
 const suppliers = [
-  { name: "Engie", note: "Électricité & gaz" },
-  { name: "Luminus", note: "Électricité & gaz" },
-  { name: "Mega", note: "Tarifs compétitifs" },
-  { name: "Octa+", note: "Fournisseur belge" },
-  { name: "Eneco", note: "Énergie durable" },
-  { name: "Ecofix", note: "Prix fixe vert" },
-  { name: "Frank Énergie", note: "100% renouvelable" },
-  { name: "TotalEnergies", note: "Électricité & gaz" },
+  { name: "Engie", note: "Électricité & gaz", logo: "/logos/engie.png" },
+  { name: "Luminus", note: "Électricité & gaz", logo: "/logos/luminus.png" },
+  { name: "Mega", note: "Tarifs compétitifs", logo: "/logos/mega.png" },
+  { name: "Octa+", note: "Fournisseur belge", logo: "/logos/octa-plus.png" },
+  { name: "Eneco", note: "Énergie durable", logo: "/logos/eneco.png" },
+  { name: "Ecofix", note: "Prix fixe vert", logo: "/logos/ecofix.png" },
+  { name: "Frank Énergie", note: "100% renouvelable", logo: "/logos/frank-energie.png" },
+  { name: "TotalEnergies", note: "Électricité & gaz", logo: "/logos/totalenergies.png" },
 ]
 
 export function SuppliersSection() {
@@ -31,8 +32,17 @@ export function SuppliersSection() {
           {suppliers.map((supplier) => (
             <li
               key={supplier.name}
-              className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-background px-4 py-6 text-center transition hover:border-primary/40 hover:shadow-md"
+              className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-border bg-background px-4 py-6 text-center transition hover:border-primary/40 hover:shadow-md"
             >
+              <div className="w-16 h-16 relative bg-secondary/50 rounded-lg flex items-center justify-center overflow-hidden">
+                <Image
+                  src={supplier.logo}
+                  alt={`${supplier.name} logo`}
+                  width={64}
+                  height={64}
+                  className="w-14 h-14 object-contain"
+                />
+              </div>
               <span className="text-base md:text-lg font-bold text-foreground">{supplier.name}</span>
               <span className="text-xs text-muted-foreground">{supplier.note}</span>
               <span className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-primary">

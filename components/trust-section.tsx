@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Shield, Award, Users, Zap } from "lucide-react"
+import Image from "next/image"
 
 const features = [
   {
@@ -26,7 +27,16 @@ const features = [
   },
 ]
 
-const logos = ["Engie", "Luminus", "TotalEnergies", "Eneco", "Mega", "Octa+", "Ecofix", "Bolt", "Frank Énergie"]
+const logos = [
+  { name: "Engie", path: "/logos/engie.png" },
+  { name: "Luminus", path: "/logos/luminus.png" },
+  { name: "TotalEnergies", path: "/logos/totalenergies.png" },
+  { name: "Eneco", path: "/logos/eneco.png" },
+  { name: "Mega", path: "/logos/mega.png" },
+  { name: "Octa+", path: "/logos/octa-plus.png" },
+  { name: "Ecofix", path: "/logos/ecofix.png" },
+  { name: "Frank Énergie", path: "/logos/frank-energie.png" },
+]
 
 export function TrustSection() {
   return (
@@ -44,14 +54,23 @@ export function TrustSection() {
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-5 md:p-8 shadow-sm">
-          <p className="text-center text-sm text-muted-foreground mb-4 font-medium">Fournisseurs comparés</p>
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 px-2 py-2">
+          <p className="text-center text-sm text-muted-foreground mb-6 font-medium">Fournisseurs comparés</p>
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 px-2 py-2">
             {logos.map((logo) => (
               <div
-                key={logo}
-                className="min-w-[5rem] md:min-w-[7rem] text-center text-xs md:text-sm font-semibold text-foreground/80 bg-secondary/50 rounded-xl px-3 md:px-4 py-2 md:py-3 transition hover:bg-secondary"
+                key={logo.name}
+                className="flex flex-col items-center gap-2 min-w-[6rem] md:min-w-[8rem] text-center transition hover:scale-105"
               >
-                {logo}
+                <div className="w-12 h-12 md:w-16 md:h-16 relative bg-secondary/50 rounded-lg flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={logo.path}
+                    alt={`${logo.name} logo`}
+                    width={64}
+                    height={64}
+                    className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                  />
+                </div>
+                <span className="text-xs md:text-sm font-semibold text-foreground/80">{logo.name}</span>
               </div>
             ))}
           </div>
