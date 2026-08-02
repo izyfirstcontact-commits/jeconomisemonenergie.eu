@@ -31,9 +31,11 @@ export function HeroCalculator() {
   useEffect(() => {
     const stored = getStoredLead()
     if (stored) {
+      // Charger les données existantes mais NE PAS déverrouiller automatiquement
       setBill(stored.monthlyBill)
       setReferralCode(stored.referralCode)
-      setUnlocked(true)
+      // setUnlocked(true) est commenté intentionnellement
+      // L'utilisateur doit cliquer sur "Révéler mon économie" à chaque fois
     } else {
       setReferralCode(generateReferralCode())
     }
