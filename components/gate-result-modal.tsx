@@ -116,6 +116,11 @@ export function GateResultModal({ open, onOpenChange, estimate, referralCode, on
       setLoading(false)
       setSubmitted(true)
       onUnlock(trimmed)
+      
+      // Fermer le modal après 1 minute
+      setTimeout(() => {
+        handleClose()
+      }, 60000)
     }
   }
 
@@ -126,8 +131,14 @@ export function GateResultModal({ open, onOpenChange, estimate, referralCode, on
     onOpenChange(false)
   }
 
+  function handleDialogOpenChange(newOpen: boolean) {
+    if (!newOpen) {
+      handleClose()
+    }
+  }
+
   return (
-    <Dialog open={open} onOpenChange={handleClose}>
+    <Dialog open={open} onOpenChange={handleDialogOpenChange}>
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
         {!submitted ? (
           <>
