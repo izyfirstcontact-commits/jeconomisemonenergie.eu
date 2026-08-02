@@ -117,10 +117,10 @@ export function GateResultModal({ open, onOpenChange, estimate, referralCode, on
       setSubmitted(true)
       onUnlock(trimmed)
       
-      // Fermer le modal après 4 secondes
+      // Fermer le modal après 1 minute
       setTimeout(() => {
         handleClose()
-      }, 4000)
+      }, 60000)
     }
   }
 
