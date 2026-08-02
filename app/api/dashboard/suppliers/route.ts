@@ -25,7 +25,13 @@ export async function GET() {
       return NextResponse.json({ error: 'Query failed' }, { status: 500 })
     }
 
-    return NextResponse.json(suppliersData || [])
+    // Transform consultation_count to interaction_count for frontend compatibility
+    const transformedData = (suppliersData || []).map(item => ({
+      supplier_name: item.supplier_name,
+      interaction_count: item.consultation_count,
+    }))
+
+    return NextResponse.json(transformedData)
   } catch (err) {
     console.error('API error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
