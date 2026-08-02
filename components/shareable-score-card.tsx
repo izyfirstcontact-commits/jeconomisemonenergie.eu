@@ -98,6 +98,18 @@ export function ShareableScoreCard({ estimate, referralCode }: ShareableScoreCar
           </a>
         </Button>
       </div>
+
+      {/* Message de succès */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="mt-6 rounded-lg border-2 border-green-500 bg-green-50 p-6"
+      >
+        <p className="text-center text-base leading-relaxed text-green-900 font-bold">
+          ✓ Bravo, un conseiller vous contactera sous peu pour vous aider à réaliser cette économie avec le meilleur tarif
+        </p>
+      </motion.div>
     </motion.div>
   )
 }
