@@ -103,7 +103,15 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
         <div className="hidden items-center gap-4 lg:flex">
           <ThemeToggle />
           {isLoggedIn ? (
-            <DashboardPopover userEmail={userEmail} />
+            <>
+              <a
+                href="/dashboard"
+                className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
+              >
+                Dashboard
+              </a>
+              <DashboardPopover userEmail={userEmail} />
+            </>
           ) : (
             <>
               <Button asChild size="sm" variant="ghost">
