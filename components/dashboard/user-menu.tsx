@@ -52,7 +52,7 @@ export function UserMenu({ email, userId, createdAt, lastSignIn }: UserMenuProps
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-96 bg-card border border-border rounded-lg shadow-lg z-50">
+        <div className="fixed top-[60px] right-4 w-96 bg-card border border-border rounded-lg shadow-lg z-50">
           {/* Header */}
           <div className="p-4 border-b border-border bg-muted/30">
             <h3 className="font-semibold text-foreground mb-1">Profil Utilisateur</h3>
