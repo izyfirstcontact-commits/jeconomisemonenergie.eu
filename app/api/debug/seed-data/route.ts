@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
-export async function POST(request: Request) {
+async function seedData(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('userId') || '92154921-a84e-4c7e-9a9f-fb3a3f130b68'
@@ -87,4 +87,12 @@ export async function POST(request: Request) {
     console.error('Seed error:', err)
     return NextResponse.json({ error: 'Seed failed' }, { status: 500 })
   }
+}
+
+export async function GET(request: Request) {
+  return seedData(request)
+}
+
+export async function POST(request: Request) {
+  return seedData(request)
 }
