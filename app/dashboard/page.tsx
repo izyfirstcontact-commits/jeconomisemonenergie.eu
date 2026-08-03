@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { LogoutButton } from '@/components/auth/logout-button'
+import { UserMenu } from '@/components/dashboard/user-menu'
 import { SupabaseDashboard } from '@/components/dashboard/supabase-dashboard'
 import { AnalyticsDashboard } from '@/components/dashboard/analytics-dashboard'
 
@@ -28,7 +29,15 @@ export default async function DashboardPage() {
             <h1 className="text-2xl font-bold text-foreground">Tableau de bord</h1>
             <p className="text-sm text-muted-foreground">Bienvenue, {user.email}</p>
           </div>
-          <LogoutButton />
+          <div className="flex items-center gap-4">
+            <UserMenu
+              email={user.email!}
+              userId={user.id}
+              createdAt={user.created_at}
+              lastSignIn={user.last_sign_in_at}
+            />
+            <LogoutButton />
+          </div>
         </div>
       </div>
 
