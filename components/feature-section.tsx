@@ -49,6 +49,7 @@ export function FeatureSection() {
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Faamille%20belge%209-775OBSNuUrh1BKD5Q3LsUR8Pc4oFEG.jpg"
               alt="Famille belge heureuse"
               className="w-full h-full object-cover"
+              crossOrigin="anonymous"
             />
           </motion.div>
 
@@ -116,6 +117,7 @@ export function FeatureSection() {
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An97XiUe7rKFbkabJiIGZdk49gG5Pv_-R8EAeqxLLwhZS_IdakCGPPZAMOQ_mHEEcTOj6iMSTQFP8y5gxF79PYBHa3-7m8EGc00DEEX0wntNE6xVWSRrSVNDdZGBVyxpfNz2Pn-O-gcpn_vVgb5pEsqO8FA-iemfTDZbTu14QiLsA5d9HcnAZsFWtmX_9PA1_KvjymwPsvsZXJE1We4VXM-RviRwfM0Ih9dQ9fea3SyyMsRAv9eLl.jpeg"
               alt="Femme confiance économies"
               className="w-full h-full object-cover"
+              crossOrigin="anonymous"
             />
           </motion.div>
         </div>

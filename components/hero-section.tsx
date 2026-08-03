@@ -140,6 +140,7 @@ export function HeroSection() {
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An8gt8fbZIjCzHVvMuDcerAjuHEZshJcKEfdnfertfmuBj9Znlbz3HVdow3kcUTf8wxiuUEnXqIdnOgiucSLFGp29ExVMRTyFjr_z32XlE53dnHEXrkV3alUXopRtQW7hNn5fy1Mk3_JeqbzHo-OYIVz_Tq-p6YI6DjCXwej_Xh9fa2QVDP5XAx3rxpsULbiz_hEKg93enmvEr-sw5yg_l-F2mYGgMQzOt8g251OqTTnaIzBHylZk.jpeg"
               alt="Famille heureuse économies énergie"
               className="w-full h-full object-cover"
+              crossOrigin="anonymous"
             />
           </motion.div>
         </div>
