@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { MultiStepForm } from "@/components/multi-step-form"
 import { Sparkles, Shield, Clock, MapPin, Check, Zap } from "lucide-react"
@@ -26,7 +27,7 @@ export function HeroSection() {
         />
       </div>
       <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:gap-12 lg:grid-cols-[1fr_420px] items-start justify-items-start">
+        <div className="grid gap-6 lg:gap-8 lg:grid-cols-[1fr_420px_1fr] items-start justify-items-start">
           {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -127,6 +128,21 @@ export function HeroSection() {
                 <MultiStepForm />
               </div>
             </div>
+          </motion.div>
+
+          {/* Right Side Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="relative hidden lg:block h-80 rounded-2xl overflow-hidden shadow-lg"
+          >
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An8gt8fbZIjCzHVvMuDcerAjuHEZshJcKEfdnfertfmuBj9Znlbz3HVdow3kcUTf8wxiuUEnXqIdnOgiucSLFGp29ExVMRTyFjr_z32XlE53dnHEXrkV3alUXopRtQW7hNn5fy1Mk3_JeqbzHo-OYIVz_Tq-p6YI6DjCXwej_Xh9fa2QVDP5XAx3rxpsULbiz_hEKg93enmvEr-sw5yg_l-F2mYGgMQzOt8g251OqTTnaIzBHylZk.jpeg"
+              alt="Famille heureuse économies énergie"
+              fill
+              className="object-cover"
+            />
           </motion.div>
         </div>
       </div>

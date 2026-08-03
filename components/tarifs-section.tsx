@@ -1,8 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import { Clock, TrendingDown } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import { motion } from "framer-motion"
 
 interface Fournisseur {
   nom: string
@@ -81,9 +83,29 @@ export function TarifsSection() {
 
   return (
     <section className="py-12 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-10 text-center">
+      <div className="mx-auto w-full px-4 md:px-6 lg:px-8">
+        {/* Image Grid Wrapper */}
+        <div className="grid gap-8 lg:grid-cols-[1fr_2fr_1fr] items-start mb-12">
+          {/* Left Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative hidden lg:block h-72 rounded-2xl overflow-hidden shadow-lg"
+          >
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grande%20maison%20Flandre-qUwUDi8hWEqCqLcu1x3JCH1ZEiXR0I.jpg"
+              alt="Quartier résidentiel Flandre"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+
+          {/* Center Content */}
+          <div>
+            {/* Header */}
+            <div className="mb-10 text-center">
           <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl text-balance">
             Tarifs d{"'"}énergie en Belgique
           </h2>
@@ -191,12 +213,30 @@ export function TarifsSection() {
                 </div>
               </Card>
             ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-border bg-card p-8 text-center">
+              <p className="text-muted-foreground">Aucune offre disponible pour le moment</p>
+            </div>
+          )}
           </div>
-        ) : (
-          <div className="rounded-2xl border border-border bg-card p-8 text-center">
-            <p className="text-muted-foreground">Aucune offre disponible pour le moment</p>
-          </div>
-        )}
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative hidden lg:block h-72 rounded-2xl overflow-hidden shadow-lg"
+          >
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Appartement%20Bruxelles%2022html-SuQFDEEIETP6HUPa67xVCG06CzFESG.jpg"
+              alt="Appartement moderne Bruxelles"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   )

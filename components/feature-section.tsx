@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Sparkles, Users, Clock } from "lucide-react"
 
@@ -35,8 +36,24 @@ export function FeatureSection() {
   return (
     <section id="features" className="relative overflow-hidden py-12 md:py-20">
       <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top_left,_rgba(34,197,94,0.06),_transparent_40%),radial-gradient(circle_at_top_right,_rgba(16,185,129,0.05),_transparent_35%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <div className="grid gap-8 md:gap-12 lg:grid-cols-[0.9fr_1.1fr] items-center">
+      <div className="relative mx-auto w-full px-4 md:px-6 lg:px-8">
+        <div className="grid gap-8 md:gap-12 lg:grid-cols-[1fr_0.8fr_1fr] items-center">
+          {/* Left Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-lg"
+          >
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Faamille%20belge%209-775OBSNuUrh1BKD5Q3LsUR8Pc4oFEG.jpg"
+              alt="Famille belge heureuse"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+
           <div className="space-y-6">
             <Badge className="bg-primary/10 text-primary border-primary/20 font-medium">Avantages</Badge>
             <h2 className="text-xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl text-balance">
@@ -88,6 +105,22 @@ export function FeatureSection() {
               </div>
             </div>
           </div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-lg"
+          >
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An97XiUe7rKFbkabJiIGZdk49gG5Pv_-R8EAeqxLLwhZS_IdakCGPPZAMOQ_mHEEcTOj6iMSTQFP8y5gxF79PYBHa3-7m8EGc00DEEX0wntNE6xVWSRrSVNDdZGBVyxpfNz2Pn-O-gcpn_vVgb5pEsqO8FA-iemfTDZbTu14QiLsA5d9HcnAZsFWtmX_9PA1_KvjymwPsvsZXJE1We4VXM-RviRwfM0Ih9dQ9fea3SyyMsRAv9eLl.jpeg"
+              alt="Femme confiance économies"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
