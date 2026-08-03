@@ -23,20 +23,22 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Tableau de bord</h1>
-            <p className="text-sm text-muted-foreground">Bienvenue, {user.email}</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <UserMenu
-              email={user.email!}
-              userId={user.id}
-              createdAt={user.created_at}
-              lastSignIn={user.last_sign_in_at}
-            />
-            <LogoutButton />
+      <div className="border-b border-border sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="min-w-0">
+              <h1 className="text-xl sm:text-2xl font-bold text-foreground">Tableau de bord</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground truncate">Bienvenue, {user.email}</p>
+            </div>
+            <div className="flex items-center gap-2 sm:gap-3 justify-end flex-shrink-0">
+              <UserMenu
+                email={user.email!}
+                userId={user.id}
+                createdAt={user.created_at}
+                lastSignIn={user.last_sign_in_at}
+              />
+              <LogoutButton />
+            </div>
           </div>
         </div>
       </div>

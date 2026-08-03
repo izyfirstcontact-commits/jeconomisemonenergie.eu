@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { LogOut } from 'lucide-react'
 
 export function LogoutButton() {
   const [isLoading, setIsLoading] = useState(false)
@@ -18,11 +19,15 @@ export function LogoutButton() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
+      size="sm"
       disabled={isLoading}
       onClick={handleLogout}
+      title={isLoading ? 'Logging out...' : 'Logout'}
+      className="text-muted-foreground hover:text-foreground"
     >
-      {isLoading ? 'Logging out...' : 'Logout'}
+      <LogOut className="h-4 w-4" />
+      <span className="hidden sm:inline ml-2">Logout</span>
     </Button>
   )
 }
