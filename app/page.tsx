@@ -7,6 +7,8 @@ import { FeatureSection } from "@/components/feature-section"
 import { SuppliersSection } from "@/components/suppliers-section"
 import { SavingsCards } from "@/components/savings-cards"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { TestimonialsGallery } from "@/components/testimonials-gallery"
+import { LifestyleSection } from "@/components/lifestyle-section"
 import { FAQSection } from "@/components/faq-section"
 import { FinalCTASection } from "@/components/final-cta-section"
 import { Footer } from "@/components/footer"
@@ -38,6 +40,8 @@ export default function HomePage() {
         <SuppliersSection />
         <SavingsCards />
         <TestimonialsSection />
+        <TestimonialsGallery />
+        <LifestyleSection />
         <FAQSection />
         <FinalCTASection />
         <Footer />

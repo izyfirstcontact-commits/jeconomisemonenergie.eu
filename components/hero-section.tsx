@@ -14,6 +14,17 @@ const trustBadges = [
 export function HeroSection() {
   return (
     <section id="hero" className="relative overflow-hidden py-8 lg:py-16">
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10">
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An_47hnqIDreAR-89Tgn6WR2qUdYTYuhjXE1GHUw3yzuSYS5tkmKtPYGIjyt-2dvwNEl9yPUCUq5rzEBaHDoU-yMeetWY29lRQxozZUIrvNmbpDRyjvwmOWkLN3WFITFHoYrbLxhZ4xdiorWZg3RXPBHOQCbvplRAyNb-RTjYuYS-llhPi_HFYegH3dLAPeJK0wDv3fnKnNicVNXl2W0_X-uibedNfCJ5nmZwvvJREpQt7HVRDKsS.jpeg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      </div>
       <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:gap-12 lg:grid-cols-[1fr_420px] items-start justify-items-start">
           {/* Left Side - Text Content */}
