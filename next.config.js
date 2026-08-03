@@ -8,6 +8,7 @@ const nextConfig = {
       },
     ],
   },
+  // Force rebuild for stale cache resolution
 }
 
 module.exports = nextConfig
