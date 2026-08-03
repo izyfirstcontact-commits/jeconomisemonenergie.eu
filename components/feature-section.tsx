@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Sparkles, Users, Clock } from "lucide-react"
 
@@ -46,11 +45,10 @@ export function FeatureSection() {
             transition={{ duration: 0.6 }}
             className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-lg"
           >
-            <Image
+            <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Faamille%20belge%209-775OBSNuUrh1BKD5Q3LsUR8Pc4oFEG.jpg"
               alt="Famille belge heureuse"
-              fill
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </motion.div>
 
@@ -114,11 +112,10 @@ export function FeatureSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-lg"
           >
-            <Image
+            <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An97XiUe7rKFbkabJiIGZdk49gG5Pv_-R8EAeqxLLwhZS_IdakCGPPZAMOQ_mHEEcTOj6iMSTQFP8y5gxF79PYBHa3-7m8EGc00DEEX0wntNE6xVWSRrSVNDdZGBVyxpfNz2Pn-O-gcpn_vVgb5pEsqO8FA-iemfTDZbTu14QiLsA5d9HcnAZsFWtmX_9PA1_KvjymwPsvsZXJE1We4VXM-RviRwfM0Ih9dQ9fea3SyyMsRAv9eLl.jpeg"
               alt="Femme confiance économies"
-              fill
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </motion.div>
         </div>

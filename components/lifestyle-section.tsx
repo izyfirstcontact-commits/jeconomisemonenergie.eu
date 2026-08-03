@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 const lifestyleImages = [
   {
@@ -53,11 +52,10 @@ export function LifestyleSection() {
               viewport={{ once: true }}
               className="group relative overflow-hidden rounded-xl bg-card border border-border h-72 md:h-96 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <Image
+              <img
                 src={item.image}
                 alt={item.alt}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">

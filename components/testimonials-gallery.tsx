@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 const testimonials = [
   {
@@ -71,11 +70,10 @@ export function TestimonialsGallery() {
               viewport={{ once: true }}
               className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-colors h-64 md:h-80"
             >
-              <Image
+              <img
                 src={item.image}
                 alt={item.alt}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">

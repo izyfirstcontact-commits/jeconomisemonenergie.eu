@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
 import { MultiStepForm } from "@/components/multi-step-form"
 import { Sparkles, Shield, Clock, MapPin, Check, Zap } from "lucide-react"
@@ -137,11 +136,10 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative hidden lg:block h-80 rounded-2xl overflow-hidden shadow-lg"
           >
-            <Image
+            <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An8gt8fbZIjCzHVvMuDcerAjuHEZshJcKEfdnfertfmuBj9Znlbz3HVdow3kcUTf8wxiuUEnXqIdnOgiucSLFGp29ExVMRTyFjr_z32XlE53dnHEXrkV3alUXopRtQW7hNn5fy1Mk3_JeqbzHo-OYIVz_Tq-p6YI6DjCXwej_Xh9fa2QVDP5XAx3rxpsULbiz_hEKg93enmvEr-sw5yg_l-F2mYGgMQzOt8g251OqTTnaIzBHylZk.jpeg"
               alt="Famille heureuse économies énergie"
-              fill
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </motion.div>
         </div>
