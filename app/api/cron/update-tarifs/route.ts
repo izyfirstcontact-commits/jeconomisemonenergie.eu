@@ -37,10 +37,14 @@ async function getOffres() {
     .eq('actif', true)
     .order('type_energie')
 
-  const { data, error } = await withTimeout(promise, 10000)
-
-  if (error) throw error
-  return data || []
+  try {
+    const { data, error } = await withTimeout(promise, 10000)
+    if (error) throw error
+    return data || []
+  } catch (error) {
+    console.error('[v0] Timeout or error fetching offres:', error)
+    throw error
+  }
 }
 
 export async function GET(req: Request) {
