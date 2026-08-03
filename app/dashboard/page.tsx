@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { LogoutButton } from '@/components/auth/logout-button'
 import { UserMenu } from '@/components/dashboard/user-menu'
+import { SeedDataButton } from '@/components/dashboard/seed-data-button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TrendingUp, Zap, Users, AlertCircle } from 'lucide-react'
 
@@ -148,6 +149,14 @@ export default async function DashboardPage() {
                 <li><strong className="text-foreground">{alertsCount}</strong> alertes configurées</li>
               </ul>
             </div>
+            {analyticsCount === 0 && (
+              <div className="pt-4 border-t border-border">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Vous n&apos;avez pas encore de données. Cliquez sur le bouton ci-dessous pour charger des données d&apos;exemple:
+                </p>
+                <SeedDataButton />
+              </div>
+            )}
           </CardContent>
         </Card>
 
