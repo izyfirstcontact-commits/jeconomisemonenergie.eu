@@ -92,7 +92,7 @@ export function AlertsSection({ userId }: AlertsSectionProps) {
           <h3 className="text-lg font-semibold text-foreground">Alertes de Prix</h3>
         </div>
         <span className="inline-flex items-center justify-center rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-800">
-          {alerts.filter(a => a.is_active).length}
+          {alerts.length}
         </span>
       </div>
 
