@@ -123,18 +123,18 @@ export function SupabaseDashboard() {
                   <div className="min-w-0 flex-1">
                     <p className="font-medium text-foreground">{String(alert?.alert_name || 'Alerte')}</p>
                     <p className="text-xs text-muted-foreground">
-                      {alert.offer_type} • {alert.regions?.join(', ') || 'Toutes régions'}
+                      {String(alert?.offer_type || 'N/A')} • {Array.isArray(alert?.regions) ? alert.regions.join(', ') : 'Toutes régions'}
                     </p>
                   </div>
                   <div className="ml-2">
                     <span
                       className={`inline-block rounded-full px-2 py-1 text-xs font-semibold ${
-                        alert.is_active
+                        alert?.is_active
                           ? 'bg-green-100 text-green-800'
                           : 'bg-gray-100 text-gray-800'
                       }`}
                     >
-                      {alert.is_active ? 'Actif' : 'Inactif'}
+                      {alert?.is_active ? 'Actif' : 'Inactif'}
                     </span>
                   </div>
                 </div>
@@ -162,12 +162,12 @@ export function SupabaseDashboard() {
                   <div className="min-w-0 flex-1">
                     <p className="font-medium text-foreground">{String(comp?.title || 'Comparaison')}</p>
                     <p className="text-xs text-muted-foreground">
-                      {comp.monthly_consumption} kWh • {comp.consumer_type}
+                      {String(comp?.monthly_consumption || '0')} kWh • {String(comp?.consumer_type || 'N/A')}
                     </p>
                   </div>
                   <div className="ml-2 text-right">
                     <p className="font-semibold text-green-600">
-                      -{comp.estimated_savings?.toFixed(2) || '0'} €
+                      -{typeof comp?.estimated_savings === 'number' ? comp.estimated_savings.toFixed(2) : '0'} €
                     </p>
                   </div>
                 </div>
@@ -193,14 +193,14 @@ export function SupabaseDashboard() {
                   className="flex items-center justify-between rounded-md border border-border p-3 text-sm"
                 >
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium text-foreground truncate">{inv.file_name}</p>
+                    <p className="font-medium text-foreground truncate">{String(inv?.file_name || 'Facture')}</p>
                     <p className="text-xs text-muted-foreground">
-                      {inv.supplier} • {(inv.file_size / 1024).toFixed(1)} KB
+                      {String(inv?.supplier || 'N/A')} • {typeof inv?.file_size === 'number' ? (inv.file_size / 1024).toFixed(1) : '0'} KB
                     </p>
                   </div>
                   <div className="ml-2 text-right">
                     <p className="text-xs text-muted-foreground">
-                      {new Date(inv.uploaded_at).toLocaleDateString('fr-FR')}
+                      {inv?.uploaded_at ? new Date(String(inv.uploaded_at)).toLocaleDateString('fr-FR') : 'N/A'}
                     </p>
                   </div>
                 </div>

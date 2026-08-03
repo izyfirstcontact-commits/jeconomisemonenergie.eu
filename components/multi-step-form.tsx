@@ -42,6 +42,8 @@ interface FormData {
   type_compteur: string
   type_tarif: string
   compteur_nuit: boolean
+  compteurCategorie: string
+  compteurTarif: string
   puissanceSouscrite: string
   chauffage: string
   nom: string
@@ -168,6 +170,8 @@ const initialFormData: FormData = {
   type_compteur: "",
   type_tarif: "",
   compteur_nuit: false,
+  compteurCategorie: "",
+  compteurTarif: "",
   puissanceSouscrite: "",
   chauffage: "",
   nom: "",
@@ -176,17 +180,24 @@ const initialFormData: FormData = {
   telephone: "",
   telephoneSecondaire: "",
   email: "",
-  codePostal: "",
-  ville: "",
+  adresse: "",
+  numeroRue: "",
+  numero_boite: "",
   rue: "",
   numero: "",
-  numero_boite: "",
+  ville: "",
+  codePostal: "",
+  addressSearch: "",
   type_energie: "",
   a_facture: "",
+  a_ean: "",
+  eanElectricite: "",
+  eanGaz: "",
   factureUrl: null,
   factureNom: null,
   factureUrl2: null,
   factureNom2: null,
+  facture: null,
   rgpdConsent: false,
   rgpdLead: false,
   cguConsent: false,
@@ -391,10 +402,22 @@ export function MultiStepForm() {
     )
   }
 
+  const clearValidationError = (field: string) => {
+    setValidationErrors((prev) => {
+      const newErrors = { ...prev }
+      delete newErrors[field as keyof ValidationErrors]
+      return newErrors
+    })
+  }
+
+  const setValidationError = (field: string, error: string) => {
+    setValidationErrors((prev) => ({ ...prev, [field]: error }) as ValidationErrors)
+  }
+
   const updateFormData = (field: keyof FormData, value: string | boolean | File | null) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
     if (validationErrors[field as keyof ValidationErrors]) {
-      setValidationErrors((prev) => ({ ...prev, [field]: undefined }))
+      clearValidationError(field)
     }
   }
 
@@ -480,12 +503,14 @@ export function MultiStepForm() {
 
   const processFile = useCallback(async (file: File) => {
     setFileUploadState({ isUploading: true, progress: 0, error: null, success: false })
-    setValidationErrors(prev => ({ ...prev, facture: undefined }))
+    clearValidationError("facture")
 
     const validation = validateFile(file)
     if (!validation.valid) {
       setFileUploadState({ isUploading: false, progress: 0, error: validation.error || null, success: false })
-      setValidationErrors(prev => ({ ...prev, facture: validation.error }))
+      if (validation.error) {
+        setValidationError("facture", validation.error)
+      }
       return
     }
 
@@ -522,7 +547,7 @@ export function MultiStepForm() {
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Erreur lors du traitement du fichier"
       setFileUploadState({ isUploading: false, progress: 0, error: errorMessage, success: false })
-      setValidationErrors(prev => ({ ...prev, facture: errorMessage }))
+      setValidationError("facture", errorMessage)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validateFile])
@@ -531,7 +556,7 @@ export function MultiStepForm() {
     updateFormData("facture", null)
     updateFormData("factureUrl", null)
     setFileUploadState({ isUploading: false, progress: 0, error: null, success: false })
-    setValidationErrors(prev => ({ ...prev, facture: undefined }))
+    clearValidationError("facture")
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -539,12 +564,14 @@ export function MultiStepForm() {
 
   const processFile2 = useCallback(async (file: File) => {
     setFileUploadState2({ isUploading: true, progress: 0, error: null, success: false })
-    setValidationErrors(prev => ({ ...prev, facture2: undefined }))
+    clearValidationError("facture2")
 
     const validation = validateFile(file)
     if (!validation.valid) {
       setFileUploadState2({ isUploading: false, progress: 0, error: validation.error || null, success: false })
-      setValidationErrors(prev => ({ ...prev, facture2: validation.error }))
+      if (validation.error) {
+        setValidationError("facture2", validation.error)
+      }
       return
     }
 
@@ -579,7 +606,7 @@ export function MultiStepForm() {
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Erreur lors du traitement du fichier"
       setFileUploadState2({ isUploading: false, progress: 0, error: errorMessage, success: false })
-      setValidationErrors(prev => ({ ...prev, facture2: errorMessage }))
+      setValidationError("facture2", errorMessage)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validateFile])
@@ -588,7 +615,7 @@ export function MultiStepForm() {
     updateFormData("factureUrl2", null)
     updateFormData("factureNom2", null)
     setFileUploadState2({ isUploading: false, progress: 0, error: null, success: false })
-    setValidationErrors(prev => ({ ...prev, facture2: undefined }))
+    clearValidationError("facture2")
     setShowSecondInvoice(false)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
