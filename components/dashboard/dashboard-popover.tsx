@@ -89,13 +89,13 @@ export function DashboardPopover({ userEmail }: { userEmail?: string }) {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-accent/50 transition text-sm"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-accent/50 transition text-sm min-w-0"
       >
-        <div className="flex flex-col items-end">
-          <span className="text-xs text-muted-foreground">{userEmail}</span>
+        <div className="flex flex-col items-end min-w-0">
+          <span className="text-xs text-muted-foreground truncate max-w-[120px]">{userEmail}</span>
           <span className="text-xs font-medium text-foreground">Dashboard</span>
         </div>
-        <ChevronDown className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`h-4 w-4 transition-transform flex-shrink-0 ${open ? 'rotate-180' : ''}`} />
       </button>
 
       <AnimatePresence>

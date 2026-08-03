@@ -13,15 +13,15 @@ const trustBadges = [
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden py-8 lg:py-12">
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-2 items-start">
+    <section id="hero" className="relative overflow-hidden py-8 lg:py-16">
+      <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:gap-12 lg:grid-cols-[1fr_420px] items-start justify-items-start">
           {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="space-y-6 pt-4 lg:pt-8"
+            className="space-y-6 pt-4 lg:pt-0 max-w-2xl"
           >
             {/* Badge */}
             <span className="inline-block rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground">

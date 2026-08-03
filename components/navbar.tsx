@@ -38,8 +38,8 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
 
   return (
     <header className="relative z-30 border-b border-border bg-card/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 sm:gap-3">
+      <div className="mx-auto flex w-full items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <BrandLogo size="sm" />
           <div className="min-w-0">
             <p className="text-sm sm:text-lg md:text-2xl font-bold text-foreground tracking-tight truncate">JECONOMISEMONENERGIE.EU</p>
@@ -47,7 +47,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
           </div>
         </div>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((item) => (
             <a
               key={item.href}
@@ -100,7 +100,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
           </div>
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex flex-shrink-0">
           <ThemeToggle />
           {isLoggedIn ? (
             <>
