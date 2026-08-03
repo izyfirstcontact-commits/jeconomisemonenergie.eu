@@ -5,10 +5,10 @@ import { createClient } from '@/lib/supabase/client'
 import { Loader2, AlertCircle, Heart, Bell, TrendingDown, FileText } from 'lucide-react'
 
 interface DashboardData {
-  favorites: any[]
-  priceAlerts: any[]
-  comparisons: any[]
-  invoices: any[]
+  favorites: Array<Record<string, unknown>>
+  priceAlerts: Array<Record<string, unknown>>
+  comparisons: Array<Record<string, unknown>>
+  invoices: Array<Record<string, unknown>>
 }
 
 interface DashboardStats {
@@ -28,7 +28,7 @@ export function SupabaseDashboard() {
     totalInvoices: 0,
   }
 
-  const data = {
+  const data: DashboardData = {
     favorites: [],
     priceAlerts: [],
     comparisons: [],
@@ -90,12 +90,12 @@ export function SupabaseDashboard() {
                   className="flex items-center justify-between rounded-md border border-border p-3 text-sm"
                 >
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium text-foreground">{fav.supplier_name}</p>
-                    <p className="text-xs text-muted-foreground">{fav.offer_type}</p>
+                    <p className="font-medium text-foreground">{String(fav?.supplier_name || 'Offre')}</p>
+                    <p className="text-xs text-muted-foreground">{String(fav?.offer_type || 'N/A')}</p>
                   </div>
                   <div className="ml-2 text-right">
                     <p className="text-xs text-muted-foreground">
-                      {new Date(fav.created_at).toLocaleDateString('fr-FR')}
+                      {fav?.created_at ? new Date(fav.created_at).toLocaleDateString('fr-FR') : 'N/A'}
                     </p>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export function SupabaseDashboard() {
                   className="flex items-center justify-between rounded-md border border-border p-3 text-sm"
                 >
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium text-foreground">{alert.alert_name}</p>
+                    <p className="font-medium text-foreground">{String(alert?.alert_name || 'Alerte')}</p>
                     <p className="text-xs text-muted-foreground">
                       {alert.offer_type} • {alert.regions?.join(', ') || 'Toutes régions'}
                     </p>
@@ -160,7 +160,7 @@ export function SupabaseDashboard() {
                   className="flex items-center justify-between rounded-md border border-border p-3 text-sm"
                 >
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium text-foreground">{comp.title}</p>
+                    <p className="font-medium text-foreground">{String(comp?.title || 'Comparaison')}</p>
                     <p className="text-xs text-muted-foreground">
                       {comp.monthly_consumption} kWh • {comp.consumer_type}
                     </p>

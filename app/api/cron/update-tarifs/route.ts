@@ -5,7 +5,7 @@ import { withTimeout, apiResponse } from '@/lib/api-utils'
 export const dynamic = 'force-dynamic'
 export const revalidate = false
 
-async function getOffres() {
+async function getOffres(): Promise<unknown[]> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
@@ -15,32 +15,34 @@ async function getOffres() {
 
   const supabase = createClient(supabaseUrl, supabaseKey)
 
-  // Add 10s timeout to Supabase query
-  const promise = supabase
-    .from('offres_tarifaires')
-    .select(`
-      id,
-      nom_offre,
-      type_energie,
-      type_compteur,
-      type_prix,
-      duree_mois,
-      prix_kwh_hp,
-      prix_kwh_hc,
-      prix_kwh_mono,
-      redevance_elec_an,
-      prix_kwh_gaz,
-      redevance_gaz_an,
-      actif,
-      fournisseurs (nom, logo_url)
-    `)
-    .eq('actif', true)
-    .order('type_energie')
-
   try {
-    const { data, error } = await withTimeout(promise, 10000)
+    // Add 10s timeout to Supabase query
+    const result = await withTimeout(
+      supabase
+        .from('offres_tarifaires')
+        .select(`
+          id,
+          nom_offre,
+          type_energie,
+          type_compteur,
+          type_prix,
+          duree_mois,
+          prix_kwh_hp,
+          prix_kwh_hc,
+          prix_kwh_mono,
+          redevance_elec_an,
+          prix_kwh_gaz,
+          redevance_gaz_an,
+          actif,
+          fournisseurs (nom, logo_url)
+        `)
+        .eq('actif', true)
+        .order('type_energie') as unknown as Promise<{ data: unknown; error: unknown }>,
+      10000
+    )
+    const { data, error } = result as { data: unknown; error: unknown }
     if (error) throw error
-    return data || []
+    return (Array.isArray(data) ? data : []) as unknown[]
   } catch (error) {
     console.error('[v0] Timeout or error fetching offres:', error)
     throw error

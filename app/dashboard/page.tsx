@@ -74,7 +74,7 @@ export default async function DashboardPage() {
                 email={user.email!}
                 userId={user.id}
                 createdAt={user.created_at}
-                lastSignIn={user.last_sign_in_at}
+                lastSignIn={user.last_sign_in_at || null}
               />
               <LogoutButton />
             </div>
