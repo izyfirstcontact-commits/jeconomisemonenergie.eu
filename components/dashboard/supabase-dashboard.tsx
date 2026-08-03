@@ -95,7 +95,7 @@ export function SupabaseDashboard() {
                   </div>
                   <div className="ml-2 text-right">
                     <p className="text-xs text-muted-foreground">
-                      {fav?.created_at ? new Date(fav.created_at).toLocaleDateString('fr-FR') : 'N/A'}
+                      {fav?.created_at ? new Date(String(fav.created_at)).toLocaleDateString('fr-FR') : 'N/A'}
                     </p>
                   </div>
                 </div>
