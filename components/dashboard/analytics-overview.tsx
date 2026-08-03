@@ -11,7 +11,11 @@ interface AnalyticsData {
   total_favorites: number
 }
 
-export function AnalyticsOverview() {
+interface AnalyticsOverviewProps {
+  userId: string
+}
+
+export function AnalyticsOverview({ userId }: AnalyticsOverviewProps) {
   const [data, setData] = useState<AnalyticsData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -20,7 +24,7 @@ export function AnalyticsOverview() {
     const fetchAnalytics = async () => {
       try {
         setLoading(true)
-        const response = await fetch('/api/dashboard/analytics')
+        const response = await fetch(`/api/dashboard/analytics?userId=${userId}`)
 
         if (!response.ok) {
           if (response.status === 401) {

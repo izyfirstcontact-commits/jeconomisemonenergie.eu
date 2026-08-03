@@ -1,8 +1,15 @@
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url)
+    const userId = searchParams.get('userId')
+
+    if (!userId) {
+      return NextResponse.json({ error: 'userId is required' }, { status: 400 })
+    }
+
     const supabase = await createClient()
 
     const {
@@ -14,11 +21,11 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Get all analytics data for the user
+    // Get all analytics data for the specified user
     const { data: analyticsData, error: queryError } = await supabase
       .from('user_analytics')
       .select('consumption_kwh, cost_eur, savings_amount, recorded_date')
-      .eq('user_id', user.id)
+      .eq('user_id', userId)
 
     if (queryError) {
       console.error('Query error:', queryError)

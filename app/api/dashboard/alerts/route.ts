@@ -21,24 +21,19 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { data: suppliersData, error: queryError } = await supabase
-      .from('user_supplier_interactions')
-      .select('supplier_name, consultation_count')
+    // Fetch price alerts for the user
+    const { data: alertsData, error: queryError } = await supabase
+      .from('user_price_alerts')
+      .select('id, alert_message')
       .eq('user_id', userId)
-      .order('consultation_count', { ascending: false })
+      .order('created_at', { ascending: false })
 
     if (queryError) {
       console.error('Query error:', queryError)
       return NextResponse.json({ error: 'Query failed' }, { status: 500 })
     }
 
-    // Transform consultation_count to interaction_count for frontend compatibility
-    const transformedData = (suppliersData || []).map(item => ({
-      supplier_name: item.supplier_name,
-      interaction_count: item.consultation_count,
-    }))
-
-    return NextResponse.json(transformedData)
+    return NextResponse.json(alertsData || [])
   } catch (err) {
     console.error('API error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

@@ -47,7 +47,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Analytics Section */}
-        <AnalyticsDashboard />
+        <AnalyticsDashboard userId={user.id} />
 
         {/* Original Dashboard (Hidden but kept for reference) */}
         <div className="mt-12">

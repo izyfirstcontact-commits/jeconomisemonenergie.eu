@@ -9,7 +9,11 @@ interface SupplierData {
   interaction_count: number
 }
 
-export function TopSuppliers() {
+interface TopSuppliersProps {
+  userId: string
+}
+
+export function TopSuppliers({ userId }: TopSuppliersProps) {
   const [data, setData] = useState<SupplierData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -18,7 +22,7 @@ export function TopSuppliers() {
     const fetchSuppliers = async () => {
       try {
         setLoading(true)
-        const response = await fetch('/api/dashboard/suppliers')
+        const response = await fetch(`/api/dashboard/suppliers?userId=${userId}`)
 
         if (!response.ok) {
           if (response.status === 401) {

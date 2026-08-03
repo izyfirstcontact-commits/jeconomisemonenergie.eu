@@ -9,7 +9,11 @@ interface DailySaving {
   savings_amount: number
 }
 
-export function SavingsChart() {
+interface SavingsChartProps {
+  userId: string
+}
+
+export function SavingsChart({ userId }: SavingsChartProps) {
   const [data, setData] = useState<DailySaving[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -18,7 +22,7 @@ export function SavingsChart() {
     const fetchSavingsData = async () => {
       try {
         setLoading(true)
-        const response = await fetch('/api/dashboard/savings')
+        const response = await fetch(`/api/dashboard/savings?userId=${userId}`)
 
         if (!response.ok) {
           if (response.status === 401) {
