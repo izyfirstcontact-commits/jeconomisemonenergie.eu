@@ -5,8 +5,8 @@ import { Footer } from "@/components/footer"
 import { NavbarWithAuth } from "@/components/navbar-with-auth"
 
 export const metadata: Metadata = {
-  title: "Conditions générales d'utilisation - GvmEnergy",
-  description: "Conditions générales d'utilisation du simulateur d'économies d'énergie jeconomisemonenergie.eu - GvmEnergy.",
+  title: "Conditions générales d'utilisation - Jeconomisemonenergie.eu",
+  description: "Conditions générales d'utilisation du simulateur d'économies d'énergie jeconomisemonenergie.eu - Jeconomisemonenergie.eu.",
 }
 
 export default function ConditionsGeneralesPage() {
@@ -88,7 +88,7 @@ export default function ConditionsGeneralesPage() {
                   La simulation est <span className="text-foreground font-medium">100% gratuite</span>.
                 </p>
                 <p>
-                  GvmEnergy pourra vous recontacter par téléphone ou email si vous laissez vos coordonnées dans le formulaire.
+                  Jeconomisemonenergie.eu pourra vous recontacter par téléphone ou email si vous laissez vos coordonnées dans le formulaire.
                 </p>
               </div>
             </section>
@@ -128,7 +128,7 @@ export default function ConditionsGeneralesPage() {
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-                Conformément au Code de droit économique Livre VI, vous disposez de <span className="text-foreground font-medium">14 jours</span> pour vous rétracter de tout contrat signé à distance avec GvmEnergy.
+                Conformément au Code de droit économique Livre VI, vous disposez de <span className="text-foreground font-medium">14 jours</span> pour vous rétracter de tout contrat signé à distance avec Jeconomisemonenergie.eu.
               </p>
             </section>
 
@@ -149,7 +149,7 @@ export default function ConditionsGeneralesPage() {
                   Les résultats du simulateur sont fournis <span className="text-foreground font-medium">à titre indicatif</span> et sont basés sur les données que vous fournissez.
                 </p>
                 <p>
-                  GvmEnergy <span className="text-foreground font-medium">ne garantit pas</span> l&apos;exactitude des économies annoncées par le simulateur.
+                  Jeconomisemonenergie.eu <span className="text-foreground font-medium">ne garantit pas</span> l&apos;exactitude des économies annoncées par le simulateur.
                 </p>
               </div>
             </section>
@@ -176,7 +176,7 @@ export default function ConditionsGeneralesPage() {
               </div>
             </section>
 
-            {/* À propos de GVM Énergie */}
+            {/* À propos de Jeconomisemonenergie.eu */}
             <section className="bg-primary/5 rounded-2xl border border-primary/20 p-6 sm:p-8">
               <div className="flex items-start gap-4 mb-6">
                 <div className="size-10 rounded-xl bg-primary flex items-center justify-center shrink-0">
@@ -193,7 +193,7 @@ export default function ConditionsGeneralesPage() {
                   <span className="text-foreground font-medium">Jeconomisemonenergie.eu</span> vous aide à réduire vos factures d&apos;énergie en Belgique.
                 </p>
                 <p>
-                  Un service en partenariat avec <span className="text-foreground font-medium">GVM Énergie</span>, courtier spécialisé en optimisation des contrats d&apos;énergie pour particuliers.
+                  Un service en partenariat avec <span className="text-foreground font-medium">Jeconomisemonenergie.eu</span>, courtier spécialisé en optimisation des contrats d&apos;énergie pour particuliers.
                 </p>
                 <p>
                   Notre mission via jeconomisemonenergie.eu : vous aider à <span className="text-foreground font-medium">comprendre et réduire</span> vos factures d&apos;électricité et de gaz, <span className="text-foreground font-medium">sans engagement</span>.

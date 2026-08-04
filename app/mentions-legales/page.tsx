@@ -5,8 +5,8 @@ import { Footer } from "@/components/footer"
 import { NavbarWithAuth } from "@/components/navbar-with-auth"
 
 export const metadata: Metadata = {
-  title: "Mentions légales - GvmEnergy",
-  description: "Mentions légales du site jeconomisemonenergie.eu - GvmEnergy, votre comparateur d'énergie belge.",
+  title: "Mentions légales - Jeconomisemonenergie.eu",
+  description: "Mentions légales du site jeconomisemonenergie.eu - Jeconomisemonenergie.eu, votre comparateur d'énergie belge.",
 }
 
 export default function MentionsLegalesPage() {
