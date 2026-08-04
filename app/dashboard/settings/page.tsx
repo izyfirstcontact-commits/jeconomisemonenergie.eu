@@ -41,7 +41,7 @@ export default async function SettingsPage() {
         <div className="rounded-lg border border-border bg-card p-6 mb-6">
           <h2 className="text-lg font-semibold text-foreground mb-4">Préférences d'email</h2>
           
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div className="flex items-center justify-between p-4 border border-border rounded-lg">
               <div>
                 <h3 className="font-medium">Alertes de prix</h3>
@@ -84,7 +84,7 @@ export default async function SettingsPage() {
         <div className="rounded-lg border border-border bg-card p-6 mb-6">
           <h2 className="text-lg font-semibold text-foreground mb-4">Compte</h2>
           
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
               <label className="block text-sm font-medium mb-2">Email</label>
               <p className="p-2 border border-border rounded bg-muted text-muted-foreground">
@@ -105,7 +105,7 @@ export default async function SettingsPage() {
         <div className="rounded-lg border border-border bg-card p-6">
           <h2 className="text-lg font-semibold text-foreground mb-4">Confidentialité et données</h2>
           
-          <div className="space-y-3">
+          <div className="space-y-4">
             <p className="text-sm text-muted-foreground">
               Vos données personnelles sont protégées conformément à notre{' '}
               <Link href="/politique-de-confidentialite" className="text-primary hover:underline">

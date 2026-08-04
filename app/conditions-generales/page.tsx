@@ -36,7 +36,7 @@ export default function ConditionsGeneralesPage() {
           </div>
 
           {/* Content */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             {/* Article 1 - Objet */}
             <section className="bg-card rounded-2xl border border-border p-6 sm:p-8">
               <div className="flex items-start gap-4 mb-6">
@@ -83,7 +83,7 @@ export default function ConditionsGeneralesPage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   La simulation est <span className="text-foreground font-medium">100% gratuite</span>.
                 </p>
@@ -105,7 +105,7 @@ export default function ConditionsGeneralesPage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   L&apos;utilisation du simulateur <span className="text-foreground font-medium">ne vaut pas souscription</span> à une offre commerciale.
                 </p>
@@ -144,7 +144,7 @@ export default function ConditionsGeneralesPage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Les résultats du simulateur sont fournis <span className="text-foreground font-medium">à titre indicatif</span> et sont basés sur les données que vous fournissez.
                 </p>
@@ -166,7 +166,7 @@ export default function ConditionsGeneralesPage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Les présentes conditions sont régies par le <span className="text-foreground font-medium">droit belge</span>.
                 </p>

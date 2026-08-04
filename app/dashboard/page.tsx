@@ -136,13 +136,13 @@ export default async function DashboardPage() {
           <CardHeader>
             <CardTitle>Bienvenue sur votre tableau de bord</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-5">
             <p className="text-sm text-muted-foreground">
               Votre tableau de bord affiche un résumé de vos données d&apos;économies d&apos;énergie, vos interactions avec les fournisseurs, et vos alertes tarifaires.
             </p>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-3 text-sm">
               <h3 className="font-semibold text-foreground">Données disponibles:</h3>
-              <ul className="space-y-1 text-muted-foreground list-disc list-inside">
+              <ul className="space-y-2 text-muted-foreground list-disc list-inside">
                 <li><strong className="text-foreground">{analyticsCount}</strong> entrées analytiques</li>
                 <li><strong className="text-foreground">{savingsCount}</strong> jours d&apos;économies</li>
                 <li><strong className="text-foreground">{suppliersCount}</strong> fournisseurs suivis</li>
@@ -165,7 +165,7 @@ export default async function DashboardPage() {
           <CardHeader>
             <CardTitle className="text-lg">Informations du compte</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3 text-sm">
+          <CardContent className="space-y-4 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Email:</span>
               <span className="text-foreground font-medium">{user.email}</span>
