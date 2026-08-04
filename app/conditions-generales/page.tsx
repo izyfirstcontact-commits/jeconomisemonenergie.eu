@@ -188,23 +188,22 @@ export default function ConditionsGeneralesPage() {
                 </div>
               </div>
               
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
                   <span className="text-foreground font-medium">Jeconomisemonenergie.eu</span> vous aide à réduire vos factures d&apos;énergie en Belgique.
                 </p>
+                
                 <p>
                   Un service en partenariat avec <span className="text-foreground font-medium">Jeconomisemonenergie.eu</span>, courtier spécialisé en optimisation des contrats d&apos;énergie pour particuliers.
                 </p>
+                
                 <p>
                   Notre mission via jeconomisemonenergie.eu : vous aider à <span className="text-foreground font-medium">comprendre et réduire</span> vos factures d&apos;électricité et de gaz, <span className="text-foreground font-medium">sans engagement</span>.
                 </p>
                 
-                <div className="bg-card rounded-xl p-4 space-y-2">
-                  <p>
-                    <span className="text-foreground font-medium">BCE :</span> 0713.842.992
-                  </p>
-                  <p>
-                    <span className="text-foreground font-medium">Siège :</span> Charleroi, Belgique
+                <div className="bg-card rounded-xl p-5 sm:p-6 border border-primary/10">
+                  <p className="text-sm">
+                    <span className="text-foreground font-medium">Siège :</span> Bruxelles, Belgique
                   </p>
                 </div>
 
