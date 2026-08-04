@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://jeconomisemonenergie.eu/api/sitemap
+Sitemap: https://jeconomisemonenergie.eu/sitemap.xml
