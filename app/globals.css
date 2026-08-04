@@ -4,21 +4,21 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Theme clair - texte en gris-brun foncé chaud pour meilleure lisibilité */
+  /* Theme clair - texte en noir pur */
   --background: oklch(0.965 0.008 155);
-  --foreground: oklch(0.32 0.025 35);
+  --foreground: oklch(0.145 0.02 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.32 0.025 35);
+  --card-foreground: oklch(0.145 0.02 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.32 0.025 35);
+  --popover-foreground: oklch(0.145 0.02 0);
   --primary: oklch(0.60 0.22 145);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.96 0.01 145);
-  --secondary-foreground: oklch(0.35 0.025 35);
+  --secondary-foreground: oklch(0.145 0.02 0);
   --muted: oklch(0.96 0.005 155);
-  --muted-foreground: oklch(0.55 0.015 35);
+  --muted-foreground: oklch(0.45 0.02 0);
   --accent: oklch(0.94 0.02 145);
-  --accent-foreground: oklch(0.32 0.025 35);
+  --accent-foreground: oklch(0.145 0.02 0);
   --destructive: oklch(0.53 0.25 28);
   --destructive-foreground: oklch(0.98 0.01 0);
   --border: oklch(0.88 0.01 155);
