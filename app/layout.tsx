@@ -125,7 +125,7 @@ export default function RootLayout({
     },
     funder: {
       '@type': 'Organization',
-      name: 'GVM Énergie',
+      name: 'Jeconomisemonenergie.eu',
       identifier: 'BCE 0713.842.992'
     }
   }
