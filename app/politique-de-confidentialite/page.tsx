@@ -38,7 +38,7 @@ export default function PolitiqueConfidentialitePage() {
           </div>
 
           {/* Content */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             {/* 1. Responsable du traitement */}
             <section className="bg-card rounded-2xl border border-border p-6 sm:p-8">
               <div className="flex items-start gap-4 mb-6">
@@ -51,7 +51,7 @@ export default function PolitiqueConfidentialitePage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   <span className="text-foreground font-medium">Responsable :</span> Jeconomisemonenergie.eu
                 </p>
@@ -116,7 +116,7 @@ export default function PolitiqueConfidentialitePage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Nous collectons vos données afin de vous recontacter pour vous proposer une étude personnalisée d&apos;économies d&apos;énergie.
                 </p>
@@ -155,7 +155,7 @@ export default function PolitiqueConfidentialitePage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Vos données sont accessibles uniquement par Jeconomisemonenergie.eu et ses sous-traitants techniques strictement nécessaires au fonctionnement du service.
                 </p>
@@ -245,7 +245,7 @@ export default function PolitiqueConfidentialitePage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de :
                 </p>
@@ -276,7 +276,7 @@ export default function PolitiqueConfidentialitePage() {
                 </div>
               </div>
               
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Seuls les <span className="text-foreground font-medium">cookies techniques</span> nécessaires au bon fonctionnement du simulateur sont utilisés sur ce site.
                 </p>

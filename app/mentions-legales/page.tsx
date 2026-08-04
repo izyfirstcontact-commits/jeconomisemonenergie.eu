@@ -58,6 +58,7 @@ export default function MentionsLegalesPage() {
                   contactenergie@izyfirstcontact.fr
                 </a>
               </div>
+              
             </section>
 
             {/* Hébergeur */}
@@ -72,7 +73,7 @@ export default function MentionsLegalesPage() {
                 </div>
               </div>
               
-              <div className="space-y-2 text-foreground">
+              <div className="space-y-3 text-foreground">
                 <p className="font-medium">Vercel Inc.</p>
                 <p className="text-muted-foreground">440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
               </div>
@@ -111,7 +112,7 @@ export default function MentionsLegalesPage() {
                 </div>
               </div>
               
-              <div className="space-y-2 text-muted-foreground leading-relaxed">
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
                   <span className="text-foreground font-medium">Loi applicable :</span> Droit belge
                 </p>
