@@ -47,10 +47,14 @@ export async function triggerPriceAlerts() {
           const bestOffer = matchingOffers[0]
           const savings = alert.max_price - bestOffer.price
 
-          if (resend) {
+          const userEmail = Array.isArray(alert.users)
+            ? alert.users[0]?.email
+            : (alert.users as { email?: string } | null)?.email
+
+          if (resend && userEmail) {
             await resend.emails.send({
             from: 'alerts@jeconomisemonenergie.eu',
-            to: alert.users.email,
+            to: userEmail,
             subject: `Alerte prix: Nouvelle offre pour ${alert.alert_name}!`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
