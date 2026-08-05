@@ -19,7 +19,7 @@ export function HeroSection() {
         <div 
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: 'url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An_47hnqIDreAR-89Tgn6WR2qUdYTYuhjXE1GHUw3yzuSYS5tkmKtPYGIjyt-2dvwNEl9yPUCUq5rzEBaHDoU-yMeetWY29lRQxozZUIrvNmbpDRyjvwmOWkLN3WFITFHoYrbLxhZ4xdiorWZg3RXPBHOQCbvplRAyNb-RTjYuYS-llhPi_HFYegH3dLAPeJK0wDv3fnKnNicVNXl2W0_X-uibedNfCJ5nmZwvvJREpQt7HVRDKsS.jpeg)',
+            backgroundImage: 'url(/images/hero-background.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -137,7 +137,7 @@ export function HeroSection() {
             className="relative hidden lg:block h-80 rounded-2xl overflow-hidden shadow-lg"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An8gt8fbZIjCzHVvMuDcerAjuHEZshJcKEfdnfertfmuBj9Znlbz3HVdow3kcUTf8wxiuUEnXqIdnOgiucSLFGp29ExVMRTyFjr_z32XlE53dnHEXrkV3alUXopRtQW7hNn5fy1Mk3_JeqbzHo-OYIVz_Tq-p6YI6DjCXwej_Xh9fa2QVDP5XAx3rxpsULbiz_hEKg93enmvEr-sw5yg_l-F2mYGgMQzOt8g251OqTTnaIzBHylZk.jpeg"
+              src="/images/family-savings.png"
               alt="Famille heureuse économies énergie"
               className="w-full h-full object-cover"
               crossOrigin="anonymous"
