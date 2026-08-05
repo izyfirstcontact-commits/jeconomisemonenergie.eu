@@ -5,19 +5,19 @@ import { motion } from 'framer-motion'
 const lifestyleImages = [
   {
     id: 1,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Faamille%20belge%209-775OBSNuUrh1BKD5Q3LsUR8Pc4oFEG.jpg',
+    image: '/images/story-family-home.png',
     alt: 'Famille devant maison',
     icon: '🏡',
   },
   {
     id: 2,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Famille%20belge%2010-4Pbt1hJ79vcAB8UuIUq9gT3u0E2hgI.jpg',
+    image: '/images/story-family-living-room.png',
     alt: 'Famille heureuse à la maison',
     icon: '😊',
   },
   {
     id: 3,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Appartement%20Bruxelles%2022html-SuQFDEEIETP6HUPa67xVCG06CzFESG.jpg',
+    image: '/images/story-brussels-couple.png',
     alt: 'Couple dans cuisine moderne',
     icon: '🏢',
   },
