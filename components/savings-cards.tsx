@@ -30,7 +30,7 @@ const particulierExamples: SavingsExample[] = [
     savings: 420,
     percentage: 29,
     badge: "Populaire",
-    image: "/images/savings/appartement-bruxelles.jpg",
+    image: "/images/savings/appartement-bruxelles.png",
     imageAlt: "Salon lumineux d'un appartement moderne à Bruxelles avec cuisine ouverte",
   },
   {
@@ -54,7 +54,7 @@ const particulierExamples: SavingsExample[] = [
     savings: 228,
     percentage: 25,
     badge: null,
-    image: "/images/savings/studio-wallonie.jpg",
+    image: "/images/savings/studio-wallonie.png",
     imageAlt: "Intérieur épuré d'un studio en Wallonie avec coin cuisine et salon",
   },
 ]
