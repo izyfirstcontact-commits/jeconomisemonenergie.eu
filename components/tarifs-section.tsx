@@ -94,7 +94,7 @@ export function TarifsSection() {
             className="relative hidden lg:block h-72 rounded-2xl overflow-hidden shadow-lg"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grande%20maison%20Flandre-qUwUDi8hWEqCqLcu1x3JCH1ZEiXR0I.jpg"
+              src="/images/maison-flandre.png"
               alt="Quartier résidentiel Flandre"
               className="w-full h-full object-cover"
               crossOrigin="anonymous"
@@ -229,7 +229,7 @@ export function TarifsSection() {
             className="relative hidden lg:block h-72 rounded-2xl overflow-hidden shadow-lg"
           >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Appartement%20Bruxelles%2022html-SuQFDEEIETP6HUPa67xVCG06CzFESG.jpg"
+              src="/images/appartement-bruxelles.png"
               alt="Appartement moderne Bruxelles"
               className="w-full h-full object-cover"
               crossOrigin="anonymous"
