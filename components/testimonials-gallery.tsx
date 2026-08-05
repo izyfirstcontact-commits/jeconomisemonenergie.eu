@@ -5,37 +5,37 @@ import { motion } from 'framer-motion'
 const testimonials = [
   {
     id: 1,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Faamille%20belge%209-775OBSNuUrh1BKD5Q3LsUR8Pc4oFEG.jpg',
+    image: '/images/story-family-home.png',
     alt: 'Famille belge devant leur maison',
     title: 'Économies en famille',
   },
   {
     id: 2,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An97XiUe7rKFbkabJiIGZdk49gG5Pv_-R8EAeqxLLwhZS_IdakCGPPZAMOQ_mHEEcTOj6iMSTQFP8y5gxF79PYBHa3-7m8EGc00DEEX0wntNE6xVWSRrSVNDdZGBVyxpfNz2Pn-O-gcpn_vVgb5pEsqO8FA-iemfTDZbTu14QiLsA5d9HcnAZsFWtmX_9PA1_KvjymwPsvsZXJE1We4VXM-RviRwfM0Ih9dQ9fea3SyyMsRAv9eLl.jpeg',
+    image: '/images/story-woman-testimonial.png',
     alt: 'Femme témoignage client',
     title: 'Notre engagement',
   },
   {
     id: 3,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/An8gt8fbZIjCzHVvMuDcerAjuHEZshJcKEfdnfertfmuBj9Znlbz3HVdow3kcUTf8wxiuUEnXqIdnOgiucSLFGp29ExVMRTyFjr_z32XlE53dnHEXrkV3alUXopRtQW7hNn5fy1Mk3_JeqbzHo-OYIVz_Tq-p6YI6DjCXwej_Xh9fa2QVDP5XAx3rxpsULbiz_hEKg93enmvEr-sw5yg_l-F2mYGgMQzOt8g251OqTTnaIzBHylZk.jpeg',
+    image: '/images/story-family-quality-life.png',
     alt: 'Famille qualité de vie',
     title: 'Qualité de vie améliorée',
   },
   {
     id: 4,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grande%20maison%20Flandre-qUwUDi8hWEqCqLcu1x3JCH1ZEiXR0I.jpg',
+    image: '/images/story-flanders-family.png',
     alt: 'Famille dans rue de Flandre',
     title: 'Vivre en Belgique intelligemment',
   },
   {
     id: 5,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Famille%20belge%2010-4Pbt1hJ79vcAB8UuIUq9gT3u0E2hgI.jpg',
+    image: '/images/story-family-living-room.png',
     alt: 'Famille heureuse à la maison',
     title: 'Confort et sérénité',
   },
   {
     id: 6,
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Appartement%20Bruxelles%2022html-SuQFDEEIETP6HUPa67xVCG06CzFESG.jpg',
+    image: '/images/story-brussels-couple.png',
     alt: 'Couple dans cuisine moderne',
     title: 'Vivre mieux à Bruxelles',
   },
