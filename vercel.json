@@ -22,11 +22,37 @@
   ],
   "headers": [
     {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://connect.facebook.net https://analytics.tiktok.com; script-src-elem 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://connect.facebook.net https://analytics.tiktok.com; connect-src 'self' https://formspree.io https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://ad.doubleclick.net https://stats.g.doubleclick.net https://region1.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.facebook.com https://connect.facebook.net https://analytics.tiktok.com https://*.tiktok.com https://partner.mega.be; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com https://www.google.com https://www.google.be https://www.google.fr https://ad.doubleclick.net https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.facebook.com https://analytics.tiktok.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.google.com https://www.googletagmanager.com https://tagmanager.google.com https://*.googletagmanager.com; font-src 'self' https://fonts.gstatic.com data:; frame-src 'self' https://www.google.com https://www.googletagmanager.com https://td.doubleclick.net; form-action 'self' https://formspree.io; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://connect.facebook.net https://analytics.tiktok.com; script-src-elem 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com https://tagmanager.google.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://connect.facebook.net https://analytics.tiktok.com; connect-src 'self' https://formspree.io https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://www.googletagmanager.com https://ad.doubleclick.net https://stats.g.doubleclick.net https://region1.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.facebook.com https://connect.facebook.net https://analytics.tiktok.com https://*.tiktok.com https://partner.mega.be; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com https://www.google.com https://www.google.be https://www.google.fr https://ad.doubleclick.net https://stats.g.doubleclick.net https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.facebook.com https://analytics.tiktok.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.google.com https://www.googletagmanager.com https://tagmanager.google.com https://*.googletagmanager.com; font-src 'self' https://fonts.gstatic.com data:; frame-src 'self' https://www.googleapis.com https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests; block-all-mixed-content"
         },
         {
           "key": "X-Content-Type-Options",
