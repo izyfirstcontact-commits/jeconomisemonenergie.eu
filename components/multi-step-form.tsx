@@ -265,6 +265,7 @@ export function MultiStepForm() {
   const [dragActive, setDragActive] = useState(false)
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionError, setSubmissionError] = useState<string | null>(null)
   const [fileUploadState, setFileUploadState] = useState<FileUploadState>({
     isUploading: false,
     progress: 0,
@@ -695,7 +696,8 @@ export function MultiStepForm() {
   // ─── Form Submission ─────────────────────────────────
 
   const handleSubmit = async () => {
-    if (isSubmitting || fileUploadState.isUploading || fileUploadState2.isUploading) return
+  if (isSubmitting || fileUploadState.isUploading || fileUploadState2.isUploading) return
+  setSubmissionError(null)
 
     if (!validateStep3()) { setCurrentStep(3); return }
     if (!validateStep1()) { setCurrentStep(1); return }
@@ -783,15 +785,11 @@ export function MultiStepForm() {
     }
 
     try {
-      // Enregistrement Supabase NON bloquant (fire-and-forget) :
-      // c'est un enregistrement secondaire qui ne doit pas ralentir l'envoi.
-      // On lance la requête en arrière-plan avec un timeout court.
+      // Enregistrement confirmé dans Supabase avant d'afficher la réussite.
       const consentPrefs = getConsentPreferences()
-      void fetch("/api/leads", {
+      const leadResponse = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        signal: AbortSignal.timeout(8000),
-        keepalive: true,
         body: JSON.stringify({
           type_client: isPro ? "Professionnel" : "Particulier",
           type_logement: isPro
@@ -806,12 +804,13 @@ export function MultiStepForm() {
           consent_cookies: consentPrefs?.necessary ?? false,
           consent_analytics: consentPrefs?.analytics ?? false,
         }),
-      }).catch((supabaseError) => {
-        // Erreur non bloquante : on n'interrompt pas l'utilisateur
-        console.error("[v0] Erreur Supabase (non bloquante):", supabaseError)
       })
 
-      // Seul Formspree est attendu : c'est l'envoi principal du lead.
+      if (!leadResponse.ok) {
+        const payload = await leadResponse.json().catch(() => null)
+        throw new Error(payload?.error ?? "Impossible d'enregistrer votre demande.")
+      }
+
       await handleFormspreeSubmit(submitData)
 
       // Tracking conversion : événement Lead sur soumission validée du comparateur
@@ -840,8 +839,9 @@ export function MultiStepForm() {
       }
 
       setCurrentStep(5)
-    } catch {
-      // Error handling is done by Formspree
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Impossible d'envoyer votre demande. Veuillez réessayer."
+      setSubmissionError(message)
     } finally {
       setIsSubmitting(false)
     }
@@ -1819,7 +1819,7 @@ export function MultiStepForm() {
                   </div>
                   <p className="font-medium text-lg">{formData.facture.name}</p>
                   <p className="text-sm text-muted-foreground">
-                    {(formData.facture.size / 1024).toFixed(0)} Ko - Fichier ajouté avec succès
+                    {(formData.facture.size / 1024).toFixed(0)} Ko - Fichier ajout�� avec succès
                   </p>
                   <Button
                     type="button"
@@ -2061,6 +2061,16 @@ export function MultiStepForm() {
                   Votre facture nous permet de récupérer vos codes EAN et votre consommation exacte. Votre facture permet également une analyse plus précise de votre consommation et de votre compteur. Nos experts peuvent ainsi vous proposer les offres les plus adaptées à votre profil.
                 </p>
               </div>
+            </div>
+          </div>
+        )}
+
+        {submissionError && currentStep < 5 && (
+          <div role="alert" className="mt-4 flex items-start gap-3 rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
+            <AlertCircle className="mt-0.5 size-4 shrink-0" />
+            <div>
+              <p className="font-medium">Votre demande n&apos;a pas pu être enregistrée.</p>
+              <p className="mt-1">{submissionError} Vous pouvez réessayer sans ressaisir le formulaire.</p>
             </div>
           </div>
         )}
