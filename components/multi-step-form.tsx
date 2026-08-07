@@ -265,7 +265,6 @@ export function MultiStepForm() {
   const [dragActive, setDragActive] = useState(false)
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submissionError, setSubmissionError] = useState<string | null>(null)
   const [fileUploadState, setFileUploadState] = useState<FileUploadState>({
     isUploading: false,
     progress: 0,
@@ -696,8 +695,7 @@ export function MultiStepForm() {
   // ─── Form Submission ─────────────────────────────────
 
   const handleSubmit = async () => {
-  if (isSubmitting || fileUploadState.isUploading || fileUploadState2.isUploading) return
-  setSubmissionError(null)
+    if (isSubmitting || fileUploadState.isUploading || fileUploadState2.isUploading) return
 
     if (!validateStep3()) { setCurrentStep(3); return }
     if (!validateStep1()) { setCurrentStep(1); return }
@@ -785,11 +783,15 @@ export function MultiStepForm() {
     }
 
     try {
-      // Enregistrement confirmé dans Supabase avant d'afficher la réussite.
+      // Formspree reste le parcours principal du formulaire public.
+      await handleFormspreeSubmit(submitData)
+
+      // La copie Supabase est secondaire et ne doit jamais remplacer ni bloquer Formspree.
       const consentPrefs = getConsentPreferences()
-      const leadResponse = await fetch("/api/leads", {
+      void fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        keepalive: true,
         body: JSON.stringify({
           type_client: isPro ? "Professionnel" : "Particulier",
           type_logement: isPro
@@ -804,14 +806,9 @@ export function MultiStepForm() {
           consent_cookies: consentPrefs?.necessary ?? false,
           consent_analytics: consentPrefs?.analytics ?? false,
         }),
+      }).catch((error) => {
+        console.error("[v0] Erreur copie Supabase non bloquante:", error)
       })
-
-      if (!leadResponse.ok) {
-        const payload = await leadResponse.json().catch(() => null)
-        throw new Error(payload?.error ?? "Impossible d'enregistrer votre demande.")
-      }
-
-      await handleFormspreeSubmit(submitData)
 
       // Tracking conversion : événement Lead sur soumission validée du comparateur
       // ⚠️ IMPORTANT: Les événements gtag ne se déclenchent QUE si Formspree a réussi (state.succeeded)
@@ -839,9 +836,8 @@ export function MultiStepForm() {
       }
 
       setCurrentStep(5)
-    } catch (error) {
-      const message = error instanceof Error ? error.message : "Impossible d'envoyer votre demande. Veuillez réessayer."
-      setSubmissionError(message)
+    } catch {
+      // Error handling is done by Formspree
     } finally {
       setIsSubmitting(false)
     }
@@ -2061,16 +2057,6 @@ export function MultiStepForm() {
                   Votre facture nous permet de récupérer vos codes EAN et votre consommation exacte. Votre facture permet également une analyse plus précise de votre consommation et de votre compteur. Nos experts peuvent ainsi vous proposer les offres les plus adaptées à votre profil.
                 </p>
               </div>
-            </div>
-          </div>
-        )}
-
-        {submissionError && currentStep < 5 && (
-          <div role="alert" className="mt-4 flex items-start gap-3 rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
-            <AlertCircle className="mt-0.5 size-4 shrink-0" />
-            <div>
-              <p className="font-medium">Votre demande n&apos;a pas pu être enregistrée.</p>
-              <p className="mt-1">{submissionError} Vous pouvez réessayer sans ressaisir le formulaire.</p>
             </div>
           </div>
         )}
