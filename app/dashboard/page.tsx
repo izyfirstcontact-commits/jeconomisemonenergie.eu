@@ -4,7 +4,7 @@ import { LogoutButton } from '@/components/auth/logout-button'
 import { UserMenu } from '@/components/dashboard/user-menu'
 import { SeedDataButton } from '@/components/dashboard/seed-data-button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { TrendingUp, Zap, Users, AlertCircle } from 'lucide-react'
+import { TrendingUp, Zap, Users, AlertCircle, FilePlus2 } from 'lucide-react'
 
 export const metadata = {
   title: 'Tableau de bord',
@@ -84,6 +84,13 @@ export default async function DashboardPage() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Card className="mb-8 border-primary/30 bg-primary/5">
+          <CardContent className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div><p className="text-sm font-medium text-primary">Ma production</p><h2 className="text-xl font-semibold">Encoder un contrat d&apos;énergie</h2><p className="text-sm text-muted-foreground">Créer, rechercher, modifier et exporter vos encodages.</p></div>
+            <a href="/dashboard/encodage" className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"><FilePlus2 className="mr-2 size-4" />Ouvrir l&apos;encodage</a>
+          </CardContent>
+        </Card>
+
         {/* Stats Cards */}
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <Card>
