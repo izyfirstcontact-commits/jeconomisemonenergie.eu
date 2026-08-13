@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Sparkles, Users, Clock } from "lucide-react"
@@ -45,11 +46,12 @@ export function FeatureSection() {
             transition={{ duration: 0.6 }}
             className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-lg"
           >
-            <img
+            <Image
               src="/images/family-savings.png"
               alt="Famille belge heureuse"
-              className="w-full h-full object-cover"
-              crossOrigin="anonymous"
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover"
             />
           </motion.div>
 
@@ -113,11 +115,12 @@ export function FeatureSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-lg"
           >
-            <img
+            <Image
               src="/images/woman-confidence.png"
               alt="Femme confiance économies"
-              className="w-full h-full object-cover"
-              crossOrigin="anonymous"
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover"
             />
           </motion.div>
         </div>

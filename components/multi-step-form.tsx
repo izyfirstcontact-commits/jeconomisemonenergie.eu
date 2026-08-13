@@ -783,14 +783,14 @@ export function MultiStepForm() {
     }
 
     try {
-      // Enregistrement Supabase NON bloquant (fire-and-forget) :
-      // c'est un enregistrement secondaire qui ne doit pas ralentir l'envoi.
-      // On lance la requête en arrière-plan avec un timeout court.
+      // Formspree reste le parcours principal du formulaire public.
+      await handleFormspreeSubmit(submitData)
+
+      // La copie Supabase est secondaire et ne doit jamais remplacer ni bloquer Formspree.
       const consentPrefs = getConsentPreferences()
       void fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        signal: AbortSignal.timeout(8000),
         keepalive: true,
         body: JSON.stringify({
           type_client: isPro ? "Professionnel" : "Particulier",
@@ -806,13 +806,9 @@ export function MultiStepForm() {
           consent_cookies: consentPrefs?.necessary ?? false,
           consent_analytics: consentPrefs?.analytics ?? false,
         }),
-      }).catch((supabaseError) => {
-        // Erreur non bloquante : on n'interrompt pas l'utilisateur
-        console.error("[v0] Erreur Supabase (non bloquante):", supabaseError)
+      }).catch((error) => {
+        console.error("[v0] Erreur copie Supabase non bloquante:", error)
       })
-
-      // Seul Formspree est attendu : c'est l'envoi principal du lead.
-      await handleFormspreeSubmit(submitData)
 
       // Tracking conversion : événement Lead sur soumission validée du comparateur
       // ⚠️ IMPORTANT: Les événements gtag ne se déclenchent QUE si Formspree a réussi (state.succeeded)
@@ -1819,7 +1815,7 @@ export function MultiStepForm() {
                   </div>
                   <p className="font-medium text-lg">{formData.facture.name}</p>
                   <p className="text-sm text-muted-foreground">
-                    {(formData.facture.size / 1024).toFixed(0)} Ko - Fichier ajouté avec succès
+                    {(formData.facture.size / 1024).toFixed(0)} Ko - Fichier ajout�� avec succès
                   </p>
                   <Button
                     type="button"

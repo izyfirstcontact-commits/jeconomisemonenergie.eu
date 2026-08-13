@@ -1,19 +1,21 @@
+import dynamic from "next/dynamic"
 import { NavbarWithAuth } from "@/components/navbar-with-auth"
 import { HeroSection } from "@/components/hero-section"
 import { HeroCalculator } from "@/components/hero-calculator"
-import { TarifsSection } from "@/components/tarifs-section"
-import { TrustSection } from "@/components/trust-section"
-import { FeatureSection } from "@/components/feature-section"
-import { SuppliersSection } from "@/components/suppliers-section"
-import { SavingsCards } from "@/components/savings-cards"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { TestimonialsGallery } from "@/components/testimonials-gallery"
-import { LifestyleSection } from "@/components/lifestyle-section"
-import { FAQSection } from "@/components/faq-section"
-import { FinalCTASection } from "@/components/final-cta-section"
-import { Footer } from "@/components/footer"
-import { MobileStickyCTA } from "@/components/mobile-sticky-cta"
 import { ClientTypeProvider } from "@/components/client-type-context"
+
+const TarifsSection = dynamic(() => import("@/components/tarifs-section").then((mod) => mod.TarifsSection))
+const TrustSection = dynamic(() => import("@/components/trust-section").then((mod) => mod.TrustSection))
+const FeatureSection = dynamic(() => import("@/components/feature-section").then((mod) => mod.FeatureSection))
+const SuppliersSection = dynamic(() => import("@/components/suppliers-section").then((mod) => mod.SuppliersSection))
+const SavingsCards = dynamic(() => import("@/components/savings-cards").then((mod) => mod.SavingsCards))
+const TestimonialsSection = dynamic(() => import("@/components/testimonials-section").then((mod) => mod.TestimonialsSection))
+const TestimonialsGallery = dynamic(() => import("@/components/testimonials-gallery").then((mod) => mod.TestimonialsGallery))
+const LifestyleSection = dynamic(() => import("@/components/lifestyle-section").then((mod) => mod.LifestyleSection))
+const FAQSection = dynamic(() => import("@/components/faq-section").then((mod) => mod.FAQSection))
+const FinalCTASection = dynamic(() => import("@/components/final-cta-section").then((mod) => mod.FinalCTASection))
+const Footer = dynamic(() => import("@/components/footer").then((mod) => mod.Footer))
+const MobileStickyCTA = dynamic(() => import("@/components/mobile-sticky-cta").then((mod) => mod.MobileStickyCTA))
 
 export default function HomePage() {
   return (
