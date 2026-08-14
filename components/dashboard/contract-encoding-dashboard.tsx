@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import { Download, FilePlus2, Filter, Pencil, Search, Trash2, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -43,20 +44,24 @@ export function ContractEncodingDashboard() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
     let active = true
     async function loadContracts() {
       setLoading(true)
       const { data: { user }, error: authError } = await supabase.auth.getUser()
-      if (authError || !user) { if (active) { setError('Votre session Supabase a expiré.'); setLoading(false) }; return }
+      if (authError || !user) { if (active) { setLoading(false); router.replace('/auth/login?redirectTo=%2Fdashboard%2Fencodage') }; return }
       const { data, error: queryError } = await supabase.from('energy_contracts').select('*, energy_contract_energy(*), energy_contract_products(*)').eq('user_id', user.id).order('created_at', { ascending: false })
       if (queryError) { if (active) setError(queryError.message) } else if (active) setContracts((data || []).map(fromRow))
       if (active) setLoading(false)
     }
     loadContracts()
-    return () => { active = false }
-  }, [])
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT' || !session) router.replace('/auth/login?redirectTo=%2Fdashboard%2Fencodage')
+    })
+    return () => { active = false; subscription.unsubscribe() }
+  }, [router])
   const filtered = useMemo(() => contracts.filter((item) => `${item.firstName} ${item.lastName} ${item.email} ${item.products.map((p) => p.ean).join(' ')} ${item.city}`.toLowerCase().includes(query.toLowerCase()) && (statusFilter === 'all' || item.status === statusFilter)), [contracts, query, statusFilter])
   const update = <K extends keyof typeof form>(key: K, value: (typeof form)[K]) => setForm((current) => ({ ...current, [key]: value }))
   const updateProduct = (index: number, key: keyof Product, value: string) => setForm((current) => ({ ...current, products: current.products.map((product, i) => i === index ? { ...product, [key]: value } : product) }))
@@ -66,7 +71,7 @@ export function ContractEncodingDashboard() {
     if (!form.firstName || !form.lastName || !form.email || !form.clientType || !form.products[0]?.productName) return
     setSaving(true)
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) { setError('Votre session a expiré.'); setSaving(false); return }
+    if (!user) { setSaving(false); router.replace('/auth/login?redirectTo=%2Fdashboard%2Fencodage'); return }
     const contractRow = { user_id: user.id, client_type: form.clientType, language: form.language || null, first_name: form.firstName, last_name: form.lastName, birth_date: form.birthDate || null, housing_type: form.housing || null, email: form.email, mobile_phone: form.mobile || null, landline_phone: form.landline || null, iban: form.iban || null, source: form.source || null, agent: form.agent || null, employee: form.employee || null, contract_number: form.contractNumber || null, call_id: form.callId || null, status: form.status, notes: form.notes || null, address: form.address || null, house_number: form.number || null, box: form.box || null, postal_code: form.postalCode || null, city: form.city || null, updated_at: new Date().toISOString() }
     const result = editingId ? await supabase.from('energy_contracts').update(contractRow).eq('id', editingId).eq('user_id', user.id).select().single() : await supabase.from('energy_contracts').insert(contractRow).select().single()
     if (result.error || !result.data) { setError(result.error?.message || 'Impossible d’enregistrer le contrat.'); setSaving(false); return }
