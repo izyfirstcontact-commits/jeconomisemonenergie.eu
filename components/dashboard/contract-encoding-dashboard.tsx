@@ -51,7 +51,7 @@ export function ContractEncodingDashboard() {
     async function loadContracts() {
       setLoading(true)
       const { data: { user }, error: authError } = await supabase.auth.getUser()
-      if (authError || !user) { if (active) { setLoading(false); router.replace('/auth/login?redirectTo=%2Fdashboard%2Fencodage') }; return }
+      if (authError || !user) { if (active) setLoading(false); return }
       const { data, error: queryError } = await supabase.from('energy_contracts').select('*, energy_contract_energy(*), energy_contract_products(*)').eq('user_id', user.id).order('created_at', { ascending: false })
       if (queryError) { if (active) setError(queryError.message) } else if (active) setContracts((data || []).map(fromRow))
       if (active) setLoading(false)
