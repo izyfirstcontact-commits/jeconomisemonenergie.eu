@@ -1,6 +1,40 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
+export async function GET() {
+  try {
+    const supabase = await createClient()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+    if (authError || !user) return NextResponse.json({ error: 'Session expirée. Veuillez vous reconnecter.' }, { status: 401 })
+
+    const { data, error } = await supabase
+      .from('energy_contracts')
+      .select('*, energy_contract_energy(*), energy_contract_products(*)')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+
+    if (error) return NextResponse.json({ error: error.message }, { status: 400 })
+    return NextResponse.json({ data: data ?? [] })
+  } catch {
+    return NextResponse.json({ error: 'Impossible de charger les contrats.' }, { status: 500 })
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const supabase = await createClient()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+    if (authError || !user) return NextResponse.json({ error: 'Session expirée. Veuillez vous reconnecter.' }, { status: 401 })
+    const id = new URL(request.url).searchParams.get('id')
+    if (!id) return NextResponse.json({ error: 'Contrat introuvable.' }, { status: 400 })
+    const { error } = await supabase.from('energy_contracts').delete().eq('id', id).eq('user_id', user.id)
+    if (error) return NextResponse.json({ error: error.message }, { status: 400 })
+    return NextResponse.json({ ok: true })
+  } catch {
+    return NextResponse.json({ error: 'Impossible de supprimer le contrat.' }, { status: 500 })
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const supabase = await createClient()
