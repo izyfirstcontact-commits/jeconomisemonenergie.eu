@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
-import { useRouter } from 'next/navigation'
 import { Download, FilePlus2, Filter, Pencil, Search, Trash2, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -44,7 +43,6 @@ export function ContractEncodingDashboard() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
 
   useEffect(() => {
     let active = true
@@ -67,18 +65,14 @@ export function ContractEncodingDashboard() {
     event.preventDefault(); setError(null)
     if (!form.firstName || !form.lastName || !form.email || !form.clientType || !form.products[0]?.productName) return
     setSaving(true)
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) { setSaving(false); router.replace('/auth/login?redirectTo=%2Fdashboard%2Fencodage'); return }
-    const contractRow = { user_id: user.id, client_type: form.clientType, language: form.language || null, first_name: form.firstName, last_name: form.lastName, birth_date: form.birthDate || null, housing_type: form.housing || null, email: form.email, mobile_phone: form.mobile || null, landline_phone: form.landline || null, iban: form.iban || null, source: form.source || null, agent: form.agent || null, employee: form.employee || null, contract_number: form.contractNumber || null, call_id: form.callId || null, status: form.status, notes: form.notes || null, address: form.address || null, house_number: form.number || null, box: form.box || null, postal_code: form.postalCode || null, city: form.city || null, updated_at: new Date().toISOString() }
-    const result = editingId ? await supabase.from('energy_contracts').update(contractRow).eq('id', editingId).eq('user_id', user.id).select().single() : await supabase.from('energy_contracts').insert(contractRow).select().single()
-    if (result.error || !result.data) { setError(result.error?.message || 'Impossible d’enregistrer le contrat.'); setSaving(false); return }
+    const contract = { client_type: form.clientType, language: form.language || null, first_name: form.firstName, last_name: form.lastName, birth_date: form.birthDate || null, housing_type: form.housing || null, email: form.email, mobile_phone: form.mobile || null, landline_phone: form.landline || null, iban: form.iban || null, source: form.source || null, agent: form.agent || null, employee: form.employee || null, contract_number: form.contractNumber || null, call_id: form.callId || null, status: form.status, notes: form.notes || null, address: form.address || null, house_number: form.number || null, box: form.box || null, postal_code: form.postalCode || null, city: form.city || null }
+    const energy = { announced_monthly_amount: numberOrNull(form.monthly), consumption: form.consumption || null, contract_type: form.contractType || null, electricity_day_kwh: numberOrNull(form.dayConsumption), electricity_night_kwh: numberOrNull(form.nightConsumption), gas_kwh: numberOrNull(form.gasConsumption), solar_panels: form.solarPanels || null }
+    const products = form.products.filter((p) => p.productName || p.ean || p.previousProvider).map((p) => ({ product: p.product || null, product_name: p.productName, ean: p.ean, previous_supplier: p.previousProvider || '' }))
+    const response = await fetch('/api/contracts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: editingId, contract, energy, products }) })
+    const result = await response.json()
+    if (!response.ok || !result.data) { setError(result.error || 'Impossible d’enregistrer le contrat.'); setSaving(false); return }
     const id = result.data.id
-    const energyRow = { contract_id: id, announced_monthly_amount: numberOrNull(form.monthly), consumption: form.consumption || null, contract_type: form.contractType || null, electricity_day_kwh: numberOrNull(form.dayConsumption), electricity_night_kwh: numberOrNull(form.nightConsumption), gas_kwh: numberOrNull(form.gasConsumption), solar_panels: form.solarPanels || null, updated_at: new Date().toISOString() }
-    const energyResult = editingId ? await supabase.from('energy_contract_energy').upsert(energyRow, { onConflict: 'contract_id' }) : await supabase.from('energy_contract_energy').insert(energyRow)
-    if (editingId) await supabase.from('energy_contract_products').delete().eq('contract_id', id)
-    const productsResult = await supabase.from('energy_contract_products').insert(form.products.filter((p) => p.productName || p.ean || p.previousProvider).map((p) => ({ contract_id: id, product: p.product || null, product_name: p.productName, ean: p.ean, previous_supplier: p.previousProvider || '' })))
-    if (energyResult.error || productsResult.error) { setError(energyResult.error?.message || productsResult.error?.message || 'Erreur lors de l’enregistrement des détails.'); setSaving(false); return }
-    const saved = fromRow({ ...result.data, energy_contract_energy: [energyRow], energy_contract_products: form.products.map((p) => ({ product: p.product, product_name: p.productName, ean: p.ean, previous_supplier: p.previousProvider })) })
+    const saved = fromRow({ ...result.data, energy_contract_energy: [energy], energy_contract_products: products })
     setContracts((items) => editingId ? items.map((item) => item.id === id ? saved : item) : [saved, ...items]); setSaving(false); reset()
   }
   const edit = (item: Contract) => { const { id, createdAt, ...values } = item; setForm({ ...emptyForm, ...values, products: values.products?.length ? values.products : [{ ...emptyProduct }] }); setEditingId(id); setShowForm(true) }
