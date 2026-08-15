@@ -52,15 +52,15 @@ function LoginPage() {
     setIsLoading(true)
 
     try {
-      const supabase = createClient()
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       })
-      if (error) {
-        throw new Error(error.message || 'Failed to login')
-      }
+      const result = await response.json()
+      if (!response.ok) throw new Error(result.error || 'Échec de la connexion')
       router.replace(redirectTo)
+      router.refresh()
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'An error occurred'
       console.error('[v0] Login error:', errorMessage)
