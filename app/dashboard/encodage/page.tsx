@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 export default async function ContractEncodingPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/auth/login')
+  if (!user) redirect('/auth/login?redirectTo=%2Fdashboard%2Fencodage')
 
   return (
     <main className="min-h-screen bg-background">

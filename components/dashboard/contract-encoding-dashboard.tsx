@@ -51,17 +51,14 @@ export function ContractEncodingDashboard() {
     async function loadContracts() {
       setLoading(true)
       const { data: { user }, error: authError } = await supabase.auth.getUser()
-      if (authError || !user) { if (active) { setLoading(false); router.replace('/auth/login?redirectTo=%2Fdashboard%2Fencodage') }; return }
+      if (authError || !user) { if (active) setLoading(false); return }
       const { data, error: queryError } = await supabase.from('energy_contracts').select('*, energy_contract_energy(*), energy_contract_products(*)').eq('user_id', user.id).order('created_at', { ascending: false })
       if (queryError) { if (active) setError(queryError.message) } else if (active) setContracts((data || []).map(fromRow))
       if (active) setLoading(false)
     }
     loadContracts()
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_OUT' || !session) router.replace('/auth/login?redirectTo=%2Fdashboard%2Fencodage')
-    })
-    return () => { active = false; subscription.unsubscribe() }
-  }, [router])
+    return () => { active = false }
+  }, [])
   const filtered = useMemo(() => contracts.filter((item) => `${item.firstName} ${item.lastName} ${item.email} ${item.products.map((p) => p.ean).join(' ')} ${item.city}`.toLowerCase().includes(query.toLowerCase()) && (statusFilter === 'all' || item.status === statusFilter)), [contracts, query, statusFilter])
   const update = <K extends keyof typeof form>(key: K, value: (typeof form)[K]) => setForm((current) => ({ ...current, [key]: value }))
   const updateProduct = (index: number, key: keyof Product, value: string) => setForm((current) => ({ ...current, products: current.products.map((product, i) => i === index ? { ...product, [key]: value } : product) }))

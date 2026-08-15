@@ -12,16 +12,21 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { Suspense, useState } from 'react'
 
-export default function Page() {
+function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [supabaseError, setSupabaseError] = useState<string | null>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirectTo = (() => {
+    const value = searchParams.get('redirectTo')
+    return value?.startsWith('/') && !value.startsWith('//') ? value : '/dashboard'
+  })()
 
   // Check if Supabase is configured
   const checkSupabaseConfig = () => {
@@ -47,15 +52,15 @@ export default function Page() {
     setIsLoading(true)
 
     try {
-      const supabase = createClient()
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       })
-      if (error) {
-        throw new Error(error.message || 'Failed to login')
-      }
-      router.push('/dashboard')
+      const result = await response.json()
+      if (!response.ok) throw new Error(result.error || 'Échec de la connexion')
+      router.replace(redirectTo)
+      router.refresh()
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'An error occurred'
       console.error('[v0] Login error:', errorMessage)
@@ -79,7 +84,7 @@ export default function Page() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
         },
       })
       if (error) {
@@ -184,5 +189,13 @@ export default function Page() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <LoginPage />
+    </Suspense>
   )
 }
