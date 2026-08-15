@@ -7,9 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Badge } from '@/components/ui/badge'
-import { createClient } from '@/lib/supabase/client'
-
-const supabase = createClient()
 type Product = { product: string; productName: string; ean: string; previousProvider: string }
 type Contract = {
   id: string; clientType: string; language: string; firstName: string; lastName: string; birthDate: string; housing: string
@@ -48,10 +45,10 @@ export function ContractEncodingDashboard() {
     let active = true
     async function loadContracts() {
       setLoading(true)
-      const { data: { user }, error: authError } = await supabase.auth.getUser()
-      if (authError || !user) { if (active) setLoading(false); return }
-      const { data, error: queryError } = await supabase.from('energy_contracts').select('*, energy_contract_energy(*), energy_contract_products(*)').eq('user_id', user.id).order('created_at', { ascending: false })
-      if (queryError) { if (active) setError(queryError.message) } else if (active) setContracts((data || []).map(fromRow))
+      const response = await fetch('/api/contracts', { cache: 'no-store' })
+      const result = await response.json()
+      if (!response.ok) { if (active) setError(result.error || 'Impossible de charger les contrats.') }
+      else if (active) setContracts((result.data || []).map(fromRow))
       if (active) setLoading(false)
     }
     loadContracts()
@@ -76,7 +73,7 @@ export function ContractEncodingDashboard() {
     setContracts((items) => editingId ? items.map((item) => item.id === id ? saved : item) : [saved, ...items]); setSaving(false); reset()
   }
   const edit = (item: Contract) => { const { id, createdAt, ...values } = item; setForm({ ...emptyForm, ...values, products: values.products?.length ? values.products : [{ ...emptyProduct }] }); setEditingId(id); setShowForm(true) }
-  const remove = async (id: string) => { setError(null); const { error: deleteError } = await supabase.from('energy_contracts').delete().eq('id', id); if (deleteError) setError(deleteError.message); else setContracts((items) => items.filter((item) => item.id !== id)) }
+  const remove = async (id: string) => { setError(null); const response = await fetch(`/api/contracts?id=${encodeURIComponent(id)}`, { method: 'DELETE' }); const result = await response.json(); if (!response.ok) setError(result.error || 'Impossible de supprimer le contrat.'); else setContracts((items) => items.filter((item) => item.id !== id)) }
   const exportCsv = () => { const rows = filtered.map((item) => [item.firstName + ' ' + item.lastName, item.email, item.city, item.products[0]?.ean || '', item.status]); const csv = [['Client', 'Email', 'Ville', 'EAN', 'Statut'], ...rows].map((row) => row.map((cell) => `"${String(cell).replaceAll('"', '""')}"`).join(';')).join('\n'); const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' })); const link = document.createElement('a'); link.href = url; link.download = 'encodages-energie.csv'; link.click(); URL.revokeObjectURL(url) }
   const stat = (status?: string) => contracts.filter((item) => !status || item.status === status).length
   return <div className="space-y-6">
