@@ -29,6 +29,15 @@ export async function checkAdminAccess() {
   }
 }
 
+export async function checkProductionAccess() {
+  const access = await checkAdminAccess()
+  const allowedRoles = new Set(['super_admin', 'manager', 'commercial', 'moderator'])
+  return {
+    ...access,
+    isProductionUser: access.isAdmin && allowedRoles.has(access.role ?? ''),
+  }
+}
+
 export async function logAdminAction(
   action: string,
   tableName: string,

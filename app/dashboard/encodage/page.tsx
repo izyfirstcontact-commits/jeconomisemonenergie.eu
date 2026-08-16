@@ -1,14 +1,14 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { checkProductionAccess } from '@/lib/admin/auth'
 import ContractEncodingDashboard from '@/components/dashboard/contract-encoding-dashboard'
 
 export const metadata = { title: 'Encodage des contrats | Tableau de bord' }
 export const dynamic = 'force-dynamic'
 
 export default async function ContractEncodingPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { user, isProductionUser } = await checkProductionAccess()
   if (!user) redirect('/auth/login?redirectTo=%2Fdashboard%2Fencodage')
+  if (!isProductionUser) redirect('/dashboard')
 
   return (
     <main className="min-h-screen bg-background">
