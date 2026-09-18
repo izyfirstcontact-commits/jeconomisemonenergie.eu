@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function ContractEncodingPage() {
   const { user, isProductionUser } = await checkProductionAccess()
-  if (!user) redirect('/auth/login?redirectTo=%2Fdashboard%2Fencodage')
+  if (!user) redirect('/auth/televendeur')
   if (!isProductionUser) redirect('/dashboard')
 
   return (
