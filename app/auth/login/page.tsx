@@ -23,9 +23,11 @@ function LoginPage() {
   const [supabaseError, setSupabaseError] = useState<string | null>(null)
   const router = useRouter()
   const searchParams = useSearchParams()
+  const audience = searchParams.get('audience')
+  const isTelevendeur = audience === 'televendeur'
   const redirectTo = (() => {
     const value = searchParams.get('redirectTo')
-    return value?.startsWith('/') && !value.startsWith('//') ? value : '/dashboard'
+    return value?.startsWith('/') && !value.startsWith('//') ? value : isTelevendeur ? '/dashboard/encodage' : '/dashboard'
   })()
 
   // Check if Supabase is configured
@@ -55,7 +57,7 @@ function LoginPage() {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, productionOnly: isTelevendeur }),
       })
       const result = await response.json()
       if (!response.ok) throw new Error(result.error || 'Échec de la connexion')
@@ -105,9 +107,9 @@ function LoginPage() {
         <div className="flex flex-col gap-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Login</CardTitle>
+              <CardTitle className="text-2xl">{isTelevendeur ? 'Espace télévendeurs' : 'Connexion'}</CardTitle>
               <CardDescription>
-                Enter your email below to login to your account
+                {isTelevendeur ? 'Accès réservé aux télévendeurs autorisés de jeconomisemonenergie.eu.' : 'Connectez-vous à votre compte.'}
               </CardDescription>
             </CardHeader>
             <CardContent>

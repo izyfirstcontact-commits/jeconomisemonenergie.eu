@@ -1,6 +1,6 @@
 export type AdminUser = {
   id: string
-  role: 'super_admin' | 'moderator'
+  role: 'super_admin' | 'manager' | 'commercial' | 'moderator'
   created_at: string
 }
 

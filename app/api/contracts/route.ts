@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { checkProductionAccess } from '@/lib/admin/auth'
 
 export async function GET() {
   try {
     const supabase = await createClient()
-    const { data: { user }, error: authError } = await supabase.auth.getUser()
-    if (authError || !user) return NextResponse.json({ error: 'Session expirée. Veuillez vous reconnecter.' }, { status: 401 })
+    const { user, isProductionUser } = await checkProductionAccess()
+    if (!user || !isProductionUser) return NextResponse.json({ error: 'Accès réservé à l’équipe commerciale.' }, { status: 403 })
 
     const { data, error } = await supabase
       .from('energy_contracts')
@@ -23,8 +24,8 @@ export async function GET() {
 export async function DELETE(request: Request) {
   try {
     const supabase = await createClient()
-    const { data: { user }, error: authError } = await supabase.auth.getUser()
-    if (authError || !user) return NextResponse.json({ error: 'Session expirée. Veuillez vous reconnecter.' }, { status: 401 })
+    const { user, isProductionUser } = await checkProductionAccess()
+    if (!user || !isProductionUser) return NextResponse.json({ error: 'Accès réservé à l’équipe commerciale.' }, { status: 403 })
     const id = new URL(request.url).searchParams.get('id')
     if (!id) return NextResponse.json({ error: 'Contrat introuvable.' }, { status: 400 })
     const { error } = await supabase.from('energy_contracts').delete().eq('id', id).eq('user_id', user.id)
@@ -38,8 +39,8 @@ export async function DELETE(request: Request) {
 export async function POST(request: Request) {
   try {
     const supabase = await createClient()
-    const { data: { user }, error: authError } = await supabase.auth.getUser()
-    if (authError || !user) return NextResponse.json({ error: 'Session expirée. Veuillez vous reconnecter.' }, { status: 401 })
+    const { user, isProductionUser } = await checkProductionAccess()
+    if (!user || !isProductionUser) return NextResponse.json({ error: 'Accès réservé à l’équipe commerciale.' }, { status: 403 })
 
     const body = await request.json()
     const { contract, energy, products, id } = body
