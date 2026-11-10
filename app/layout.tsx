@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { CookieBanner } from '@/components/cookie-banner'
 import { FloatingHelpWidget } from '@/components/floating-help-widget'
 import { MetaPixelDebugger } from '@/components/meta-pixel-debugger'
+import { LanguageProvider } from '@/components/language-provider'
 import { getLocalBusinessSchema, getOrganizationSchema } from '@/lib/seo'
 import './globals.css'
 
@@ -201,7 +202,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
           {/* End Google Tag Manager (noscript) */}
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
           <CookieBanner />
           <FloatingHelpWidget />
           <MetaPixelDebugger />
