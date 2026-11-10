@@ -3,15 +3,18 @@
 import { motion } from "framer-motion"
 import { MultiStepForm } from "@/components/multi-step-form"
 import { Sparkles, Shield, Clock, MapPin, Check, Zap } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
 
 const trustBadges = [
-  { icon: Sparkles, label: "100% Gratuit" },
-  { icon: Shield, label: "Sans engagement" },
-  { icon: MapPin, label: "Comparateur Belge" },
-  { icon: Clock, label: "Réponse rapide" },
-]
+  { icon: Sparkles, key: "free" },
+  { icon: Shield, key: "noCommitment" },
+  { icon: MapPin, key: "belgianComparator" },
+  { icon: Clock, key: "fastResponse" },
+] as const
 
 export function HeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section id="hero" className="relative overflow-hidden py-8 lg:py-16">
       {/* Background decoration */}
@@ -36,24 +39,18 @@ export function HeroSection() {
           >
             {/* Badge */}
             <span className="inline-block rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground">
-              Comparateur Belge
+              {t("belgianComparator")}
             </span>
 
             {/* Main Heading */}
             <h1 className="text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl leading-[1.2] md:leading-[1.1]">
-              Réduisez votre facture d{"'"}énergie en Belgique avec{" "}
+              {t("heroTitle")} {" "}
               <span className="text-primary">Jeconomisemonenergie.eu</span>
             </h1>
 
             {/* Subtitle */}
             <p className="max-w-xl text-sm md:text-lg leading-relaxed text-muted-foreground">
-              Actif à Bruxelles, en Wallonie et en Flandre, Jeconomisemonenergie.eu compare gratuitement le gaz et
-              l{"'"}électricité{" "}
-              <span className="font-semibold text-foreground">
-                (Engie, Luminus, TotalEnergie, Eneco, Octa+, Ecofix, Mega et Bolt)
-              </span>{" "}
-              selon votre consommation. Jusqu{"'"}à{" "}
-              <span className="font-semibold text-foreground">35%</span> d{"'"}économie pour les particuliers et les PME.
+              {t("heroDescription")}
             </p>
 
             {/* Trust Badges */}
@@ -62,11 +59,11 @@ export function HeroSection() {
                 const Icon = badge.icon
                 return (
                   <div
-                    key={badge.label}
+                    key={badge.key}
                     className="flex items-center gap-2 rounded-full border border-border bg-card px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm text-foreground"
                   >
                     <Icon className="size-4 text-primary shrink-0" />
-                    {badge.label}
+                    {t(badge.key)}
                   </div>
                 )
               })}
@@ -96,26 +93,26 @@ export function HeroSection() {
                       JECONOMISEMONENERGIE.EU
                     </h2>
                     <p className="text-white/90 text-xs md:text-sm mt-0.5">
-                      Réduisez jusqu{"'"}à 35% votre facture d{"'"}énergie en Belgique
+                      {t("upToSavings")}
                     </p>
                     
                     {/* Checkmarks */}
                     <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-white/90 text-xs md:text-sm">
                       <span className="flex items-center gap-1.5">
                         <Check className="size-4" />
-                        Comparaison gratuite
+                        {t("freeComparison")}
                       </span>
                       <span className="flex items-center gap-1.5">
                         <Check className="size-4" />
-                        Sans engagement
+                        {t("noCommitment")}
                       </span>
                       <span className="flex items-center gap-1.5">
                         <Check className="size-4" />
-                        Réponse rapide
+                        {t("fastResponse")}
                       </span>
                       <span className="flex items-center gap-1.5">
                         <Check className="size-4" />
-                        Offres adaptées
+                        {t("tailoredOffers")}
                       </span>
                     </div>
                   </div>
