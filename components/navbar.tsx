@@ -7,24 +7,25 @@ import { ThemeToggle } from "./theme-toggle"
 import { DashboardPopover } from "./dashboard/dashboard-popover"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, Menu, X } from "lucide-react"
+import { useLanguage, type Language } from "@/components/language-provider"
 
 const navLinks = [
-  { label: "Fonctionnalites", href: "/#features" },
-  { label: "Economies", href: "/#economies" },
-  { label: "Temoignages", href: "/#avis" },
-  { label: "FAQ", href: "/#faq" },
-]
+  { key: "functionality", href: "/#features" },
+  { key: "savings", href: "/#economies" },
+  { key: "testimonials", href: "/#avis" },
+  { key: "faq", href: "/#faq" },
+] as const
 
 const guideLinks = [
-  { label: "Guide des comparateurs énergie", href: "/guides/comparateurs-prix-electricite-gaz-belgique" },
-  { label: "Comparateur énergie Belgique", href: "/comparateur-energie-belgique" },
-  { label: "Meilleur tarif élec & gaz", href: "/meilleur-tarif-electricite-gaz-belgique" },
-  { label: "Changer de fournisseur", href: "/changer-fournisseur-electricite-gaz-belgique" },
-  { label: "Avis fournisseurs belges", href: "/avis-fournisseurs-energie-belgique" },
-  { label: "Tarif social Wallonie & Flandre", href: "/tarif-social-energie" },
-  { label: "Prime énergie Bruxelles 2026", href: "/prime-energie-bruxelles-2026" },
-  { label: "CWaPE & simulateur", href: "/cwape-simulateur" },
-]
+  { key: "energyGuide", href: "/guides/comparateurs-prix-electricite-gaz-belgique" },
+  { key: "energyComparator", href: "/comparateur-energie-belgique" },
+  { key: "bestRate", href: "/meilleur-tarif-electricite-gaz-belgique" },
+  { key: "switchSupplier", href: "/changer-fournisseur-electricite-gaz-belgique" },
+  { key: "supplierReviews", href: "/avis-fournisseurs-energie-belgique" },
+  { key: "socialRate", href: "/tarif-social-energie" },
+  { key: "brusselsBonus", href: "/prime-energie-bruxelles-2026" },
+  { key: "cwape", href: "/cwape-simulateur" },
+] as const
 
 interface NavbarProps {
   isLoggedIn?: boolean
@@ -35,6 +36,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
   const [open, setOpen] = useState(false)
   const [guidesOpen, setGuidesOpen] = useState(false)
   const [mobileGuidesOpen, setMobileGuidesOpen] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
 
   return (
     <header className="relative z-30 border-b border-border bg-card/80 backdrop-blur-xl">
@@ -43,7 +45,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
           <BrandLogo size="sm" />
           <div className="min-w-0">
             <p className="text-sm sm:text-lg md:text-2xl font-bold text-foreground tracking-tight truncate">JECONOMISEMONENERGIE.EU</p>
-            <p className="hidden sm:block text-xs text-muted-foreground">Votre comparateur belge</p>
+            <p className="hidden sm:block text-xs text-muted-foreground">{t("belgianComparator")}</p>
           </div>
         </div>
 
@@ -54,7 +56,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
               href={item.href}
               className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
-              {item.label}
+              {t(item.key)}
             </a>
           ))}
 
@@ -70,7 +72,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
               aria-expanded={guidesOpen}
               aria-haspopup="true"
             >
-              Guides
+              {t("guides")}
               <ChevronDown className={`size-4 transition-transform ${guidesOpen ? "rotate-180" : ""}`} />
             </button>
 
@@ -90,7 +92,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
                         href={item.href}
                         className="block rounded-xl px-3 py-2.5 text-sm font-medium text-muted-foreground transition hover:bg-accent hover:text-foreground"
                       >
-                        {item.label}
+                        {t(item.key)}
                       </a>
                     ))}
                   </div>
@@ -101,6 +103,19 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex flex-shrink-0">
+          <label className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span className="sr-only">{t("languageLabel")}</span>
+            <select
+              value={language}
+              onChange={(event) => setLanguage(event.target.value as Language)}
+              className="rounded-lg border border-border bg-card px-2 py-1.5 text-sm text-foreground"
+              aria-label={t("languageLabel")}
+            >
+              <option value="fr">FR</option>
+              <option value="en">EN</option>
+              <option value="nl">NL</option>
+            </select>
+          </label>
           <ThemeToggle />
           {isLoggedIn ? (
             <>
@@ -108,17 +123,17 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
                 href="/dashboard"
                 className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
               >
-                Dashboard
+                {t("dashboard")}
               </a>
               <DashboardPopover userEmail={userEmail} />
             </>
           ) : (
             <>
               <Button asChild size="sm" variant="ghost">
-                <a href="/auth/login">Login</a>
+                <a href="/auth/login">{t("login")}</a>
               </Button>
               <Button asChild size="sm" className="text-sm font-semibold shadow-md hover:shadow-lg transition-shadow">
-                <a href="/auth/sign-up">Sign up</a>
+                <a href="/auth/sign-up">{t("signup")}</a>
               </Button>
             </>
           )}
@@ -128,7 +143,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
           type="button"
           onClick={() => setOpen((current) => !current)}
           className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-border bg-card text-foreground transition hover:bg-accent lg:hidden"
-          aria-label="Menu mobile"
+          aria-label={t("mobileMenu")}
           aria-expanded={open}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -151,7 +166,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
                   className="block rounded-2xl px-4 py-3 text-sm font-medium text-muted-foreground transition hover:bg-accent hover:text-foreground"
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
+                  {t(item.key)}
                 </a>
               ))}
 
@@ -162,7 +177,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
                   className="flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-muted-foreground transition hover:bg-accent hover:text-foreground"
                   aria-expanded={mobileGuidesOpen}
                 >
-                  Guides
+                  {t("guides")}
                   <ChevronDown className={`size-4 transition-transform ${mobileGuidesOpen ? "rotate-180" : ""}`} />
                 </button>
                 <AnimatePresence>
@@ -181,7 +196,7 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
                             className="block rounded-2xl px-4 py-2.5 text-sm text-muted-foreground transition hover:bg-accent hover:text-foreground"
                             onClick={() => setOpen(false)}
                           >
-                            {item.label}
+                            {t(item.key)}
                           </a>
                         ))}
                       </div>
@@ -190,7 +205,20 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
                 </AnimatePresence>
               </div>
 
-              <div className="flex justify-center border-t border-border pt-4">
+              <div className="flex items-center justify-center gap-4 border-t border-border pt-4">
+                <label className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <span>{t("languageLabel")}</span>
+                  <select
+                    value={language}
+                    onChange={(event) => setLanguage(event.target.value as Language)}
+                    className="rounded-lg border border-border bg-card px-2 py-1.5 text-sm text-foreground"
+                    aria-label={t("languageLabel")}
+                  >
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="nl">Nederlands</option>
+                  </select>
+                </label>
                 <ThemeToggle />
               </div>
 
@@ -206,10 +234,10 @@ export function Navbar({ isLoggedIn = false, userEmail }: NavbarProps) {
               ) : (
                 <>
                   <Button asChild size="sm" variant="ghost" className="w-full">
-                    <a href="/auth/login">Login</a>
+                    <a href="/auth/login">{t("login")}</a>
                   </Button>
                   <Button asChild size="sm" className="w-full">
-                    <a href="/auth/sign-up">Sign up</a>
+                    <a href="/auth/sign-up">{t("signup")}</a>
                   </Button>
                 </>
               )}
