@@ -280,6 +280,8 @@ export function MultiStepForm() {
   const [addressSuggestions, setAddressSuggestions] = useState<any[]>([])
   const [showAddressSuggestions, setShowAddressSuggestions] = useState(false)
   const [showSecondInvoice, setShowSecondInvoice] = useState(false)
+  const addressSearchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const addressSearchControllerRef = useRef<AbortController | null>(null)
   const totalSteps = 5
 
   // Conteneur du formulaire (pour le scroll inter-étapes)
@@ -420,49 +422,37 @@ export function MultiStepForm() {
     }
   }
 
-  // Fonction pour appeler l'API Nominatim (OpenStreetMap) - API gratuite, pas de clé requise
-  const handleAddressSearch = async (query: string) => {
+  const handleAddressSearch = (query: string) => {
     updateFormData("adresse", query)
-    
-    if (query.length < 2) {
-      setAddressSuggestions([])
-      setShowAddressSuggestions(false)
-      return
-    }
+    setAddressSuggestions([])
+    setShowAddressSuggestions(false)
 
-    try {
-      // Utilise un AbortController pour implémenter un timeout de 2s
+    if (addressSearchTimerRef.current) clearTimeout(addressSearchTimerRef.current)
+    addressSearchControllerRef.current?.abort()
+
+    if (query.trim().length < 2) return
+
+    addressSearchTimerRef.current = setTimeout(async () => {
       const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 2000)
+      addressSearchControllerRef.current = controller
 
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ' Belgium')}&addressdetails=1&limit=5`,
-        {
-          headers: { 'User-Agent': 'JeEconomiseMonEnergie' },
+      try {
+        const response = await fetch(`/api/address-search?q=${encodeURIComponent(query.trim())}`, {
           signal: controller.signal,
-        }
-      )
-      clearTimeout(timeoutId)
+        })
+        if (!response.ok) throw new Error("Address lookup failed")
 
-      const data = await response.json()
-      
-      // Mappe les résultats Nominatim au format attendu
-      const suggestions = data.map((item: any) => ({
-        label: item.display_name,
-        value: item.display_name,
-        road: item.address?.road || item.address?.pedestrian || '',
-        postcode: item.address?.postcode || '',
-        city: item.address?.city || item.address?.town || item.address?.village || '',
-      }))
-
-      setAddressSuggestions(suggestions)
-      setShowAddressSuggestions(suggestions.length > 0)
-    } catch (error) {
-      // En cas d'erreur ou de timeout, on n'affiche aucune suggestion
-      // mais on laisse l'utilisateur taper à la main
-      setAddressSuggestions([])
-      setShowAddressSuggestions(false)
-    }
+        const result: { suggestions?: any[] } = await response.json()
+        if (controller.signal.aborted) return
+        const suggestions = Array.isArray(result.suggestions) ? result.suggestions : []
+        setAddressSuggestions(suggestions)
+        setShowAddressSuggestions(suggestions.length > 0)
+      } catch {
+        if (controller.signal.aborted) return
+        setAddressSuggestions([])
+        setShowAddressSuggestions(false)
+      }
+    }, 1000)
   }
 
   // Fonction appelée au clic sur une suggestion
@@ -1571,13 +1561,14 @@ export function MultiStepForm() {
                       />
                       {/* Dropdown des suggestions */}
                       {showAddressSuggestions && addressSuggestions.length > 0 && (
-                        <div className="absolute top-full left-0 right-0 z-50 mt-1 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-lg shadow-lg">
+                        <div role="listbox" aria-label="Suggestions d’adresses" className="absolute top-full left-0 right-0 z-50 mt-1 max-h-48 overflow-y-auto rounded-lg border border-border bg-popover text-popover-foreground shadow-lg">
                           {addressSuggestions.map((suggestion, index) => (
                             <button
                               key={index}
                               type="button"
+                              role="option"
                               onClick={() => handleAddressSelect(suggestion)}
-                              className="w-full text-left px-4 py-2 hover:bg-primary/10 hover:text-primary transition-colors text-sm"
+                              className="w-full px-4 py-3 text-left text-sm transition-colors hover:bg-accent hover:text-accent-foreground"
                             >
                               {suggestion.label || suggestion.value}
                             </button>
