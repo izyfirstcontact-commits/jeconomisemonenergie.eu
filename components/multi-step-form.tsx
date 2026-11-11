@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { useForm, ValidationError } from "@formspree/react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { FloatingField } from "@/components/ui/floating-input"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -15,7 +14,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { CheckCircle2, Upload, Phone, ArrowRight, ArrowLeft, Zap, Flame, Home, MapPin, FileText, User, Loader2, AlertCircle, X, Monitor, Cloud, RotateCcw, Building2, Briefcase, Gift } from "lucide-react"
 import { getConsentPreferences } from "@/components/cookie-banner"
 import { useClientType } from "@/components/client-type-context"
-import { createClient } from "@/lib/supabase/client"
 
 // ─── Types ───────────────────────────────────────────────
 
@@ -266,12 +264,6 @@ export function MultiStepForm() {
   const [dragActive, setDragActive] = useState(false)
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [otpCode, setOtpCode] = useState("")
-  const [otpSent, setOtpSent] = useState(false)
-  const [verifiedPhone, setVerifiedPhone] = useState<string | null>(null)
-  const [isSendingOtp, setIsSendingOtp] = useState(false)
-  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false)
-  const [otpError, setOtpError] = useState<string | null>(null)
   const [fileUploadState, setFileUploadState] = useState<FileUploadState>({
     isUploading: false,
     progress: 0,
@@ -423,12 +415,6 @@ export function MultiStepForm() {
 
   const updateFormData = (field: keyof FormData, value: string | boolean | File | null) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
-    if (field === "telephone") {
-      setOtpSent(false)
-      setOtpCode("")
-      setOtpError(null)
-      setVerifiedPhone(null)
-    }
     if (validationErrors[field as keyof ValidationErrors]) {
       clearValidationError(field)
     }
@@ -668,54 +654,9 @@ export function MultiStepForm() {
     return Object.keys(errors).length === 0
   }
 
-  const normalizedPhone = (phone: string) => {
-    const cleaned = cleanBelgianPhone(phone)
-    return cleaned.startsWith("+32") ? cleaned : cleaned.startsWith("32") ? `+${cleaned}` : `+32${cleaned.slice(1)}`
-  }
-
-  const sendPhoneOtp = async () => {
-    if (!validateStep3()) return
-    setIsSendingOtp(true)
-    setOtpError(null)
-    const phone = normalizedPhone(formData.telephone)
-    const { error } = await createClient().auth.signInWithOtp({ phone })
-    setIsSendingOtp(false)
-    if (error) {
-      setOtpError("Impossible d'envoyer le code SMS. Vérifiez le numéro et réessayez.")
-      return
-    }
-    setOtpSent(true)
-    setOtpCode("")
-  }
-
-  const verifyPhoneOtp = async () => {
-    if (!/^\d{6}$/.test(otpCode)) {
-      setOtpError("Saisissez le code à 6 chiffres reçu par SMS.")
-      return
-    }
-    setIsVerifyingOtp(true)
-    setOtpError(null)
-    const phone = normalizedPhone(formData.telephone)
-    const { error } = await createClient().auth.verifyOtp({ phone, token: otpCode, type: "sms" })
-    setIsVerifyingOtp(false)
-    if (error) {
-      setOtpError("Code incorrect ou expiré. Demandez un nouveau code et réessayez.")
-      return
-    }
-    setVerifiedPhone(phone)
-    setOtpSent(false)
-    setOtpCode("")
-  }
-
-  const nextStep = async () => {
+  const nextStep = () => {
     if (currentStep === 1 && !validateStep1()) return
-    if (currentStep === 3) {
-      if (!validateStep3()) return
-      if (verifiedPhone !== normalizedPhone(formData.telephone)) {
-        await sendPhoneOtp()
-        return
-      }
-    }
+    if (currentStep === 3 && !validateStep3()) return
     if (currentStep < totalSteps) setCurrentStep((prev) => prev + 1)
   }
 
@@ -723,7 +664,7 @@ export function MultiStepForm() {
     if (currentStep > 1) setCurrentStep((prev) => prev - 1)
   }
 
-  // ─── Drag & Drop ─────────────────────────────────────
+  // ─── Drag & Drop ───────────────���─────────────────────
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault()
@@ -756,7 +697,7 @@ export function MultiStepForm() {
     if (isSubmitting || fileUploadState.isUploading || fileUploadState2.isUploading) return
 
     if (!validateStep3()) { setCurrentStep(3); return }
-    if (verifiedPhone !== normalizedPhone(formData.telephone)) { setCurrentStep(3); return }
+    if (!validateStep3()) return
     if (!validateStep1()) { setCurrentStep(1); return }
 
     setIsSubmitting(true)
@@ -1577,39 +1518,6 @@ export function MultiStepForm() {
                 error={validationErrors.telephone}
                 hint="Ex: 0470 12 34 56, +32 470 12 34 56"
               />
-
-  {verifiedPhone === normalizedPhone(formData.telephone) ? (
-  <div className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-    <CheckCircle2 className="size-4" aria-hidden="true" />
-    Numéro vérifié par SMS
-  </div>
-  ) : (
-  <div className="space-y-3 rounded-2xl border border-border bg-muted/30 p-4">
-    <p className="text-sm text-muted-foreground">Un code SMS sera demandé avant de passer à l&apos;étape suivante.</p>
-    {otpSent ? (
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <Input
-          inputMode="numeric"
-          autoComplete="one-time-code"
-          maxLength={6}
-          placeholder="Code à 6 chiffres"
-          value={otpCode}
-          onChange={(event) => setOtpCode(event.target.value.replace(/\D/g, "").slice(0, 6))}
-          aria-label="Code de vérification SMS"
-        />
-        <Button type="button" onClick={verifyPhoneOtp} disabled={isVerifyingOtp}>
-          {isVerifyingOtp ? <Loader2 className="size-4 animate-spin" /> : "Vérifier"}
-        </Button>
-      </div>
-    ) : (
-      <Button type="button" variant="outline" onClick={sendPhoneOtp} disabled={isSendingOtp}>
-        {isSendingOtp ? <Loader2 className="mr-2 size-4 animate-spin" /> : <Phone className="mr-2 size-4" />}
-        Recevoir le code par SMS
-      </Button>
-    )}
-    {otpError && <p className="text-sm text-destructive" role="alert">{otpError}</p>}
-  </div>
-  )}
 
   <FloatingField
   id="telephoneSecondaire"
