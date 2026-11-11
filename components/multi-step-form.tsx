@@ -83,7 +83,7 @@ interface FileUploadState {
   success: boolean
 }
 
-const regions = ["Bruxelles", "Wallonie", "Flandre"]
+const regions = ["Wallonie", "Flandre"]
 const fournisseurs = ["Engie", "Mega", "Luminus", "Eneco", "Octa+", "TotalEnergies", "Ecofix", "Bolt", "Frank Énergie", "Autre"]
 const typesContrat = [
   { value: "electricite", label: "Électricité", icon: Zap },
@@ -833,7 +833,7 @@ export function MultiStepForm() {
     }
   }
 
-  // ─── Step validity ───────────────────────────────────
+  // ─── Step validity ──────────────��────────────────────
 
   const isPro = formData.clientType === "professionnel"
 
