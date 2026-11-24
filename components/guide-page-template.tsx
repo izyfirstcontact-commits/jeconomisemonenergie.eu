@@ -17,6 +17,7 @@ export type GuideBlock =
   | { type: "ordered"; items: string[] }
   | { type: "table"; caption?: string; headers: string[]; rows: string[][] }
   | { type: "note"; text: string }
+  | { type: "links"; links: { href: string; label: string; external?: boolean }[] }
 
 export interface GuideSection {
   id: string
@@ -47,6 +48,24 @@ function Block({ block }: { block: GuideBlock }) {
         <p className="rounded-xl border border-border bg-card px-4 py-3 text-sm leading-relaxed text-muted-foreground italic">
           {block.text}
         </p>
+      )
+    case "links":
+      return (
+        <ul className="flex flex-col gap-2 text-sm font-medium text-primary">
+          {block.links.map((link) => (
+            <li key={link.href}>
+              {link.external ? (
+                <a href={link.href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary/80">
+                  {link.label}
+                </a>
+              ) : (
+                <Link href={link.href} className="underline underline-offset-4 hover:text-primary/80">
+                  {link.label}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
       )
     case "bullets":
       return (
@@ -219,10 +238,10 @@ export function GuidePageTemplate({
               {index === 1 && (
                 <div className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-5 md:p-6 text-center">
                   <h3 className="text-base md:text-lg font-semibold text-foreground text-balance">
-                    Découvrez combien vous pouvez économiser
+                    Préparez votre demande énergie en Wallonie
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Simulez gratuitement vos économies en moins de 2 minutes, sans engagement.
+                    Le parcours recueille des informations pour préparer une demande. Toute estimation est indicative et ne constitue pas une comparaison de tarifs en temps réel.
                   </p>
                   <Link
                     href="/#formulaire"

@@ -31,11 +31,11 @@ const highlights = [
 const sections: ContentSection[] = [
   {
     id: "marche-gaz-wallonie",
-    heading: "Le marché du gaz en Wallonie en 2026",
+    heading: "Comprendre un contrat de gaz en Wallonie",
     paragraphs: [
-      "Le marché du gaz est libéralisé en Wallonie : chaque ménage peut choisir et changer librement son fournisseur. Cette liberté permet de profiter de la concurrence entre acteurs, mais elle suppose de comparer régulièrement les offres pour ne pas rester bloqué sur un contrat devenu trop cher au fil du temps.",
-      "Le gestionnaire de réseau dépend du point de fourniture et de la commune. Pour identifier le gestionnaire compétent et les conditions applicables, vérifiez les informations officielles relatives à votre adresse. Le fournisseur d’énergie et le gestionnaire de réseau remplissent des rôles distincts.",
-      "Pour lire une facture, distinguez le prix de l’énergie des coûts de réseau, taxes et autres composantes. La composition et les montants dépendent de l’offre et des règles en vigueur; consultez les documents du fournisseur et les références officielles wallonnes.",
+      "Le choix d’un contrat dépend des conditions proposées par le fournisseur et de votre situation. Pour examiner une offre, vérifiez le prix de l’énergie, les frais fixes, la durée, les conditions promotionnelles et les modalités d’évolution du tarif.",
+      "Le gestionnaire de réseau et le fournisseur ont des rôles distincts. Les modalités applicables à votre point de fourniture sont à vérifier dans vos documents contractuels et auprès des sources officielles wallonnes.",
+      "Distinguez le prix de l’énergie des coûts de réseau, taxes et autres composantes de la facture. Les montants dépendent de l’offre et des règles en vigueur; consultez des informations datées avant toute comparaison.",
     ],
   },
   {
@@ -43,7 +43,7 @@ const sections: ContentSection[] = [
     heading: "Les critères pour bien comparer un contrat de gaz",
     paragraphs: [
       "Pour comparer des contrats, vérifiez le coût annuel estimé, les frais fixes, la durée, les conditions promotionnelles et le mode d’indexation. Les données doivent correspondre à votre consommation et être datées. Le parcours du site recueille des informations pour accompagner une demande; il ne compare pas en temps réel les tarifs de tous les fournisseurs.",
-      "La distinction entre tarif fixe et tarif variable est centrale pour le gaz, dont les prix sont particulièrement sensibles aux marchés internationaux. Un tarif fixe sécurise votre budget sur la durée du contrat, tandis qu'un tarif variable peut profiter des baisses mais expose aux hausses brutales. Le choix dépend de votre situation et du contexte de marché au moment de la souscription.",
+      "Les offres à prix fixe et variable peuvent avoir des modalités différentes. Examinez la durée, les règles d’évolution du prix et les conditions contractuelles propres à l’offre; ne déduisez pas son coût futur d’une seule indication tarifaire.",
     ],
     bullets: [
       "Le prix du kWh de gaz et la redevance fixe annuelle",
@@ -65,45 +65,32 @@ const sections: ContentSection[] = [
   },
   {
     id: "demarche-changement-gaz",
-    heading: "Changer de fournisseur de gaz en Wallonie : comment faire",
+    heading: "Préparer un changement de fournisseur de gaz",
     paragraphs: [
-      "Changer de fournisseur de gaz en Wallonie est une opération simple et sans risque pour votre approvisionnement. Le nouveau fournisseur prend en charge toutes les démarches administratives, y compris la résiliation auprès de votre ancien fournisseur. Aucune intervention technique n'est nécessaire et l'alimentation en gaz n'est jamais interrompue.",
-      "La législation belge protège les consommateurs wallons : pour un contrat à durée indéterminée, vous pouvez résilier à tout moment avec un préavis d'un mois, gratuitement. Cela rend le changement totalement réversible et vous permet de saisir les meilleures opportunités du marché à chaque renouvellement.",
+      "Avant de souscrire, vérifiez les modalités, les délais et les éventuels frais applicables à votre contrat auprès du fournisseur concerné et dans les sources officielles. Ne supposez pas que toutes les situations suivent les mêmes conditions.",
+      "Le parcours de Jeconomisemonenergie.eu est une démarche commerciale distincte. Son estimation est indicative; elle ne constitue pas une comparaison tarifaire en temps réel ni une promesse d’économie.",
     ],
-    bullets: [
-      "Aucune coupure de gaz pendant le changement de fournisseur",
-      "Le nouveau fournisseur s'occupe de toutes les formalités",
-      "Préavis d'un mois maximum sans frais pour les contrats à durée indéterminée",
-      "Votre compteur et votre raccordement ORES ou RESA restent inchangés",
+    links: [
+      { href: "/changement-fournisseur-energie", label: "Consulter le guide pratique du changement en Wallonie" },
     ],
   },
 ]
 
 const faqs = [
   {
-    question: "Qui distribue le gaz en Wallonie ?",
+    question: "Quels critères examiner dans un contrat de gaz ?",
     answer:
-      "Le gestionnaire de réseau dépend de votre point de fourniture et de votre commune. Consultez les informations officielles pour identifier le gestionnaire compétent et distinguer son rôle de celui du fournisseur.",
+      "Vérifiez le prix de l’énergie, les frais fixes, la durée, les promotions et les modalités d’évolution du tarif dans les conditions du fournisseur.",
   },
   {
-    question: "Le changement de fournisseur de gaz est-il gratuit en Wallonie ?",
+    question: "Le parcours compare-t-il les tarifs de gaz en temps réel ?",
     answer:
-      "Les modalités dépendent du contrat et de votre situation. Vérifiez les clauses de résiliation et confirmez les éventuels frais ou délais auprès du fournisseur concerné.",
+      "Non. Le parcours fournit une estimation indicative; il ne compare pas en temps réel l’ensemble des tarifs disponibles et ne garantit pas d’économie.",
   },
   {
-    question: "Vais-je risquer une coupure de gaz en changeant de fournisseur ?",
+    question: "Où vérifier les conditions de changement ?",
     answer:
-      "Demandez au fournisseur choisi de confirmer les étapes de transition et les dispositions prévues pour assurer la continuité de votre fourniture dans votre situation.",
-  },
-  {
-    question: "Quelles économies sur le gaz puis-je espérer en Wallonie ?",
-    answer:
-      "Le simulateur du site fournit une estimation indicative à partir des informations saisies. Il ne compare pas en temps réel les tarifs de fournisseurs et ne garantit pas d’économie.",
-  },
-  {
-    question: "Tarif fixe ou variable pour le gaz en Wallonie ?",
-    answer:
-      "Un tarif fixe et un tarif variable ont des modalités et des risques différents. Comparez leur coût total, leur durée et les règles d’évolution du prix, puis vérifiez les conditions auprès du fournisseur.",
+      "Consultez les conditions de votre contrat, les informations du fournisseur choisi et les ressources officielles wallonnes avant de souscrire.",
   },
 ]
 

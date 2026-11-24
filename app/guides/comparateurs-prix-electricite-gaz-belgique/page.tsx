@@ -49,7 +49,9 @@ const sections: GuideSection[] = [
     heading: "Comment vérifier la fiabilité d’une comparaison ?",
     blocks: [
       { type: "paragraph", text: "Une comparaison utile doit indiquer les produits réellement inclus, le public éligible, la région couverte, la source et la date des prix, ainsi que les composantes non incluses. Vérifiez que votre profil et votre période de consommation correspondent aux hypothèses du calcul." },
-      { type: "paragraph", text: "Le CompaCWaPE est le comparateur officiel de référence pour les offres d’électricité et de gaz en Wallonie. Vérifiez directement ses informations et les conditions des fournisseurs avant de souscrire." },
+      { type: "paragraph", text: "CompaCWaPE est l’outil officiel de la CWaPE pour comparer les offres d’électricité et de gaz en Wallonie. Le parcours de Jeconomisemonenergie.eu est distinct : il recueille des informations pour préparer une demande et fournit une estimation indicative, sans comparer les tarifs en temps réel." },
+      { type: "links", links: [{ href: "https://www.compacwape.be/", label: "Consulter le comparateur officiel CompaCWaPE", external: true }, { href: "/comparateur-gaz-wallonie", label: "Lire nos repères pour examiner un contrat de gaz en Wallonie" }] },
+
     ],
   },
   {

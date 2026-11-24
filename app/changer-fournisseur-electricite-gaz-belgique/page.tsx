@@ -19,36 +19,40 @@ export const metadata: Metadata = {
 }
 
 const intro =
-  "Changer de fournisseur d'électricité et de gaz en Belgique est gratuit, rapide et sans aucune coupure. Que vous gériez deux contrats séparés ou une offre double énergie, la démarche est encadrée par la loi et entièrement prise en charge par votre nouveau fournisseur. Voici le mode d'emploi complet, étape par étape, avec le rôle du code EAN, les délais légaux et les pièges à éviter."
+  "Ce guide présente les informations à réunir et les points à vérifier avant un changement de fournisseur d’électricité ou de gaz en Belgique. Les délais, frais éventuels et démarches dépendent des règles en vigueur et de votre situation : confirmez-les dans les sources officielles et auprès des fournisseurs. Le parcours commercial de Jeconomisemonenergie.eu est destiné au public wallon."
 
 const highlights = [
-  "Sans coupure d'énergie",
-  "Gratuit et sans frais",
-  "Préavis d'un mois maximum",
-  "Électricité et gaz",
+  "Guide d’information Belgique",
+  "Conditions à vérifier selon la situation",
+  "Parcours commercial destiné au public wallon",
 ]
 
 const sections: ContentSection[] = [
   {
     id: "pourquoi-changer",
-    heading: "Pourquoi changer de fournisseur d'électricité et de gaz ?",
+    heading: "Examiner son contrat avant de changer",
     paragraphs: [
-      "Sur le marché libéralisé belge, les fournisseurs ajustent régulièrement leurs tarifs et leurs promotions. Un ménage resté plusieurs années chez le même fournisseur paie souvent un tarif nettement supérieur aux meilleures offres du moment. Changer permet de récupérer cet écart, sur l'électricité comme sur le gaz.",
-      "Le changement est d'autant plus intéressant pour le gaz, où la redevance fixe et la formule tarifaire varient fortement d'un contrat à l'autre. Comparer électricité et gaz ensemble, via une offre double énergie ou deux contrats distincts, maximise l'économie totale.",
+      "Un changement peut être envisagé lorsque vous souhaitez revoir les prix, les conditions ou le service associé à votre contrat. Comparez les documents tarifaires sur une même période et selon un profil de consommation comparable; ne présumez pas qu’un changement entraîne une économie.",
+      "L’électricité et le gaz peuvent être souscrits séparément ou ensemble selon les offres disponibles. Vérifiez les conditions propres à chaque produit et à votre région avant de décider.",
     ],
   },
   {
     id: "etapes",
-    heading: "Les étapes pour changer de fournisseur en Belgique",
+    heading: "Les étapes à vérifier avant de souscrire",
     paragraphs: [
-      "La procédure est volontairement simple pour encourager la concurrence. Vous n'avez aucune intervention technique à prévoir : votre compteur et votre raccordement restent identiques, et seul le nom inscrit sur votre facture change.",
+      "Les démarches et leur ordre peuvent dépendre de votre situation et des conditions contractuelles. Demandez au fournisseur choisi quelles actions il prend en charge, quelle date de prise d’effet est prévue et si vous devez accomplir une démarche auprès de votre fournisseur actuel.",
     ],
     bullets: [
-      "Comparez les offres d'électricité et de gaz selon votre consommation et votre région",
-      "Munissez-vous de votre code EAN (18 chiffres) et de votre dernière facture",
-      "Souscrivez auprès du nouveau fournisseur, qui résilie automatiquement l'ancien contrat",
-      "Recevez la confirmation de reprise et vérifiez l'index de compteur transmis",
-      "Aucune coupure : l'alimentation continue sans interruption pendant le transfert",
+      "Rassemblez une facture récente et les informations de consommation utiles",
+      "Vérifiez le produit, le tarif, la période de validité et les conditions d’éligibilité",
+      "Consultez les clauses de résiliation de votre contrat actuel",
+      "Demandez au fournisseur choisi de confirmer les démarches et la date de prise d’effet",
+      "Conservez les confirmations et documents liés à la demande",
+    ],
+    links: [
+      { href: "https://www.cwape.be/", label: "Consulter les informations officielles de la CWaPE", external: true },
+      { href: "https://economie.fgov.be/fr/themes/energie", label: "Consulter les informations Énergie du SPF Économie (page mise à jour le 10 juin 2025)", external: true },
+      { href: "/changement-fournisseur-energie", label: "Voir le guide pratique pour la Wallonie" },
     ],
   },
   {
@@ -61,45 +65,33 @@ const sections: ContentSection[] = [
   },
   {
     id: "delais-droits",
-    heading: "Délais légaux et droits du consommateur",
+    heading: "Vérifier les délais et droits applicables",
     paragraphs: [
-      "La législation belge protège fortement le consommateur. Pour un contrat à durée indéterminée, vous pouvez résilier à tout moment moyennant un préavis d'un mois, sans frais ni indemnité de rupture. Pour un contrat à durée déterminée, vous bénéficiez aussi de ce droit de résiliation avec préavis d'un mois, sans pénalité.",
-      "Le transfert effectif prend généralement quelques semaines, le temps que le gestionnaire de réseau traite la reprise. Vous disposez par ailleurs d'un droit de rétractation de 14 jours après une souscription à distance. Aucun de ces droits n'entraîne de coupure ni de frais cachés.",
+      "Cette page ne fixe pas de délai légal unique. Le préavis, les éventuels frais de résiliation, le droit de rétractation et les démarches à effectuer doivent être vérifiés selon le contrat, la manière dont il a été conclu, le type de client et les règles en vigueur à la date de votre demande.",
+      "Avant de souscrire ou de résilier, consultez les informations officielles applicables à votre situation et demandez au fournisseur de confirmer par écrit les délais, frais éventuels et date de prise d’effet. Les pages générales citées ci-dessous sont des points de départ; elles ne remplacent pas la vérification des textes et conditions spécifiques en vigueur.",
     ],
-    bullets: [
-      "Résiliation avec préavis d'un mois, sans frais (durée indéterminée comme déterminée)",
-      "Droit de rétractation de 14 jours pour une souscription à distance",
-      "Aucune indemnité de rupture pour les particuliers",
-      "Le nouveau fournisseur gère l'ensemble des formalités administratives",
+    links: [
+      { href: "https://www.cwape.be/", label: "CWaPE — régulateur wallon de l’énergie", external: true },
+      { href: "https://economie.fgov.be/fr/themes/energie", label: "SPF Économie — rubrique Énergie (mise à jour le 10 juin 2025)", external: true },
     ],
   },
 ]
 
 const faqs = [
   {
-    question: "Changer de fournisseur d'électricité et de gaz est-il payant ?",
+    question: "Quelles informations préparer avant une demande ?",
     answer:
-      "Non. Le changement est totalement gratuit en Belgique. Pour les particuliers, la résiliation se fait avec un préavis d'un mois, sans frais ni indemnité de rupture, que le contrat soit à durée déterminée ou indéterminée.",
+      "Une facture récente aide à retrouver les informations de votre contrat et de votre point de fourniture. Le fournisseur vous précisera les données nécessaires à votre situation.",
   },
   {
-    question: "Vais-je subir une coupure de gaz ou d'électricité ?",
+    question: "Quels délais et frais s’appliquent à un changement ?",
     answer:
-      "Non. Le changement est purement administratif. Votre compteur et votre raccordement restent identiques, et l'alimentation en énergie continue sans aucune interruption pendant le transfert.",
+      "Ils dépendent des règles en vigueur, de votre contrat et de votre situation. Vérifiez les conditions officielles et demandez au fournisseur de confirmer les modalités applicables avant de souscrire.",
   },
   {
     question: "Où trouver mon code EAN ?",
     answer:
-      "Le code EAN est un numéro à 18 chiffres commençant par 54, indiqué sur votre facture d'énergie. Vous en avez un pour l'électricité et un pour le gaz. Il identifie votre point de raccordement auprès du gestionnaire de réseau.",
-  },
-  {
-    question: "Combien de temps prend le changement de fournisseur ?",
-    answer:
-      "Le transfert prend généralement quelques semaines, le temps que le gestionnaire de réseau (Sibelga, ORES, RESA ou Fluvius) traite la reprise. Vous n'avez aucune démarche technique à effectuer durant cette période.",
-  },
-  {
-    question: "Vaut-il mieux une offre double énergie ou deux contrats séparés ?",
-    answer:
-      "Les offres double énergie incluent souvent une remise et une facture unique, mais deux contrats séparés peuvent parfois être moins chers selon votre profil. Notre comparateur teste les deux scénarios pour vous indiquer le plus avantageux.",
+      "Le code EAN identifie un point de fourniture et figure généralement sur les documents du fournisseur ou une facture récente. Vérifiez le code et les données demandées avant de les transmettre.",
   },
 ]
 
