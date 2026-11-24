@@ -36,10 +36,10 @@ export const SILO_PAGES: SiloPage[] = [
   },
   {
     slug: "comparateur-gaz-wallonie",
-    title: "Comparer le gaz en Wallonie | Contrats et repères",
-    h1: "Comparer les options de gaz en Wallonie",
+    title: "Comparer un contrat de gaz en Wallonie : critères et repères | Guide",
+    h1: "Comment comparer un contrat de gaz en Wallonie ?",
     description:
-      "Informations et accompagnement pour les particuliers qui souhaitent comparer les contrats de gaz en Wallonie. Les estimations sont indicatives et ne constituent pas une offre tarifaire.",
+      "Les critères pour examiner un contrat de gaz en Wallonie : prix, frais fixes, durée et conditions. Notre parcours fournit une estimation indicative, pas un classement de tarifs en temps réel.",
     region: "Wallonie",
     keywords: [
       "comparateur gaz Wallonie",
@@ -100,10 +100,10 @@ export const SILO_PAGES: SiloPage[] = [
   },
   {
     slug: "comparateur-energie-belgique",
-    title: "Comparateur énergie Belgique 2026 | Bruxelles, Wallonie, Flandre",
-    h1: "Comparateur d'énergie en Belgique : électricité et gaz à Bruxelles, en Wallonie et en Flandre",
+    title: "Marché de l’énergie en Belgique : repères par région | Guide",
+    h1: "Comprendre les marchés de l’énergie en Belgique : repères par région",
     description:
-      "Comparez gratuitement l'électricité et le gaz en Belgique. Tarifs Sibelga, ORES, RESA et Fluvius, fournisseurs Engie, Luminus, Mega. Économies jusqu'à 35%.",
+      "Comprenez les différences entre marchés régionaux de l’énergie en Belgique. Le parcours d’accompagnement de Jeconomisemonenergie.eu est destiné au public wallon et fournit une estimation indicative.",
     region: "Belgique",
     keywords: [
       "comparateur énergie Belgique",
@@ -149,10 +149,10 @@ export const SILO_PAGES: SiloPage[] = [
   },
   {
     slug: "changer-fournisseur-electricite-gaz-belgique",
-    title: "Changer de fournisseur électricité & gaz Belgique 2026",
-    h1: "Changer de fournisseur d'électricité et de gaz en Belgique : mode d'emploi 2026",
+    title: "Changer de fournisseur d’énergie en Belgique : étapes et droits | Guide",
+    h1: "Changer de fournisseur d’énergie en Belgique : les étapes et conditions à vérifier",
     description:
-      "Comment changer de fournisseur d'électricité et de gaz en Belgique sans coupure ni frais ? Démarches, délais légaux, code EAN et économies. Guide Jeconomisemonenergie.eu.",
+      "Les étapes pour préparer un changement de fournisseur en Belgique : contrat, point de fourniture et démarches. Les délais et conditions doivent être vérifiés selon votre situation et les règles en vigueur.",
     region: "Belgique",
     keywords: [
       "changer fournisseur électricité gaz Belgique",
@@ -181,10 +181,10 @@ export const SILO_PAGES: SiloPage[] = [
   },
   {
     slug: "cwape-simulateur",
-    title: "CWaPE simulateur 2026 | Comparateur tarifaire Wallonie",
-    h1: "CWaPE et simulateur tarifaire en Wallonie : comparer l'énergie en 2026",
+    title: "CompaCWaPE : comparateur officiel en Wallonie | Guide",
+    h1: "CompaCWaPE : utiliser le comparateur officiel de la CWaPE en Wallonie",
     description:
-      "Qu'est-ce que la CWaPE et son simulateur tarifaire en Wallonie ? Comparez les fournisseurs d'électricité et de gaz et comprenez votre facture ORES/RESA. Guide gratuit.",
+      "Comprenez le rôle de la CWaPE et de CompaCWaPE, son outil officiel de comparaison des offres en Wallonie. Consultez les informations directement sur compacwape.be.",
     region: "Wallonie",
     keywords: [
       "CWaPE",

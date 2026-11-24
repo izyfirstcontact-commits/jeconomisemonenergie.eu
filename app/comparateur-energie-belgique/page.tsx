@@ -19,84 +19,77 @@ export const metadata: Metadata = {
 }
 
 const intro =
-  "Que vous habitiez à Bruxelles, en Wallonie ou en Flandre, votre facture d'électricité et de gaz dépend autant de votre fournisseur que de votre région. Un comparateur d'énergie belge tient compte de votre gestionnaire de réseau (Sibelga, ORES, RESA ou Fluvius) et de votre consommation réelle pour identifier l'offre la plus avantageuse. En moyenne, un ménage qui n'a jamais comparé peut économiser jusqu'à 35 % sur la part énergie de sa facture."
+  "Les marchés de l’énergie en Belgique sont organisés à l’échelle régionale. Cette page propose des repères généraux pour comprendre les éléments à vérifier avant de comparer un contrat. Le parcours commercial de Jeconomisemonenergie.eu est destiné au public wallon : il ne constitue pas un comparateur couvrant Bruxelles, la Wallonie et la Flandre ni une comparaison tarifaire en temps réel."
 
 const highlights = [
-  "Bruxelles, Wallonie et Flandre",
-  "Électricité et gaz comparés",
-  "Tous les fournisseurs belges",
-  "Gratuit et sans engagement",
+  "Guide d’information Belgique",
+  "Repères à vérifier par région",
+  "Parcours commercial destiné au public wallon",
 ]
 
 const sections: ContentSection[] = [
   {
     id: "trois-regions",
-    heading: "Un marché unique, trois régions, quatre gestionnaires de réseau",
+    heading: "Des marchés régionaux à prendre en compte",
     paragraphs: [
-      "La Belgique a libéralisé son marché de l'énergie : chaque consommateur, particulier comme PME, choisit librement son fournisseur d'électricité et de gaz. Mais le pays reste organisé en trois régions, chacune dotée de son propre régulateur et de ses propres gestionnaires de réseau de distribution (GRD), ce qui influence directement les coûts de réseau facturés.",
-      "À Bruxelles-Capitale, le GRD unique est Sibelga et le régulateur régional est Brugel. En Wallonie, la distribution est assurée principalement par ORES et par RESA (région liégeoise), sous la supervision de la CWaPE. En Flandre, c'est Fluvius qui gère l'ensemble du réseau, encadré par la VREG. Le régulateur fédéral, la CREG, surveille quant à lui les tarifs au niveau national.",
-      "Concrètement, deux ménages avec la même consommation mais situés dans des régions différentes ne paient pas exactement la même facture, car les coûts de réseau et certaines surcharges varient. Un bon comparateur applique automatiquement les tarifs de votre GRD à partir de votre code postal.",
+      "La Belgique comprend plusieurs marchés régionaux de l’énergie. Les règles, organismes compétents, offres disponibles et composantes de facture peuvent varier selon la région et le point de fourniture.",
+      "Avant de comparer un contrat, identifiez votre région et consultez le régulateur compétent ainsi que les conditions du fournisseur. Cette page est un guide général; elle ne vérifie pas la disponibilité d’une offre à une adresse donnée.",
+    ],
+    links: [
+      { href: "https://www.compacwape.be/", label: "Pour la Wallonie, consulter le comparateur officiel CompaCWaPE", external: true },
     ],
   },
   {
     id: "composition-facture",
-    heading: "Ce que compare réellement un comparateur d'énergie",
+    heading: "Les éléments à examiner dans un contrat",
     paragraphs: [
-      "Votre facture se compose de trois blocs : le coût de l'énergie (la seule part réellement concurrentielle), les coûts de réseau fixés par votre GRD, et les taxes et surcharges. Comparer les fournisseurs revient donc à optimiser la part énergie, qui pèse suffisamment lourd pour générer des économies concrètes.",
-      "Un comparateur fiable ne se limite pas au prix du kWh : il intègre la redevance fixe annuelle, le type de contrat (fixe ou variable), la part d'énergie verte, les promotions de bienvenue et votre profil de compteur (simple, bihoraire ou exclusif nuit).",
+      "Les documents tarifaires peuvent présenter plusieurs composantes et conditions. Pour une comparaison valable, vérifiez la période, le profil de consommation, les frais fixes, la durée, les modalités d’évolution du prix et les critères des promotions éventuelles.",
+      "Une estimation ou un classement n’est interprétable que si sa méthode, ses produits inclus, sa région de couverture et la date de ses données sont clairement précisés.",
     ],
     bullets: [
-      "Le prix du kWh d'électricité et du gaz, et la redevance fixe annuelle",
-      "Le type de contrat : tarif fixe (stable) ou variable (indexé sur le marché)",
-      "Votre gestionnaire de réseau selon la région : Sibelga, ORES, RESA ou Fluvius",
-      "Le type de compteur : simple, bihoraire, exclusif nuit ou communicant",
-      "Les promotions, kWh offerts et réductions de bienvenue",
-      "La part d'énergie renouvelable et la qualité du service client",
+      "Le prix et les frais fixes affichés dans les documents du fournisseur",
+      "La durée et les modalités d’évolution du tarif",
+      "Les conditions d’éligibilité et de maintien d’une promotion",
+      "La période et le profil utilisés pour calculer un coût annuel",
     ],
   },
   {
     id: "electricite-et-gaz",
-    heading: "Comparer électricité et gaz ensemble : l'offre double énergie",
+    heading: "Électricité et gaz : comparer les conditions séparément",
     paragraphs: [
-      "De nombreux fournisseurs belges proposent des contrats « double énergie » regroupant l'électricité et le gaz. Ces offres combinées s'accompagnent souvent d'une remise et simplifient la gestion avec une facture unique. Le comparateur simule à la fois l'offre groupée et deux contrats séparés, afin de vérifier laquelle est réellement la plus avantageuse pour votre profil.",
-      "Pour le gaz, la zone tarifaire (indices TTF ou ZTP selon les contrats) et la redevance fixe peuvent faire varier sensiblement le total annuel. Pour l'électricité, le choix entre compteur simple et bihoraire dépend de la part de votre consommation en heures creuses. Notre simulateur teste ces scénarios automatiquement.",
+      "Si vous examinez plusieurs contrats, vérifiez les conditions de chaque produit séparément, même lorsqu’ils sont proposés ensemble. Une remise éventuelle doit être appréciée avec sa durée, ses critères et le prix applicable après la période promotionnelle.",
+      "Jeconomisemonenergie.eu ne simule pas ici des offres groupées et des contrats séparés dans les trois régions. Vérifiez toute comparaison auprès d’un outil ou fournisseur qui publie sa couverture et sa méthode.",
     ],
   },
   {
     id: "economies-belgique",
-    heading: "Quelles économies espérer en Belgique en 2026 ?",
+    heading: "Périmètre du parcours de Jeconomisemonenergie.eu",
     paragraphs: [
-      "Les économies dépendent de votre contrat actuel et de votre consommation. Un ménage resté chez son fournisseur historique depuis plusieurs années paie souvent un tarif bien au-dessus du marché : le passage à l'offre la plus compétitive peut représenter plusieurs centaines d'euros par an sur la part énergie.",
-      "Notre comparateur calcule votre économie potentielle en moins de deux minutes, à partir de votre consommation réelle ou estimée. Vous obtenez une estimation claire et, si vous le souhaitez, nos conseillers vous accompagnent gratuitement dans le changement, sans aucune coupure ni démarche technique.",
+      "Le parcours commercial proposé par Jeconomisemonenergie.eu s’adresse au public wallon. Il recueille des informations pour préparer une demande et peut afficher une estimation indicative; il ne constitue pas une comparaison de tarifs en temps réel ni une offre couvrant la Belgique entière.",
+      "Pour la Wallonie, consultez aussi le guide des critères de comparaison et les informations officielles de CompaCWaPE. Vérifiez toujours les prix, dates et conditions auprès des fournisseurs concernés.",
+    ],
+    links: [
+      { href: "/guides/comparateurs-prix-electricite-gaz-belgique", label: "Lire le guide sur les critères de comparaison en Wallonie" },
+      { href: "/comparateur-gaz-wallonie", label: "Voir les repères sur les contrats de gaz en Wallonie" },
     ],
   },
 ]
 
 const faqs = [
   {
-    question: "Le comparateur fonctionne-t-il partout en Belgique ?",
+    question: "Le parcours commercial couvre-t-il les trois régions ?",
     answer:
-      "Oui. Notre comparateur couvre les trois régions et tous les gestionnaires de réseau : Sibelga à Bruxelles, ORES et RESA en Wallonie, et Fluvius en Flandre. Il applique automatiquement les tarifs de votre GRD à partir de votre code postal.",
+      "Non. Le parcours de Jeconomisemonenergie.eu est destiné au public wallon. Cette page nationale fournit des repères généraux et ne propose pas de comparaison commerciale pour Bruxelles et la Flandre.",
   },
   {
-    question: "Quelle est la différence entre le fournisseur et le gestionnaire de réseau ?",
+    question: "Cette page compare-t-elle les prix en temps réel ?",
     answer:
-      "Le gestionnaire de réseau (Sibelga, ORES, RESA, Fluvius) achemine l'énergie et entretient le réseau ; il ne change jamais et ne se choisit pas. Le fournisseur est l'entreprise auprès de laquelle vous payez votre énergie, et vous pouvez en changer librement et gratuitement.",
+      "Non. Il s’agit d’un guide d’information; il ne classe pas les tarifs en temps réel. Consultez les outils officiels et les documents des fournisseurs pour les prix et conditions applicables.",
   },
   {
-    question: "Vaut-il mieux une offre double énergie ou deux contrats séparés ?",
+    question: "Où consulter les informations officielles pour la Wallonie ?",
     answer:
-      "Cela dépend de votre profil. Les offres double énergie incluent souvent une remise et une facture unique, mais deux contrats séparés peuvent parfois être moins chers. Notre comparateur simule les deux scénarios pour vous indiquer le plus avantageux.",
-  },
-  {
-    question: "Comparer les prix de l'énergie est-il gratuit ?",
-    answer:
-      "Oui, totalement. La comparaison est gratuite et sans engagement. Nous sommes rémunérés par les fournisseurs uniquement si vous décidez de souscrire, ce qui ne change rien au prix que vous payez.",
-  },
-  {
-    question: "Le changement de fournisseur entraîne-t-il une coupure ?",
-    answer:
-      "Non. Le changement est purement administratif : votre compteur reste identique et l'alimentation continue sans interruption. Le nouveau fournisseur se charge de résilier votre ancien contrat.",
+      "La CWaPE est le régulateur wallon des marchés de l’électricité et du gaz. CompaCWaPE est son comparateur officiel des offres en Wallonie.",
   },
 ]
 

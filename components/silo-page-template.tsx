@@ -15,6 +15,7 @@ export interface ContentSection {
   heading: string
   paragraphs: string[]
   bullets?: string[]
+  links?: { href: string; label: string; external?: boolean }[]
 }
 
 interface SiloPageProps {
@@ -136,6 +137,23 @@ export function SiloPageTemplate({
                   </p>
                 ))}
               </div>
+              {section.links && section.links.length > 0 && (
+                <ul className="mt-4 flex flex-col gap-2 text-sm font-medium text-primary">
+                  {section.links.map((item) => (
+                    <li key={item.href}>
+                      {item.external ? (
+                        <a href={item.href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary/80">
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link href={item.href} className="underline underline-offset-4 hover:text-primary/80">
+                          {item.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
               {section.bullets && section.bullets.length > 0 && (
                 <ul className="mt-5 space-y-3">
                   {section.bullets.map((bullet, bIndex) => (

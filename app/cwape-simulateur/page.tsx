@@ -19,81 +19,72 @@ export const metadata: Metadata = {
 }
 
 const intro =
-  "En Wallonie, la CWaPE (Commission wallonne pour l'énergie) est le régulateur du marché de l'électricité et du gaz. Elle met à disposition un simulateur tarifaire indépendant qui permet de comparer les offres des fournisseurs. Comprendre le rôle de la CWaPE et de son simulateur vous aide à décrypter votre facture ORES ou RESA et à choisir l'offre la plus avantageuse en 2026."
+  "La CWaPE est le régulateur wallon des marchés de l’électricité et du gaz. CompaCWaPE est son comparateur officiel des offres d’énergie en Wallonie. Jeconomisemonenergie.eu propose un parcours commercial distinct, avec une estimation indicative qui ne remplace pas l’outil officiel et ne compare pas les tarifs en temps réel."
 
 const highlights = [
-  "Régulateur wallon indépendant",
-  "Simulateur tarifaire officiel",
-  "Réseaux ORES et RESA",
-  "Électricité et gaz",
+  "CWaPE : régulateur wallon",
+  "CompaCWaPE : comparateur officiel",
+  "Outil public et parcours commercial distincts",
 ]
 
 const sections: ContentSection[] = [
   {
     id: "role-cwape",
-    heading: "Le rôle de la CWaPE en Wallonie",
+    heading: "Le rôle de la CWaPE",
     paragraphs: [
-      "La CWaPE est la Commission wallonne pour l'énergie, l'organe de régulation du marché de l'électricité et du gaz en Région wallonne. Elle veille au bon fonctionnement du marché, contrôle les tarifs de distribution des gestionnaires de réseau et protège les intérêts des consommateurs wallons.",
-      "Au niveau régional, la CWaPE complète le travail de la CREG, le régulateur fédéral. Tandis que la CREG encadre les aspects nationaux, la CWaPE supervise spécifiquement la Wallonie : tarifs de réseau d'ORES et de RESA, obligations de service public, primes et certificats verts liés au photovoltaïque.",
+      "La CWaPE (Commission wallonne pour l’Énergie) est le régulateur wallon des marchés de l’électricité et du gaz. Elle est distincte des fournisseurs d’énergie et du parcours commercial proposé par Jeconomisemonenergie.eu.",
+    ],
+    links: [
+      { href: "https://www.cwape.be/", label: "Consulter le site officiel de la CWaPE", external: true },
     ],
   },
   {
     id: "simulateur",
-    heading: "Le simulateur tarifaire de la CWaPE",
+    heading: "CompaCWaPE, le comparateur officiel",
     paragraphs: [
-      "La CWaPE propose un simulateur tarifaire en ligne, indépendant et gratuit, qui compare les offres d'électricité et de gaz disponibles en Wallonie. C'est un outil officiel et neutre, particulièrement utile pour avoir une vision objective du marché wallon.",
-      "Pour l'utiliser efficacement, vous avez besoin de votre consommation annuelle (en kWh) et de votre code postal, afin que les tarifs de votre gestionnaire de réseau (ORES ou RESA) soient correctement appliqués. Le simulateur affiche alors le coût annuel estimé de chaque offre.",
+      "CompaCWaPE est présenté par la CWaPE comme son comparateur des offres d’énergie en Région wallonne. Les prix et conditions évoluent : consultez l’outil officiel et les fiches tarifaires des fournisseurs pour vérifier les informations valables au moment de votre comparaison.",
+      "La page officielle consultée indiquait une mise à jour des prix du mois d’octobre publiée le 5 novembre 2026. Cette date est un repère de consultation, pas une garantie que les offres affichées restent valables par la suite.",
     ],
-    bullets: [
-      "Outil officiel, indépendant et gratuit du régulateur wallon",
-      "Compare les offres d'électricité et de gaz en Wallonie",
-      "Nécessite votre consommation annuelle et votre code postal",
-      "Applique les tarifs de réseau d'ORES ou de RESA",
+    links: [
+      { href: "https://www.compacwape.be/", label: "Ouvrir CompaCWaPE — comparateur officiel de la CWaPE", external: true },
     ],
   },
   {
     id: "ores-resa",
-    heading: "Comprendre votre facture : ORES, RESA et coûts de réseau",
+    heading: "Distinguer régulateur, comparateur et service commercial",
     paragraphs: [
-      "En Wallonie, la distribution de l'énergie est assurée principalement par ORES, et par RESA dans la région de Liège. Ces gestionnaires de réseau acheminent l'électricité et le gaz jusqu'à votre compteur : ils ne vendent pas d'énergie et ne se choisissent pas. Leurs tarifs de distribution, validés par la CWaPE, représentent une part importante de votre facture.",
-      "Votre facture combine donc trois éléments : la part énergie (concurrentielle, qui dépend du fournisseur), les coûts de réseau d'ORES ou RESA, et les taxes et surcharges régionales et fédérales. Seule la part énergie varie entre fournisseurs : c'est sur elle que joue la comparaison.",
+      "La CWaPE est le régulateur régional. CompaCWaPE est l’outil officiel de comparaison qu’elle met à disposition. Jeconomisemonenergie.eu est un service privé distinct : son parcours recueille des informations pour préparer une demande et peut afficher une estimation indicative. Il ne s’agit ni d’un service de la CWaPE ni d’une équivalence démontrée avec CompaCWaPE.",
+      "Pour connaître la couverture, la méthode et les conditions du service privé, consultez les informations affichées dans le parcours avant de transmettre une demande. Pour comparer les offres wallonnes, utilisez directement CompaCWaPE et vérifiez les fiches tarifaires des fournisseurs.",
+    ],
+    links: [
+      { href: "/comparateur-gaz-wallonie", label: "Lire nos repères pour comparer un contrat de gaz en Wallonie" },
     ],
   },
   {
     id: "au-dela-cwape",
-    heading: "Aller plus loin que le simulateur CWaPE",
+    heading: "Un parcours commercial distinct",
     paragraphs: [
-      "Le simulateur de la CWaPE donne une excellente photographie neutre du marché wallon. Pour passer de la simulation à l'action, notre comparateur va plus loin : il intègre les promotions et réductions de bienvenue, simule les offres double énergie et vous accompagne gratuitement dans le changement si vous le souhaitez.",
-      "L'approche idéale combine les deux : vérifier les tarifs sur le simulateur officiel de la CWaPE pour la transparence, puis utiliser notre comparateur pour optimiser votre choix et finaliser la souscription sans coupure ni démarche technique.",
+      "Le parcours de Jeconomisemonenergie.eu ne remplace pas le comparateur officiel et ne prétend pas en reproduire les fonctions. Il s’agit d’une démarche commerciale séparée; toute estimation affichée est indicative, ne constitue pas une offre contractuelle et ne compare pas les tarifs en temps réel.",
+      "Pour une demande d’accompagnement, utilisez le parcours du site après avoir consulté les conditions qui y sont présentées. Pour comparer les offres et leurs prix, rendez-vous directement sur CompaCWaPE.",
     ],
   },
 ]
 
 const faqs = [
   {
-    question: "Qu'est-ce que la CWaPE ?",
+    question: "Quel est le rôle de la CWaPE ?",
     answer:
-      "La CWaPE (Commission wallonne pour l'énergie) est le régulateur du marché de l'électricité et du gaz en Région wallonne. Elle contrôle les tarifs de distribution d'ORES et de RESA et protège les consommateurs wallons, en complément du régulateur fédéral CREG.",
+      "La CWaPE est le régulateur wallon des marchés de l’électricité et du gaz. Consultez son site officiel pour ses missions et ses informations à jour.",
   },
   {
-    question: "Le simulateur de la CWaPE est-il gratuit et fiable ?",
+    question: "Qu’est-ce que CompaCWaPE ?",
     answer:
-      "Oui. Le simulateur tarifaire de la CWaPE est un outil officiel, indépendant et gratuit. Il compare objectivement les offres d'électricité et de gaz en Wallonie à partir de votre consommation et de votre code postal.",
+      "CompaCWaPE est le comparateur officiel de la CWaPE pour les offres d’énergie en Wallonie. Les prix et conditions doivent être vérifiés dans l’outil au moment de la consultation.",
   },
   {
-    question: "Quelle est la différence entre la CWaPE et ORES ?",
+    question: "Jeconomisemonenergie.eu est-il un service de la CWaPE ?",
     answer:
-      "La CWaPE est le régulateur qui contrôle le marché et valide les tarifs. ORES est un gestionnaire de réseau de distribution qui achemine l'énergie jusqu'à votre compteur. ORES ne vend pas d'énergie et ne se choisit pas, contrairement au fournisseur.",
-  },
-  {
-    question: "De quelles informations ai-je besoin pour simuler mes tarifs ?",
-    answer:
-      "Il vous faut votre consommation annuelle en kWh (électricité et/ou gaz) et votre code postal, afin que les tarifs de réseau d'ORES ou de RESA soient appliqués correctement. Ces données figurent sur votre dernière facture annuelle.",
-  },
-  {
-    question: "Le comparateur Jeconomisemonenergie.eu remplace-t-il le simulateur CWaPE ?",
-    answer:
-      "Il le complète. Le simulateur CWaPE offre une vue neutre du marché ; notre comparateur intègre en plus les promotions, les offres double énergie et un accompagnement gratuit pour changer de fournisseur sans coupure.",
+      "Non. Jeconomisemonenergie.eu propose un parcours commercial distinct. Il ne remplace pas CompaCWaPE et ses estimations ne constituent pas une comparaison tarifaire en temps réel.",
   },
 ]
 

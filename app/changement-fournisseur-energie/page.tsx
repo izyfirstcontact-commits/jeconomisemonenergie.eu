@@ -57,9 +57,13 @@ const sections: ContentSection[] = [
     id: "vos-droits",
     heading: "Vérifier les conditions de résiliation",
     paragraphs: [
-      "Les droits de résiliation et les délais applicables dépendent du type de contrat et des règles en vigueur. Vérifiez les conditions de votre contrat et les informations officielles avant de résilier ou de signer une nouvelle offre.",
-      "Conservez les confirmations et relevés liés au changement et demandez au fournisseur de préciser toute condition ou frais qui ne serait pas clair.",
-      "Un changement de fournisseur concerne le contrat de fourniture. Si vous avez une question sur votre raccordement, votre compteur ou votre gestionnaire de réseau, adressez-vous au gestionnaire compétent pour votre commune.",
+      "Les droits de résiliation, délais et frais éventuels dépendent du contrat, de votre situation et des règles en vigueur. Vérifiez les conditions contractuelles et les informations officielles à la date de votre demande avant de résilier ou de souscrire.",
+      "Conservez les confirmations et documents liés au changement. Demandez au fournisseur de préciser toute condition, date ou frais qui ne serait pas clair.",
+      "Un changement de fournisseur concerne le contrat de fourniture. Pour une question de raccordement ou de réseau, consultez le gestionnaire compétent pour votre commune.",
+    ],
+    links: [
+      { href: "https://www.cwape.be/", label: "Consulter la CWaPE, régulateur wallon", external: true },
+      { href: "/changer-fournisseur-electricite-gaz-belgique", label: "Voir le guide national sur les points à vérifier" },
     ],
   },
   {
@@ -81,29 +85,19 @@ const sections: ContentSection[] = [
 
 const faqs = [
   {
-    question: "Quels éléments préparer avant de changer de fournisseur en Wallonie ?",
+    question: "Quels documents préparer avant une demande en Wallonie ?",
     answer:
-      "Une facture récente permet de retrouver les informations de consommation et de contrat. Vérifiez auprès du fournisseur les données nécessaires à votre demande.",
+      "Une facture récente permet de retrouver des informations utiles sur votre contrat et votre consommation. Le fournisseur choisi vous indiquera les données nécessaires à votre situation.",
   },
   {
-    question: "Le changement est-il toujours gratuit et sans frais ?",
+    question: "Quels délais ou frais peuvent s’appliquer ?",
     answer:
-      "Les conditions peuvent dépendre du contrat et de votre situation. Consultez les clauses de résiliation et demandez au fournisseur de confirmer tout frais ou délai éventuel.",
+      "Ils dépendent du contrat et des règles en vigueur. Vérifiez les conditions de résiliation et demandez au fournisseur de confirmer par écrit les modalités applicables à votre demande.",
   },
   {
-    question: "Combien de temps prend un changement de fournisseur ?",
+    question: "Qui effectue les démarches auprès de l’ancien fournisseur ?",
     answer:
-      "Le délai de prise d’effet dépend de la situation et des modalités applicables. Demandez une date prévisionnelle au fournisseur choisi et vérifiez les informations indiquées dans votre contrat.",
-  },
-  {
-    question: "Où trouver les informations de mon point de fourniture ?",
-    answer:
-      "Consultez une facture récente ou les documents transmis par votre fournisseur. Ne communiquez ces données qu’au service concerné et lorsque cela est nécessaire à votre demande.",
-  },
-  {
-    question: "Dois-je prévenir mon ancien fournisseur ?",
-    answer:
-      "Les démarches dépendent du contrat et du parcours de souscription. Confirmez avec le nouveau fournisseur qui effectue la résiliation et quelles actions restent à votre charge.",
+      "Cela dépend du parcours et des conditions applicables. Demandez au fournisseur choisi de confirmer quelles démarches il prend en charge et lesquelles restent à votre charge.",
   },
 ]
 
