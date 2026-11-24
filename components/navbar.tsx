@@ -18,12 +18,9 @@ const navLinks = [
 
 const guideLinks = [
   { key: "energyGuide", href: "/guides/comparateurs-prix-electricite-gaz-belgique" },
-  { key: "energyComparator", href: "/comparateur-energie-belgique" },
-  { key: "bestRate", href: "/meilleur-tarif-electricite-gaz-belgique" },
-  { key: "switchSupplier", href: "/changer-fournisseur-electricite-gaz-belgique" },
-  { key: "supplierReviews", href: "/avis-fournisseurs-energie-belgique" },
+  { key: "energyComparator", href: "/comparateur-gaz-wallonie" },
+  { key: "switchSupplier", href: "/changement-fournisseur-energie" },
   { key: "socialRate", href: "/tarif-social-energie" },
-  { key: "brusselsBonus", href: "/prime-energie-bruxelles-2026" },
   { key: "cwape", href: "/cwape-simulateur" },
 ] as const
 

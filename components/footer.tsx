@@ -13,11 +13,11 @@ export function Footer() {
               </div>
               <div>
                 <p className="text-lg font-bold">JECONOMISEMONENERGIE.EU</p>
-                <p className="text-sm text-muted-foreground">Service pour la Belgique</p>
+                <p className="text-sm text-muted-foreground">Service en Wallonie</p>
               </div>
             </div>
             <p className="max-w-md text-sm leading-7 text-muted-foreground">
-              Une expérience fluide, un accompagnement humain et des recommandations transparentes pour alléger votre facture.
+              Un parcours d’accompagnement pour faire le point sur vos contrats d’électricité et de gaz en Wallonie.
             </p>
           </div>
 
@@ -25,8 +25,8 @@ export function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Nos guides énergie</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <Link href="/comparateur-electricite-bruxelles" className="transition hover:text-foreground">
-                  Électricité Bruxelles
+                <Link href="/cwape-simulateur" className="transition hover:text-foreground">
+                  Comparer l’énergie en Wallonie
                 </Link>
               </li>
               <li>
@@ -35,18 +35,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/prix-energie-flandre" className="transition hover:text-foreground">
-                  Prix énergie Flandre
-                </Link>
-              </li>
-              <li>
                 <Link href="/changement-fournisseur-energie" className="transition hover:text-foreground">
                   Changer de fournisseur
                 </Link>
               </li>
               <li>
-                <Link href="/prime-energie-belgique" className="transition hover:text-foreground">
-                  Primes énergie
+                <Link href="/tarif-social-energie" className="transition hover:text-foreground">
+                  Tarif social de l’énergie
                 </Link>
               </li>
             </ul>
@@ -77,7 +72,7 @@ export function Footer() {
         <div className="mt-10 md:mt-12 border-t border-border pt-8">
           {/* Branding Jeconomisemonenergie.eu */}
           <div className="mb-6 text-sm text-muted-foreground break-words">
-            <p><span className="font-semibold text-foreground">Jeconomisemonenergie.eu - Service pour la Belgique</span> vous aide à comparer et réduire vos factures d&apos;énergie à Bruxelles, en Wallonie et en Flandre.</p>
+            <p><span className="font-semibold text-foreground">Jeconomisemonenergie.eu - Service en Wallonie</span> accompagne les particuliers et les professionnels dans leurs démarches liées aux contrats d&apos;électricité et de gaz.</p>
             <a href="mailto:contactenergie@izyfirstcontact.fr" className="text-primary hover:underline break-all">contactenergie@izyfirstcontact.fr</a>
           </div>
 
@@ -89,7 +84,7 @@ export function Footer() {
 
           <div className="text-sm text-muted-foreground flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p>&copy; 2026 Jeconomisemonenergie.eu. Tous droits réservés.</p>
-            <p>Belgique - Service client : +32 71 94 24 08</p>
+            <p>Wallonie - Service client : +32 71 94 24 08</p>
           </div>
         </div>
       </div>

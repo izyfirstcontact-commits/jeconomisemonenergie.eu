@@ -87,7 +87,7 @@ export function BrandHeader() {
       
       {/* Tagline */}
       <p className="text-primary-foreground/90 text-sm md:text-base mt-2 font-medium max-w-md mx-auto">
-        Réduisez jusqu{"'"}à 35% votre facture d{"'"}énergie en Belgique
+        Faites le point sur votre contrat d’énergie en Wallonie
       </p>
       
       {/* Trust badges */}
@@ -114,7 +114,7 @@ export function BrandHeader() {
           <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span>Offres adaptées</span>
+          <span>Accompagnement énergie</span>
         </div>
       </div>
     </div>

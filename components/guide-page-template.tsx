@@ -286,8 +286,7 @@ export function GuidePageTemplate({
           <section className="mt-8 rounded-2xl bg-primary p-6 md:p-8 text-center text-primary-foreground">
             <h2 className="text-xl md:text-2xl font-bold text-balance">Prêt à réduire votre facture d&apos;énergie ?</h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-primary-foreground/90">
-              Notre comparateur belge analyse votre situation et vous propose les meilleures offres
-              disponibles dans votre région. Gratuit et sans engagement.
+              Le parcours vous aide à préparer votre démarche énergie en Wallonie. Les estimations affichées sont indicatives et ne constituent pas une comparaison de tarifs en temps réel.
             </p>
             <Link
               href="/#formulaire"

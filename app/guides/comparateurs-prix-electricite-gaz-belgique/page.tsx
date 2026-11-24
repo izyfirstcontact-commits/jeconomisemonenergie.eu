@@ -19,107 +19,67 @@ export const metadata: Metadata = {
 }
 
 const intro =
-  "En Belgique, 73% des ménages payent trop cher leur énergie. La raison : ils n'utilisent pas de comparateur. Que vous soyez à Bruxelles, en Wallonie ou en Flandre, un comparateur de prix électricité et gaz vous fait économiser 180 à 450€/an en 2 minutes. Voici comment ça marche avec Sibelga, Ores et Fluvius."
+  "Comparer des contrats d’électricité ou de gaz en Wallonie suppose de regarder les conditions complètes et de partir d’un profil de consommation adapté. Ce guide présente les principaux éléments à vérifier et les limites d’une estimation lorsque les tarifs et leurs dates de validité ne sont pas disponibles."
 
 const highlights = [
-  "Données CREG officielles",
-  "Sibelga, Ores & Fluvius",
-  "100% gratuit",
-  "Résultat en 2 minutes",
+  "Marché wallon",
+  "Électricité et gaz",
+  "Particuliers et professionnels",
+  "Conditions à vérifier",
 ]
 
 const sections: GuideSection[] = [
   {
     id: "pourquoi-comparateur",
-    heading: "Pourquoi utiliser un comparateur en Belgique ?",
+    heading: "Quels éléments comparer en Wallonie ?",
     blocks: [
       {
         type: "ordered",
         items: [
-          "Les prix changent tous les 3 mois : la CREG valide de nouveaux tarifs variables chaque trimestre. Votre contrat « fixe » de 2023 est déjà obsolète.",
-          "Les GRD sont différents : un Bruxellois chez Sibelga ne paye pas les mêmes frais de réseau qu'un Wallon chez Ores ou un Flamand chez Fluvius. Le comparateur calcule ça automatiquement.",
-          "32 fournisseurs actifs : Engie, Luminus, TotalEnergies, Mega, Eneco… Impossible de checker manuellement.",
+          "Le prix de l’énergie, les frais fixes, la durée du contrat et les modalités d’indexation.",
+          "Les coûts de réseau, taxes et prélèvements, présentés séparément du prix de l’énergie.",
+          "Les conditions promotionnelles, leur durée et les critères pour en bénéficier.",
+          "La période de comparaison et le profil de consommation utilisés pour calculer un coût annuel.",
         ],
       },
     ],
   },
   {
     id: "comparateur-fiable",
-    heading: "Comment fonctionne un comparateur fiable ?",
+    heading: "Comment vérifier la fiabilité d’une comparaison ?",
     blocks: [
-      { type: "paragraph", text: "Un bon comparateur énergie Belgique doit :" },
-      {
-        type: "ordered",
-        items: [
-          "Être certifié CREG : gage d'indépendance. Jeconomisemonenergie.eu utilise les données CREG officielles.",
-          "Intégrer votre GRD : il vous demande votre code postal pour appliquer les tarifs Sibelga, Ores ou Fluvius.",
-          "Comparer fixe vs variable : en 2026, le variable redevient intéressant. Le comparateur doit simuler les 2.",
-          "Inclure toutes les promos : welcome pack, kWh gratuits, parrainage. On rate 60€ en moyenne sans ça.",
-        ],
-      },
+      { type: "paragraph", text: "Une comparaison utile doit indiquer les produits réellement inclus, le public éligible, la région couverte, la source et la date des prix, ainsi que les composantes non incluses. Vérifiez que votre profil et votre période de consommation correspondent aux hypothèses du calcul." },
+      { type: "paragraph", text: "Le CompaCWaPE est le comparateur officiel de référence pour les offres d’électricité et de gaz en Wallonie. Vérifiez directement ses informations et les conditions des fournisseurs avant de souscrire." },
     ],
   },
   {
     id: "electricite-vs-gaz",
-    heading: "Électricité vs Gaz : les pièges à éviter",
+    heading: "Particuliers et professionnels : des besoins différents",
     blocks: [
-      {
-        type: "table",
-        caption: "Pièges à éviter selon le type d'énergie",
-        headers: ["Énergie", "Piège #1", "Piège #2"],
-        rows: [
-          [
-            "Électricité",
-            "Tarif jour/nuit non rentable si moins de 40% de conso la nuit",
-            "Compteur exclusif nuit : seulement 3 fournisseurs le proposent",
-          ],
-          [
-            "Gaz naturel",
-            "Formule TTF vs ZTP : 15% d'écart selon votre commune",
-            "Redevance fixe jusqu'à 120€/an chez certains",
-          ],
-        ],
-      },
+      { type: "paragraph", text: "Les contrats résidentiels et professionnels ne sont pas nécessairement interchangeables. Les professionnels doivent notamment vérifier l’éligibilité de leur entreprise, la puissance, le type de local et les conditions applicables à leur profil de consommation." },
+      { type: "note", text: "Le parcours du site recueille des informations pour accompagner une demande. Son estimation est indicative et ne constitue pas une comparaison de tarifs en temps réel ni une offre contractuelle." },
     ],
   },
   {
     id: "moins-chers",
-    heading: "Les 5 fournisseurs les moins chers en Belgique — Octobre 2026",
+    heading: "Préparer une comparaison avant de changer",
     blocks: [
-      {
-        type: "paragraph",
-        text: "Données CREG pour un ménage type 3500 kWh élec + 17 000 kWh gaz :",
-      },
-      {
-        type: "table",
-        caption: "Classement des fournisseurs les moins chers",
-        headers: ["Rang", "Fournisseur", "Coût annuel"],
-        rows: [
-          ["1", "Mega", "1.834,56 EUR/an"],
-          ["2", "Eneco", "1.891,12 EUR/an"],
-          ["3", "TotalEnergies", "1.923,88 EUR/an"],
-          ["4", "Luminus", "1.956,44 EUR/an"],
-          ["5", "Engie", "1.987,22 EUR/an"],
-        ],
-      },
-      {
-        type: "note",
-        text: "Moyenne nationale : 2.234,00 EUR/an. Économie potentielle : 399,44 EUR.",
-      },
+      { type: "paragraph", text: "Rassemblez une facture récente, votre consommation annuelle, le type de contrat et les informations utiles sur votre point de fourniture. Pour une entreprise, préparez aussi les données propres au site et à la puissance concernée." },
+      { type: "paragraph", text: "Les tarifs et conditions évoluent. Ne vous fiez pas à un classement ou à un montant d’économie sans date, source, profil de référence et méthode de calcul clairement indiqués." },
     ],
   },
 ]
 
 const faqs = [
   {
-    question: "Le comparateur est-il gratuit en Belgique ?",
+    question: "Le parcours du site fournit-il un tarif contractuel ?",
     answer:
-      "Oui. Les comparateurs certifiés CREG comme Jeconomisemonenergie.eu sont 100% gratuits. Nous sommes rémunérés par les fournisseurs uniquement si vous signez.",
+      "Non. L’estimation affichée est indicative et ne constitue ni une offre contractuelle ni une comparaison de tarifs en temps réel. Vérifiez les prix et conditions directement auprès du fournisseur.",
   },
   {
-    question: "Puis-je changer si j'ai des panneaux solaires avec Fluvius ?",
+    question: "Quelles informations préparer pour comparer ?",
     answer:
-      "Oui. Le comparateur tient compte du tarif prosumer et du compteur qui tourne à l'envers. Obligatoire en Flandre depuis 2024.",
+      "Une facture récente et votre consommation annuelle sont utiles. Selon le contrat, il peut aussi être nécessaire de vérifier le type de compteur, les conditions tarifaires et les données de votre point de fourniture.",
   },
 ]
 
@@ -130,7 +90,7 @@ export default function ComparateursPrixElectriciteGazBelgiquePage() {
       h1={page.h1}
       intro={intro}
       highlights={highlights}
-      ctaLabel="Comparer mes prix électricité & gaz en Belgique"
+      ctaLabel="Préparer ma demande énergie en Wallonie"
       sections={sections}
       faqs={faqs}
     />

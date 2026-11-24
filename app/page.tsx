@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { NavbarWithAuth } from "@/components/navbar-with-auth"
 import { HeroSection } from "@/components/hero-section"
@@ -17,6 +18,25 @@ const FinalCTASection = dynamic(() => import("@/components/final-cta-section").t
 const Footer = dynamic(() => import("@/components/footer").then((mod) => mod.Footer))
 const MobileStickyCTA = dynamic(() => import("@/components/mobile-sticky-cta").then((mod) => mod.MobileStickyCTA))
 
+export const metadata: Metadata = {
+  title: "Comparateur énergie en Wallonie | Électricité et gaz",
+  description: "Préparez votre comparaison d’électricité ou de gaz en Wallonie. Un parcours pour les particuliers et un parcours adapté aux professionnels.",
+  alternates: {
+    canonical: "https://jeconomisemonenergie.eu/",
+    languages: {
+      "fr-BE": "https://jeconomisemonenergie.eu/",
+      "x-default": "https://jeconomisemonenergie.eu/",
+    },
+  },
+  openGraph: {
+    title: "Comparateur énergie en Wallonie | Jeconomisemonenergie.eu",
+    description: "Un parcours énergie destiné aux particuliers et professionnels de Wallonie.",
+    url: "https://jeconomisemonenergie.eu/",
+    locale: "fr_BE",
+    type: "website",
+  },
+}
+
 export default function HomePage() {
   return (
     <ClientTypeProvider>
@@ -27,10 +47,10 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
             <div className="mb-8 text-center md:mb-10">
               <h2 className="text-xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl text-balance">
-                Estimez vos économies en quelques secondes.
+                Faites le point sur votre situation énergétique.
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                Indiquez votre facture mensuelle et découvrez votre potentiel d{"'"}économie ainsi que votre score sur 100.
+                Indiquez votre facture mensuelle pour obtenir une estimation indicative. Elle ne remplace pas une comparaison de tarifs personnalisée.
               </p>
             </div>
             <HeroCalculator />
