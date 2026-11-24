@@ -36,8 +36,12 @@ export function SiloPageTemplate({
   sections,
   faqs,
 }: SiloPageProps) {
-  // Maillage interne : lien vers les autres pages silo
-  const relatedPages = SILO_PAGES.filter((p) => p.slug !== slug)
+  // Maillage interne concentré sur les ressources Wallonie et les guides transversaux utiles.
+  const relatedPages = SILO_PAGES.filter(
+    (page) =>
+      page.slug !== slug &&
+      (page.region.includes("Wallonie") || page.slug === "tarif-social-energie"),
+  )
 
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: "Accueil", url: "/" },
@@ -105,7 +109,7 @@ export function SiloPageTemplate({
                 className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-2xl bg-primary px-7 text-base font-semibold text-primary-foreground shadow-md transition hover:bg-primary/90 hover:shadow-lg"
               >
                 <Calculator className="size-5" />
-                Calculer mon économie
+                    Préparer ma demande
               </Link>
               <a
                 href="tel:+3271942408"
@@ -147,17 +151,17 @@ export function SiloPageTemplate({
               {index === 1 && (
                 <div className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-5 md:p-6 text-center">
                   <h3 className="text-base md:text-lg font-semibold text-foreground text-balance">
-                    Découvrez combien vous pouvez économiser
+                    Faites le point sur votre contrat d’énergie
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Simulez gratuitement vos économies en moins de 2 minutes, sans engagement.
+                    Décrivez votre situation pour être accompagné dans votre démarche énergie en Wallonie.
                   </p>
                   <Link
                     href="/#formulaire"
                     className="mt-4 inline-flex w-full sm:w-auto min-h-[48px] items-center justify-center gap-2 rounded-2xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-md transition hover:bg-primary/90"
                   >
                     <Calculator className="size-4" />
-                    Calculer mon économie
+                Préparer ma demande
                   </Link>
                 </div>
               )}
@@ -189,9 +193,9 @@ export function SiloPageTemplate({
 
           {/* Maillage interne : pages liées */}
           <section className="mb-4 rounded-2xl border border-border bg-card p-6 sm:p-8">
-            <h2 className="text-lg md:text-xl font-semibold text-foreground text-balance">Nos autres guides énergie en Belgique</h2>
+            <h2 className="text-lg md:text-xl font-semibold text-foreground text-balance">Nos ressources énergie en Wallonie</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Approfondissez votre comparaison avec nos guides régionaux et thématiques.
+              Retrouvez des informations utiles sur les démarches et le marché de l’énergie en Wallonie.
             </p>
             <ul className="mt-5 grid gap-3 grid-cols-1 sm:grid-cols-2">
               {relatedPages.map((page) => (
@@ -212,15 +216,14 @@ export function SiloPageTemplate({
           <section className="mt-8 rounded-2xl bg-primary p-6 md:p-8 text-center text-primary-foreground">
             <h2 className="text-xl md:text-2xl font-bold text-balance">Prêt à réduire votre facture d&apos;énergie ?</h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-primary-foreground/90">
-              Notre comparateur belge analyse votre situation et vous propose les meilleures offres
-              disponibles dans votre région. Gratuit et sans engagement.
+              Notre parcours vous aide à faire le point sur votre contrat d’électricité ou de gaz en Wallonie. Les estimations affichées sont indicatives et ne constituent pas une offre tarifaire.
             </p>
             <Link
               href="/#formulaire"
               className="mt-6 inline-flex w-full sm:w-auto min-h-[52px] items-center justify-center gap-2 rounded-2xl bg-background px-7 text-base font-semibold text-foreground shadow-md transition hover:bg-card"
             >
               <Calculator className="size-5 text-primary" />
-              Calculer mon économie
+              Préparer ma demande
             </Link>
           </section>
         </article>

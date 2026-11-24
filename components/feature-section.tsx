@@ -7,27 +7,27 @@ import { Shield, Sparkles, Users, Clock } from "lucide-react"
 
 const features = [
   {
-    title: "Analyse instantanée",
+    title: "Parcours de qualification",
     description:
-      "Une estimation claire et personnalisée en quelques clics, sans paperasse inutile.",
+      "Renseignez votre situation énergétique à l’aide du formulaire en plusieurs étapes.",
     icon: Sparkles,
   },
   {
-    title: "Offres exclusives",
+    title: "Repères pour comparer",
     description:
-      "Nous comparons plus de 30 fournisseurs pour vous proposer les meilleures économies réelles.",
+      "Les prix et conditions d’une offre doivent être vérifiés selon votre profil et votre région.",
     icon: Shield,
   },
   {
-    title: "Accompagnement humain",
+    title: "Suivi de demande",
     description:
-      "Un conseiller dédié vous guide pas à pas pour garantir une transition simple et sereine.",
+      "Un conseiller peut vous recontacter au sujet des informations transmises.",
     icon: Users,
   },
   {
-    title: "Résultats mesurables",
+    title: "Estimation indicative",
     description:
-      "Des propositions chiffrées et transparentes, basées sur votre consommation réelle.",
+      "Le résultat du simulateur ne constitue pas une comparaison tarifaire en temps réel.",
     icon: Clock,
   },
 ]
@@ -58,10 +58,10 @@ export function FeatureSection() {
           <div className="space-y-6">
             <Badge className="bg-primary/10 text-primary border-primary/20 font-medium">Avantages</Badge>
             <h2 className="text-xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl text-balance">
-              Une expérience premium pour maîtriser votre budget énergie.
+              Une approche claire pour vos démarches énergie en Wallonie.
             </h2>
             <p className="max-w-2xl text-sm md:text-lg leading-relaxed text-muted-foreground">
-              Nous combinons technologie, expertise et accompagnement humain pour vous faire économiser davantage, sans rien changer à votre quotidien.
+              Le parcours distingue les particuliers et les professionnels. Vérifiez toujours les tarifs et conditions applicables auprès du fournisseur.
             </p>
             <div className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2">
               {features.map((feature, index) => {
@@ -88,20 +88,20 @@ export function FeatureSection() {
           <div className="rounded-2xl border border-border bg-card p-5 md:p-8 shadow-sm">
             <div className="space-y-6">
               <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-primary/3 to-transparent p-5 md:p-6">
-                <p className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Stratégie d{"'"}économies</p>
-                <h3 className="mt-3 text-xl md:text-3xl font-bold text-foreground text-balance">Performance améliorée, facture réduite.</h3>
+                <p className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Comparer avec méthode</p>
+                <h3 className="mt-3 text-xl md:text-3xl font-bold text-foreground text-balance">Des critères adaptés à votre situation.</h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Un suivi proactif et des recommandations claires pour prendre les meilleures décisions en toute confiance.
+                  Examinez le prix, la durée et les conditions d’une offre avant de prendre une décision.
                 </p>
               </div>
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
                 <div className="rounded-2xl border border-border bg-secondary/50 p-5">
-                  <p className="text-2xl md:text-3xl font-bold text-primary">35%</p>
-                  <p className="mt-2 text-sm text-muted-foreground">Économies potentielles</p>
+                  <p className="text-lg md:text-xl font-bold text-primary">Électricité</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Parcours particuliers et professionnels</p>
                 </div>
                 <div className="rounded-2xl border border-border bg-secondary/50 p-5">
-                  <p className="text-2xl md:text-3xl font-bold text-primary">4.9/5</p>
-                  <p className="mt-2 text-sm text-muted-foreground">Note moyenne client</p>
+                  <p className="text-lg md:text-xl font-bold text-primary">Gaz</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Informations pour la Wallonie</p>
                 </div>
               </div>
             </div>

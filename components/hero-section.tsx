@@ -44,7 +44,7 @@ export function HeroSection() {
 
             {/* Main Heading */}
             <h1 className="text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl leading-[1.2] md:leading-[1.1]">
-              {t("heroTitle")} {" "}
+              {t("heroTitle")}{' '}
               <span className="text-primary">Jeconomisemonenergie.eu</span>
             </h1>
 

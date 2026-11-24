@@ -886,7 +886,7 @@ export function MultiStepForm() {
             <p className="font-medium text-sm">Merci {formData.prenom} !</p>
           </div>
           <p className="text-sm text-muted-foreground">
-            Un conseiller analysera votre dossier et vous contactera avec les meilleures offres.
+            Un conseiller pourra examiner votre demande et vous recontacter au sujet de votre situation.
           </p>
         </div>
 
@@ -1106,7 +1106,7 @@ export function MultiStepForm() {
             <CardHeader className="p-0">
               <CardTitle className="text-xl md:text-2xl">Votre situation actuelle</CardTitle>
               <CardDescription>
-                Ces informations nous permettent de trouver les meilleures offres pour vous
+                Ces informations nous aident à comprendre votre situation énergétique
               </CardDescription>
             </CardHeader>
 

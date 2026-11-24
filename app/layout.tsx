@@ -15,11 +15,11 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://jeconomisemonenergie.eu'),
   title: {
-    default: 'Jeconomisemonenergie.eu | Comparateur Énergie Belgique 2026',
+    default: 'Comparateur énergie en Wallonie | Jeconomisemonenergie.eu',
     template: '%s | Jeconomisemonenergie.eu'
   },
-  description: 'Service belge pour comparer gaz & électricité. Engie, Luminus, TotalEnergies. Pour particuliers & PME à Bruxelles, Liège, Anvers. Gratuit.',
-  keywords: ['comparateur énergie Belgique', 'comparateur électricité Belgique', 'comparateur gaz Belgique', 'Engie', 'Luminus', 'TotalEnergies', 'Jeconomisemonenergie.eu', 'courtier énergie Belgique'],
+  description: 'Service d’accompagnement pour comparer les offres d’électricité et de gaz en Wallonie, destiné aux particuliers et aux professionnels.',
+  keywords: ['comparateur énergie Wallonie', 'comparateur électricité Wallonie', 'comparateur gaz Wallonie', 'fournisseur énergie Wallonie', 'Jeconomisemonenergie.eu'],
   authors: [{ name: 'Jeconomisemonenergie.eu', url: 'https://jeconomisemonenergie.eu' }],
   creator: 'Jeconomisemonenergie.eu',
   publisher: 'Jeconomisemonenergie.eu',
@@ -43,39 +43,25 @@ export const metadata: Metadata = {
     locale: 'fr_BE',
     url: 'https://jeconomisemonenergie.eu',
     siteName: 'Jeconomisemonenergie.eu',
-    title: 'Jeconomisemonenergie.eu | Comparateur Énergie Belgique 2026',
-    description: 'Service belge pour comparer gaz & électricité. Engie, Luminus, TotalEnergies. Pour particuliers & PME à Bruxelles, Liège, Anvers. Gratuit.',
+    title: 'Comparateur énergie en Wallonie | Jeconomisemonenergie.eu',
+    description: 'Accompagnement pour les particuliers et les professionnels qui souhaitent comparer les options d’électricité et de gaz en Wallonie.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Jeconomisemonenergie.eu - Comparateur énergie Belgique',
+        alt: 'Jeconomisemonenergie.eu - Comparateur énergie en Wallonie',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jeconomisemonenergie.eu | Comparateur Énergie Belgique 2026',
-    description: 'Service belge pour comparer gaz & électricité. Engie, Luminus, TotalEnergies. Pour particuliers & PME à Bruxelles, Liège, Anvers. Gratuit.',
+    title: 'Comparateur énergie en Wallonie | Jeconomisemonenergie.eu',
+    description: 'Accompagnement pour les particuliers et les professionnels qui souhaitent comparer les options d’électricité et de gaz en Wallonie.',
     images: ['/og-image.jpg'],
   },
-  alternates: {
-    canonical: 'https://jeconomisemonenergie.eu/',
-    languages: {
-      'fr-BE': 'https://jeconomisemonenergie.eu/',
-      'x-default': 'https://jeconomisemonenergie.eu/',
-    },
-  },
   other: {
-    // Ciblage géographique Belgique à 100%
-    'geo.region': 'BE',
-    'geo.placename': 'Belgique',
-    'geo.position': '50.8503;4.3517',
-    'ICBM': '50.8503, 4.3517',
     'content-language': 'fr-BE',
-    'distribution': 'Belgium',
-    'coverage': 'Belgium',
     'target_country': 'BE',
   },
   icons: {
@@ -105,22 +91,17 @@ export default function RootLayout({
     '@type': 'WebSite',
     name: 'Jeconomisemonenergie.eu',
     url: 'https://jeconomisemonenergie.eu',
-    description: 'Jeconomisemonenergie.eu, service belge pour comparer le gaz et l\'électricité (Engie, Luminus, TotalEnergies) à Bruxelles, en Wallonie et en Flandre.',
+    description: 'Service d’accompagnement pour comparer les options d’électricité et de gaz en Wallonie, pour les particuliers et les professionnels.',
     publisher: {
       '@type': 'Organization',
       name: 'Jeconomisemonenergie.eu',
       logo: 'https://jeconomisemonenergie.eu/logo.png'
     },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://jeconomisemonenergie.eu/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string'
-    },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       email: 'contactenergie@izyfirstcontact.fr',
-      areaServed: 'BE',
+      areaServed: 'Wallonie',
       availableLanguage: 'French'
     },
     funder: {

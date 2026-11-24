@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description:
     "Votre demande a bien été enregistrée. Parrainez vos proches et aidez-les à réduire leurs factures d'énergie en Belgique.",
   robots: { index: false, follow: true },
+  alternates: {
+    canonical: "https://jeconomisemonenergie.eu/merci",
+  },
 }
 
 export default function MerciPage() {

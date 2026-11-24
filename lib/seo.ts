@@ -1,4 +1,4 @@
-// Configuration SEO centralisée pour jeconomisemonenergie.eu (ciblage Belgique fr-BE)
+// Configuration SEO centralisée pour jeconomisemonenergie.eu (ciblage Wallonie francophone)
 
 export const SITE_URL = "https://jeconomisemonenergie.eu"
 export const SITE_NAME = "Jeconomisemonenergie.eu"
@@ -36,10 +36,10 @@ export const SILO_PAGES: SiloPage[] = [
   },
   {
     slug: "comparateur-gaz-wallonie",
-    title: "Comparateur gaz Wallonie 2026 | Tarifs et fournisseurs",
-    h1: "Comparateur de gaz en Wallonie : réduisez votre facture en 2026",
+    title: "Comparer le gaz en Wallonie | Contrats et repères",
+    h1: "Comparer les options de gaz en Wallonie",
     description:
-      "Comparez les fournisseurs de gaz en Wallonie. Tarifs ORES, RESA, primes énergie wallonnes et économies jusqu'à 35%. Comparaison gratuite et sans engagement.",
+      "Informations et accompagnement pour les particuliers qui souhaitent comparer les contrats de gaz en Wallonie. Les estimations sont indicatives et ne constituent pas une offre tarifaire.",
     region: "Wallonie",
     keywords: [
       "comparateur gaz Wallonie",
@@ -69,15 +69,15 @@ export const SILO_PAGES: SiloPage[] = [
   },
   {
     slug: "changement-fournisseur-energie",
-    title: "Changement de fournisseur d'énergie en Belgique 2026 | Guide",
-    h1: "Changer de fournisseur d'énergie en Belgique : le guide complet 2026",
+    title: "Changer de fournisseur d’énergie en Wallonie | Guide",
+    h1: "Changer de fournisseur d’énergie en Wallonie : les démarches",
     description:
-      "Comment changer de fournisseur d'énergie en Belgique gratuitement et sans coupure ? Démarches, délais, droits et économies jusqu'à 35%. Guide complet et comparateur gratuit.",
-    region: "Belgique",
+      "Repères pour préparer un changement de fournisseur d’électricité ou de gaz en Wallonie. Vérifiez les modalités et délais applicables auprès de votre fournisseur.",
+    region: "Wallonie",
     keywords: [
       "changement fournisseur énergie",
       "changer de fournisseur électricité",
-      "changer fournisseur gaz Belgique",
+      "changer fournisseur gaz Wallonie",
       "résiliation contrat énergie",
     ],
     priority: 0.9,
@@ -244,19 +244,17 @@ export interface GuidePage {
 export const GUIDE_PAGES: GuidePage[] = [
   {
     slug: "comparateurs-prix-electricite-gaz-belgique",
-    title: "Comparateurs Prix Électricité & Gaz Belgique 2026 | Jeconomisemonenergie.eu",
-    h1: "Comparateurs de prix de l'électricité et du gaz naturel en Belgique : le guide 2026",
+    title: "Comparer l’électricité et le gaz en Wallonie | Guide",
+    h1: "Comparer les contrats d’électricité et de gaz en Wallonie",
     description:
-      "Comment fonctionnent les comparateurs énergie en Belgique? Sibelga, Ores, Fluvius. Comparez Engie, Luminus, Mega. Guide gratuit Jeconomisemonenergie.eu.",
-    region: "Belgique",
+      "Repères pour examiner les contrats d’électricité et de gaz en Wallonie, les composantes du prix et les informations à vérifier avant de changer de fournisseur.",
+    region: "Wallonie",
     keywords: [
-      "comparateur prix électricité Belgique",
-      "comparateur gaz Belgique",
-      "comparateur énergie Belgique",
-      "Sibelga",
-      "Ores",
-      "Fluvius",
-      "CREG",
+      "comparateur énergie Wallonie",
+      "comparateur électricité Wallonie",
+      "comparateur gaz Wallonie",
+      "contrat énergie Wallonie",
+      "changer de fournisseur Wallonie",
     ],
     priority: 0.8,
   },
@@ -275,18 +273,14 @@ export function getLocalBusinessSchema() {
     email: SITE_EMAIL,
     priceRange: "EUR",
     description:
-      "Jeconomisemonenergie.eu, service belge qui aide les particuliers et les PME à comparer et réduire leurs factures d'électricité et de gaz (Engie, Luminus, TotalEnergies) à Bruxelles, en Wallonie et en Flandre.",
+      "Jeconomisemonenergie.eu accompagne les particuliers et les professionnels dans leurs démarches liées aux contrats d’électricité et de gaz en Wallonie.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Charleroi",
       addressRegion: "Hainaut",
       addressCountry: "BE",
     },
-    areaServed: [
-      { "@type": "AdministrativeArea", name: "Bruxelles-Capitale" },
-      { "@type": "AdministrativeArea", name: "Wallonie" },
-      { "@type": "AdministrativeArea", name: "Flandre" },
-    ],
+    areaServed: { "@type": "AdministrativeArea", name: "Wallonie" },
     geo: {
       "@type": "GeoCoordinates",
       latitude: 50.4108,
@@ -314,8 +308,8 @@ export function getOrganizationSchema() {
     email: SITE_EMAIL,
     telephone: SITE_PHONE,
     areaServed: {
-      "@type": "Country",
-      name: "Belgique",
+      "@type": "AdministrativeArea",
+      name: "Wallonie",
     },
     availableLanguage: "French",
     sameAs: [],
